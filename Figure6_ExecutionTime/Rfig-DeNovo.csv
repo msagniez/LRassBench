@@ -1,0 +1,17 @@
+﻿Assembly;Step;Value
+Bambu-noRef;Alignment;21.08847333
+FLAIR-noRef;Alignment;0
+isoQuant-noRef;Alignment;0
+Stringtie2-noRef;Alignment;21.08847333
+Bambu-noRef;Pre-process;0
+FLAIR-noRef;Pre-process;0
+isoQuant-noRef;Pre-process;0
+Stringtie2-noRef;Pre-process;0.202448333
+Bambu-noRef;Assembler;0.1545
+FLAIR-noRef;Assembler;41.049825
+isoQuant-noRef;Assembler;13.25869167
+Stringtie2-noRef;Assembler;0.023435
+Bambu-noRef;Post-process;0.009666667
+FLAIR-noRef;Post-process;0
+isoQuant-noRef;Post-process;0
+Stringtie2-noRef;Post-process;0
