@@ -1,5 +1,5 @@
 #!/bin/bash
-#Script to run all cDNA and dRNA assembly pipelines | Guided ; De novo ; Ab initio | for one single dataset
+#Script to run all cDNA and dRNA assembly pipelines | Guided ; De novo ; Ab initio | for one single dataset (except Bambu which runs on R)
 #Fill in the 4 lines of information in the main
 #Comment out sections you don't want to run
 
@@ -309,67 +309,64 @@ main(){
 	mkdir -p ${Sample}/Final-Assemblies
 	mkdir -p ${Sample}/TMAPs
 
-#	preprocess
+	preprocess
 
 #Guided + De novo
-#	stringtie2
-#	cp $InDir/$Sample/stringtie2/${Sample}_strg2def.gtf $InDir/$Sample/Final-Assemblies/Stringtie2.gtf
-#	cp $InDir/$Sample/stringtie2/${Sample}_strg2def-noRef.gtf $InDir/$Sample/Final-Assemblies/Stringtie2-noRef.gtf
+	stringtie2
+	cp $InDir/$Sample/stringtie2/${Sample}_strg2def.gtf $InDir/$Sample/Final-Assemblies/Stringtie2.gtf
+	cp $InDir/$Sample/stringtie2/${Sample}_strg2def-noRef.gtf $InDir/$Sample/Final-Assemblies/Stringtie2-noRef.gtf
 
-#	source /home/sagmel/mambaforge/bin/activate flair #conda activate flair
-#	Flair
-#	cp $InDir/$Sample/flair/${Sample}_flair.isoforms.gtf $InDir/$Sample/Final-Assemblies/FLAIR.gtf
-#	cp $InDir/$Sample/flair-noRef/${Sample}_flair-noRef.isoforms.fa $InDir/$Sample/Final-Assemblies/FLAIR-noRef.fa
-#	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source /home/sagmel/mambaforge/bin/activate flair #conda activate flair
+	Flair
+	cp $InDir/$Sample/flair/${Sample}_flair.isoforms.gtf $InDir/$Sample/Final-Assemblies/FLAIR.gtf
+	cp $InDir/$Sample/flair-noRef/${Sample}_flair-noRef.isoforms.fa $InDir/$Sample/Final-Assemblies/FLAIR-noRef.fa
+	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
-#	source /home/sagmel/mambaforge/bin/activate isoquant #conda activate isoquant
-#	isoQuant
-#	cp $InDir/$Sample/isoQuant/OUT/OUT.transcript_models.gtf $InDir/$Sample/Final-Assemblies/isoQuant.gtf
+	source /home/sagmel/mambaforge/bin/activate isoquant #conda activate isoquant
+	isoQuant
+	cp $InDir/$Sample/isoQuant/OUT/OUT.transcript_models.gtf $InDir/$Sample/Final-Assemblies/isoQuant.gtf
 
-#	isoQuant-noRef
-#	cp $InDir/$Sample/isoQuant-noRef/OUT/OUT.transcript_models.gtf $InDir/$Sample/Final-Assemblies/isoQuant-noRef.gtf
-#	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	isoQuant-noRef
+	cp $InDir/$Sample/isoQuant-noRef/OUT/OUT.transcript_models.gtf $InDir/$Sample/Final-Assemblies/isoQuant-noRef.gtf
+	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
 #Guided only
-#	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5              ----> think about testing TALON v6.0
-#	TALON
-#	cp $InDir/$Sample/talon/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON.gtf
+	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5
+	TALON
+	cp $InDir/$Sample/talon/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON.gtf
 
-#	TALON_reco
-#	cp $InDir/$Sample/talon_reco/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON_reco.gtf
-#	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	TALON_reco
+	cp $InDir/$Sample/talon_reco/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON_reco.gtf
+	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
-#	source /home/sagmel/mambaforge/bin/activate FLAMES #conda activate FLAMES
-#	FLAMES
-#	cp $InDir/$Sample/FLAMES/isoform_annotated.filtered.gff3 $InDir/$Sample/Final-Assemblies/FLAMES.gff3
-#	cp $InDir/$Sample/FLAMES/isoform_annotated.filtered_True.gff3 $InDir/$Sample/Final-Assemblies/FLAMES-filt.gff3
-#	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source /home/sagmel/mambaforge/bin/activate FLAMES #conda activate FLAMES
+	FLAMES
+	cp $InDir/$Sample/FLAMES/isoform_annotated.filtered_True.gff3 $InDir/$Sample/Final-Assemblies/FLAMES.gff3
+	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
 #Ab initio
-#	CARNAC-LR
+	CARNAC-LR
 	#Check the output name and transfer to Final-Assemblies
 
-	#bulker activate seqtools/seqtools
+#	#bulker activate seqtools/seqtools outside script before running RATTLE
 #	RATTLE
 #	cp $InDir/$Sample/rattle/transcriptome.fq $InDir/$Sample/Final-Assemblies/RATTLE.fastq
-	#exit #bulker with <exit>
+#	#exit #bulker with <exit>
 
-#	source /home/sagmel/mambaforge/bin/activate isonclust #conda activate isonclust
-#	Isonclust
-#	cp $InDir/$Sample/isONclust/final_cluster_origins.fastq $InDir/$Sample/Final-Assemblies/isONclust.fastq
-#	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source /home/sagmel/mambaforge/bin/activate isonclust #conda activate isonclust
+	Isonclust
+	cp $InDir/$Sample/isONclust/final_cluster_origins.fastq $InDir/$Sample/Final-Assemblies/isONclust.fastq
+	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
-#	Isonclust2
-#	cp $InDir/$Sample/isONclust2/results/cluster_cons.fq $InDir/$Sample/Final-Assemblies/isONclust2.fastq
+	Isonclust2
+	cp $InDir/$Sample/isONclust2/results/cluster_cons.fq $InDir/$Sample/Final-Assemblies/isONclust2.fastq
 
-#	RNAbloom
-#	cp $InDir/$Sample/RNAbloom/rnabloom.transcripts.fa $InDir/$Sample/Final-Assemblies/RNAbloom.fa
+	RNAbloom
+	cp $InDir/$Sample/RNAbloom/rnabloom.transcripts.fa $InDir/$Sample/Final-Assemblies/RNAbloom.fa
 
-#	RNAbloom2
-#	cp $InDir/$Sample/RNAbloom2/rnabloom.transcripts.fa $InDir/$Sample/Final-Assemblies/RNAbloom2.fa
+	RNAbloom2
+	cp $InDir/$Sample/RNAbloom2/rnabloom.transcripts.fa $InDir/$Sample/Final-Assemblies/RNAbloom2.fa
 
-
-#	bambu   #Doesn't work within the script --> run manually on the side
 
 #Post-process
 	GFF
