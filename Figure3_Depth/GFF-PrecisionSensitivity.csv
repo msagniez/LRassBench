@@ -1,0 +1,89 @@
+Subset,Assembly,TP,FP,FN,Method,Tool
+ALL,Bambu-noRef,88,51,61,De novo,Bambu
+ALL,Bambu,160,8,0,Guided,Bambu
+ALL,isONclust2,100,40,42,Ab initio,isONclust2
+ALL,isONclust,94,110,50,Ab initio,isONclust
+ALL,isoQuant-noRef,84,59,53,De novo,isoQuant
+ALL,isoQuant,136,5,24,Guided,isoQuant
+ALL,Stringtie2-noRef,122,101,17,De novo,Stringtie2
+ALL,Stringtie2,151,27,5,Guided,Stringtie2
+Sub100k,Bambu-noRef,78,27,74,De novo,Bambu
+Sub100k,Bambu,160,3,0,Guided,Bambu
+Sub100k,isONclust2,51,20,92,Ab initio,isONclust2
+Sub100k,isONclust,65,36,76,Ab initio,isONclust
+Sub100k,isoQuant-noRef,70,13,83,De novo,isoQuant
+Sub100k,isoQuant,115,3,45,Guided,isoQuant
+Sub100k,Stringtie2-noRef,93,26,59,De novo,Stringtie2
+Sub100k,Stringtie2,112,9,47,Guided,Stringtie2
+Sub10k,Bambu-noRef,51,7,106,De novo,Bambu
+Sub10k,Bambu,160,0,0,Guided,Bambu
+Sub10k,isONclust2,52,8,101,Ab initio,isONclust2
+Sub10k,isONclust,54,8,100,Ab initio,isONclust
+Sub10k,isoQuant-noRef,48,2,110,De novo,isoQuant
+Sub10k,isoQuant,83,0,77,Guided,isoQuant
+Sub10k,Stringtie2-noRef,60,16,92,De novo,Stringtie2
+Sub10k,Stringtie2,78,9,79,Guided,Stringtie2
+Sub150k,Bambu-noRef,75,33,74,De novo,Bambu
+Sub150k,Bambu,160,4,0,Guided,Bambu
+Sub150k,isONclust2,55,21,87,Ab initio,isONclust2
+Sub150k,isONclust,69,41,74,Ab initio,isONclust
+Sub150k,isoQuant-noRef,72,16,80,De novo,isoQuant
+Sub150k,isoQuant,117,2,43,Guided,isoQuant
+Sub150k,Stringtie2-noRef,95,33,57,De novo,Stringtie2
+Sub150k,Stringtie2,115,6,44,Guided,Stringtie2
+Sub1k,Bambu-noRef,35,6,124,De novo,Bambu
+Sub1k,Bambu,160,0,0,Guided,Bambu
+Sub1k,isONclust2,41,3,116,Ab initio,isONclust2
+Sub1k,isONclust,42,4,115,Ab initio,isONclust
+Sub1k,isoQuant-noRef,25,2,134,De novo,isoQuant
+Sub1k,isoQuant,52,0,108,Guided,isoQuant
+Sub1k,Stringtie2-noRef,36,7,119,De novo,Stringtie2
+Sub1k,Stringtie2,49,4,110,Guided,Stringtie2
+Sub1M,Bambu-noRef,84,57,60,De novo,Bambu
+Sub1M,Bambu,160,9,0,Guided,Bambu
+Sub1M,isONclust2,74,26,67,Ab initio,isONclust2
+Sub1M,isONclust,88,60,58,Ab initio,isONclust
+Sub1M,isoQuant-noRef,89,34,57,De novo,isoQuant
+Sub1M,isoQuant,137,8,23,Guided,isoQuant
+Sub1M,Stringtie2-noRef,108,76,36,De novo,Stringtie2
+Sub1M,Stringtie2,132,23,23,Guided,Stringtie2
+Sub250k,Bambu-noRef,76,37,72,De novo,Bambu
+Sub250k,Bambu,160,7,0,Guided,Bambu
+Sub250k,isONclust2,68,22,76,Ab initio,isONclust2
+Sub250k,isONclust,80,47,63,Ab initio,isONclust
+Sub250k,isoQuant-noRef,73,18,79,De novo,isoQuant
+Sub250k,isoQuant,124,3,36,Guided,isoQuant
+Sub250k,Stringtie2-noRef,98,39,51,De novo,Stringtie2
+Sub250k,Stringtie2,122,10,36,Guided,Stringtie2
+Sub2M,Bambu-noRef,89,48,59,De novo,Bambu
+Sub2M,Bambu,160,8,0,Guided,Bambu
+Sub2M,isONclust2,79,35,55,Ab initio,isONclust2
+Sub2M,isONclust,95,79,50,Ab initio,isONclust
+Sub2M,isoQuant-noRef,88,33,56,De novo,isoQuant
+Sub2M,isoQuant,140,11,20,Guided,isoQuant
+Sub2M,Stringtie2-noRef,118,84,23,De novo,Stringtie2
+Sub2M,Stringtie2,142,22,13,Guided,Stringtie2
+Sub4M,Bambu-noRef,87,57,60,De novo,Bambu
+Sub4M,Bambu,160,7,0,Guided,Bambu
+Sub4M,isONclust2,100,44,42,Ab initio,isONclust2
+Sub4M,isONclust,96,106,48,Ab initio,isONclust
+Sub4M,isoQuant-noRef,84,55,54,De novo,isoQuant
+Sub4M,isoQuant,154,19,6,Guided,isoQuant
+Sub4M,Stringtie2-noRef,123,96,19,De novo,Stringtie2
+Sub4M,Stringtie2,148,28,7,Guided,Stringtie2
+Sub500k,Bambu-noRef,81,40,65,De novo,Bambu
+Sub500k,Bambu,160,5,0,Guided,Bambu
+Sub500k,isONclust2,77,26,66,Ab initio,isONclust2
+Sub500k,isONclust,82,52,60,Ab initio,isONclust
+Sub500k,isoQuant-noRef,76,25,73,De novo,isoQuant
+Sub500k,isoQuant,131,8,29,Guided,isoQuant
+Sub500k,Stringtie2-noRef,105,54,42,De novo,Stringtie2
+Sub500k,Stringtie2,127,16,29,Guided,Stringtie2
+Sub50k,Bambu-noRef,69,14,87,De novo,Bambu
+Sub50k,Bambu,160,0,0,Guided,Bambu
+Sub50k,isONclust2,47,22,94,Ab initio,isONclust2
+Sub50k,isONclust,60,30,83,Ab initio,isONclust
+Sub50k,isoQuant-noRef,59,12,96,De novo,isoQuant
+Sub50k,isoQuant,105,3,55,Guided,isoQuant
+Sub50k,Stringtie2-noRef,83,26,69,De novo,Stringtie2
+Sub50k,Stringtie2,104,9,55,Guided,Stringtie2
