@@ -9,3 +9,7 @@ inputs consist of 5 datasets :
   - RNA002_chrIS_mixA_dRNA
   - RNA004_chrIS_mixA_dRNA
 
+See Figure1 for more information about this analysis.
+
+Tools-guide.txt = Installation guidelines and how tools were executed.
+Assembly-pipeline.sh = Commandlines executed for each of the tools tested (except Bambu which runs on R).
