@@ -82,7 +82,7 @@ TALON_reco(){
 	#SAM file generation
 	~/apps/minimap2/minimap2-2.24/minimap2 -t $threads -ax splice -uf -k14 --MD $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}_mm2talonreco.sam
 	#TranscriptClean
-	transcriptclean --sam $InDir/${Sample}_mm2talonreco.sam --genome $reference_fa --outprefix ./
+	transcriptclean -t $threads --sam $InDir/${Sample}_mm2talonreco.sam --genome $reference_fa --outprefix ./
 	#Subset sam to simulate 3 replicates
 	~/apps/samtools-1.19.2/samtools view -s 0.33 ./TC_clean.sam > ./Preprep1.sam
 	~/apps/samtools-1.19.2/samtools view -H ./TC_clean.sam | cat - ./Preprep1.sam > rep1.sam
