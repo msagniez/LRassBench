@@ -12,7 +12,7 @@ inputs consist of 5 datasets :
 See Figure1 for more information about this analysis.
 
 - Tools-guide.txt = Installation guidelines and how tools were executed.
-- Assembly-pipeline.sh = Commandlines executed for each of the tools tested (except Bambu which runs on R).
+- Assembly-pipeline.sh = Commandlines executed for each of the tools tested (except Bambu which runs on R --> see Bambu-time.R instead).
 - Bambu-tine.R = code to execute Bambu and Bambu-noRef for one sample.
 
 Authorship : Anshul Budhraja ; Mélanie Sagniez ; Martin Smith
