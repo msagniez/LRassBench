@@ -1,0 +1,168 @@
+Installation and execution guide
+
+Miniconda3
+mkdir -p ~/miniconda3
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
+bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
+rm -rf ~/miniconda3/miniconda.sh
+~/miniconda3/bin/conda init bash #Close and re-open terminal
+~/miniconda3/bin/conda init zsh #Close and re-open terminal
+#run: conda
+
+
+Pychopper
+#Install mamba
+wget https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-Linux-x86_64.sh
+bash Mambaforge-Linux-x86_64.sh #yes I accept terms + yes at the end of initialization
+#run: mamba
+
+#Pychopper
+mamba create -n pychopper python=3.8
+mamba activate pychopper
+mamba install -c nanoporetech -c conda-forge -c bioconda "nanoporetech::pychopper"
+#run: mamba activate pychopper ; pychopper ; mamba deactivate
+
+restrander
+#v1.0
+git clone https://github.com/jakob-schuster/restrander.git
+cd restrander
+make
+#run: ~/apps/restrander/restrander
+
+Minimap2
+#v2.24
+wget "https://github.com/lh3/minimap2/releases/download/v2.24/minimap2-2.24_x64-linux.tar.bz2"
+tar -xf minimap2-2.24_x64-linux.tar.bz2
+#run: ~/apps/minimap2/minimap2-2.24/minimap2
+
+#v2.26 [last]
+git clone https://github.com/lh3/minimap2
+cd minimap2 && make
+#run: ~/apps/minimap2/minimap2-2.26/minimap2
+
+Samtools
+#v1.17
+wget "https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2"
+tar -xf samtools-1.17.tar.bz
+cd samtools-1.17/
+./configure --without-curses --disable-bz2 --disable-lzma
+make
+#run: ~/apps/samtools-1.17/samtools
+
+#v1.19.2
+wget "https://github.com/samtools/samtools/releases/download/1.19.2/samtools-1.19.2.tar.bz2"
+tar -xf samtools-1.19.2.tar.bz2
+cd samtools-1.19.2/
+./configure --without-curses --disable-bz2 --disable-lzma
+#run: samtools
+#run: ~/apps/samtools-1.19.2/samtools
+
+
+Stringtie
+#v2.2.1-2.2.2
+#run: stringtie
+#run ~/apps/stringtie/stringtie
+
+FLAIR
+#v2.0
+conda create -n flair -c conda-forge -c bioconda flair
+#run: conda activate flair ; flair
+
+isoQuant
+#v3.3.1
+conda create -c conda-forge -c bioconda -n isoquant python=3.8 isoquant
+#run: conda activate isoquant ; isoquant.py
+
+TALON
+#v5.0
+conda create -n TALON5 python=3.7
+conda activate TALON5
+wget "https://github.com/mortazavilab/TALON/archive/refs/tags/v5.0.tar.gz"
+tar -xzf v5.0.tar.gz
+pip install .
+#run: conda activate TALON5 ; talon
+
+#v6.0
+conda create -n TALON6 python=3.7
+conda activate TALON6
+git clone https://github.com/mortazavilab/TALON.git
+cd TALON
+pip install .
+#run: conda activate TALON6 ; talon
+
+TranscriptClean
+#v2.1
+git clone https://github.com/mortazavilab/TranscriptClean.git
+cd TranscriptClean
+pip install -e .
+#run: transcriptclean
+
+FLAMES
+#v0.1
+conda create -n FLAMES "python>=3.7" samtools pysam minimap2 numpy editdistance -c bioconda -c conda-forge
+git clone https://github.com/LuyiTian/FLAMES.git
+#run: conda activate FLAMES ; ~/apps/FLAMES/python/bulk_long_pipeline.py
+
+CARNAC-LR
+#vJuly2019
+git clone https://github.com/kamimrcht/CARNAC.git 
+make
+#run: ~/apps/CARNAC/CARNAC-LR
+
+isONclust
+#v0.0.4
+conda create -n isonclust python=3 pip 
+conda activate isonclust
+pip install isONclust
+#run: conda activate isonclust ; isONclust
+
+isONclust2
+#v2.3
+conda install -c bioconda isonclust2
+#run: isONclust2
+
+RNAbloom
+#v1.4.3
+wget "https://github.com/bcgsc/RNA-Bloom/releases/download/v1.4.3/rnabloom_v1.4.3.tar.gz"
+tar -xzf rnabloom_v1.4.3.tar.gz
+cd RNA-Bloom_v1.4.3
+#run: java -jar ~/apps/RNA-Bloom_v1.4.3/RNA-Bloom.jar
+
+#v2.0.1
+conda install -c bioconda rnabloom
+#run: rnabloom
+
+
+spliced_bam2gff
+#vJan. 2021
+conda install spliced_bam2gff
+#run: spliced_bam2gff
+
+GFFcompare
+#v0.12.6
+git clone https://github.com/gpertea/gffcompare
+cd gffcompare
+make release
+#run: ~/apps/gffcompare/gffcompare
+
+SQANTI3
+#v5.2
+conda activate SQANTI3.env
+wget https://github.com/ConesaLab/SQANTI3/archive/refs/tags/v5.2.tar.gz
+tar -xvf v5.2.tar.gz
+cd SQANTI3-5.2
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/gtfToGenePred -P utilities/
+chmod +x utilities/gtfToGenePred
+git clone https://github.com/ConesaLab/cDNA_Cupcake.git
+cd cDNA_Cupcake
+python setup.py build
+python setup.py install
+#run: conda activate SQANTI3.env ; export PYTHONPATH=$PYTHONPATH:~/apps/SQANTI3-5.2/cDNA_Cupcake/sequence/ ; export PYTHONPATH=$PYTHONPATH:~/apps/SQANTI3-5.2/cDNA_Cupcake/ ; python ~/apps/SQANTI3-5.2/sqanti3_qc.py
+
+Mandalorion
+#v4.5.0
+git clone https://github.com/christopher-vollmers/Mandalorion.git
+cd Mandalorion
+chmod +x setup.sh
+sh setup.sh
+#run : python3 ~/apps/Mandalorion/Mando.py
