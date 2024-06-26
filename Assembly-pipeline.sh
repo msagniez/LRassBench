@@ -130,20 +130,6 @@ FLAMES(){
 	echo "FLAMES terminates"
 }
 
-CARNAC-LR(){
-	mkdir -p $InDir/$Sample/CARNAC-LR/
-	cd $InDir/$Sample/CARNAC-LR/
-	echo "Starting CARNAC-LR"
-
-	~/apps/minimap2/minimap2-2.24/minimap2 -X -t $threads $InDir/${Sample}.fastq $InDir/${Sample}.fastq > ./minimap_output.paf
-	python ~/apps/CARNAC/scripts/paf_to_CARNAC.py minimap_output.paf $InDir/${Sample}.fastq input_carnac.txt
-	ulimit -s unlimited
-	~/apps/CARNAC/CARNAC-LR -f input_carnac.txt -t $threads
-	~/apps/CARNAC/CARNAC-LR/scripts/CARNAC_to_fasta $InDir/${Sample}.fastq final_g_clusters.txt [1]
-
-	echo "CARNAC-LR terminates"
-}
-
 Mandalorion(){
 	mkdir -p $InDir/$Sample/Mandalorion/
         cd $InDir/$Sample/Mandalorion/
@@ -162,7 +148,7 @@ RATTLE(){
 	#Filter fastq to have only reads woth length > 150 (bad alloc error otherwise)
 	awk 'NR%4==1{a=$0} NR%4==2{b=$0} NR%4==3{c=$0} NR%4==0&&length(b)>150{print a"\n"b"\n"c"\n"$0;}' $InDir/${Sample}.fastq > $InDir/${Sample}_sup150.fastq
 
-	if [[ $sampleN =~ RNA ]] ; then
+	if [[ $sample =~ RNA ]] ; then
         	echo "RNA mode ON"
 		rattle cluster -i $InDir/${Sample}_sup150.fastq -o ./ -t $threads --iso --rna
 	else
@@ -376,8 +362,6 @@ main(){
 	cp $InDir/$Sample/Mandalorion/Isoforms.filtered.clean.gtf $InDir/$Sample/Final-Assemblies/Mandalorion.gtf
 
 #Ab initio
-	CARNAC-LR
-	#Check the output name and transfer to Final-Assemblies
 
 	#run <bulker activate seqtools/seqtools> before running RATTLE
 	RATTLE
