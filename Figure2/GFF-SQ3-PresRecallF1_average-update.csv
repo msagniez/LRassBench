@@ -1,0 +1,109 @@
+﻿Dataset;Assembly;Method;Tool;Vtype;Value
+LSK114_sequins;Bambu;Guided;Bambu;Precision;0.741440217391304
+LSK114_sequins;Bambu-noRef;De novo;Bambu;Precision;0.839506172839506
+LSK114_sequins;Control;RawReads;RawReads;Precision;0.0143580971343176
+LSK114_sequins;FLAIR;Guided;FLAIR;Precision;0.725720551378446
+LSK114_sequins;FLAIR-noRef;De novo;FLAIR;Precision;0.166786916786917
+LSK114_sequins;FLAMES;Guided;FLAMES;Precision;0.989795918367347
+LSK114_sequins;isONclust2;Ab initio;isONclust2;Precision;0.738682000730194
+LSK114_sequins;isONclust;Ab initio;isONclust;Precision;0.684469696969697
+LSK114_sequins;isoQuant;Guided;isoQuant;Precision;0.946882001493652
+LSK114_sequins;isoQuant-noRef;De novo;isoQuant;Precision;0.880597014925373
+LSK114_sequins;Mandalorion;Guided;Mandalorion;Precision;0.87140902872777
+LSK114_sequins;RATTLE;Ab initio;RATTLE;Precision;0.611764705882353
+LSK114_sequins;RNAbloom2;Ab initio;RNAbloom2;Precision;0.621142719382835
+LSK114_sequins;RNAbloom;Ab initio;RNAbloom;Precision;0.609738186462324
+LSK114_sequins;Stringtie2;Guided;Stringtie2;Precision;0.870535714285714
+LSK114_sequins;Stringtie2-noRef;De novo;Stringtie2;Precision;0.732542761417739
+LSK114_sequins;TALON;Guided;TALON;Precision;0.5028406400909
+LSK114_sequins;TALON_reco;Guided;TALON;Precision;0.70703125
+LSK114_SIRVs;Bambu;Guided;Bambu;Precision;0.79322354904982
+LSK114_SIRVs;Bambu-noRef;De novo;Bambu;Precision;0.681818181818182
+LSK114_SIRVs;Control;RawReads;RawReads;Precision;0.03091295750533
+LSK114_SIRVs;FLAIR;Guided;FLAIR;Precision;0.829970381340244
+LSK114_SIRVs;FLAIR-noRef;De novo;FLAIR;Precision;0.371196319472182
+LSK114_SIRVs;FLAMES;Guided;FLAMES;Precision;0.990740740740741
+LSK114_SIRVs;isONclust2;Ab initio;isONclust2;Precision;0.8702778983934
+LSK114_SIRVs;isONclust;Ab initio;isONclust;Precision;0.800045119566852
+LSK114_SIRVs;isoQuant;Guided;isoQuant;Precision;0.805330634278003
+LSK114_SIRVs;isoQuant-noRef;De novo;isoQuant;Precision;0.805330634278003
+LSK114_SIRVs;Mandalorion;Guided;Mandalorion;Precision;0.945299145299145
+LSK114_SIRVs;RATTLE;Ab initio;RATTLE;Precision;0.741681455190772
+LSK114_SIRVs;RNAbloom2;Ab initio;RNAbloom2;Precision;0.725
+LSK114_SIRVs;RNAbloom;Ab initio;RNAbloom;Precision;0.764993191640519
+LSK114_SIRVs;Stringtie2;Guided;Stringtie2;Precision;0.95058408512607
+LSK114_SIRVs;Stringtie2-noRef;De novo;Stringtie2;Precision;0.478634902628096
+LSK114_SIRVs;TALON;Guided;TALON;Precision;0.542372881355932
+LSK114_SIRVs;TALON_reco;Guided;TALON;Precision;0.656084656084656
+LSK114_sequins;Bambu;Guided;Bambu;Sensitivity;1
+LSK114_sequins;Bambu-noRef;De novo;Bambu;Sensitivity;0.592020592020592
+LSK114_sequins;Control;RawReads;RawReads;Sensitivity;0.8516258677384
+LSK114_sequins;FLAIR;Guided;FLAIR;Sensitivity;0.694965165553401
+LSK114_sequins;FLAIR-noRef;De novo;FLAIR;Sensitivity;0.599639855942377
+LSK114_sequins;FLAMES;Guided;FLAMES;Sensitivity;0.403361344537815
+LSK114_sequins;isONclust2;Ab initio;isONclust2;Sensitivity;0.485274483625226
+LSK114_sequins;isONclust;Ab initio;isONclust;Sensitivity;0.634209023415191
+LSK114_sequins;isoQuant;Guided;isoQuant;Sensitivity;0.823529411764706
+LSK114_sequins;isoQuant-noRef;De novo;isoQuant;Sensitivity;0.502209504491452
+LSK114_sequins;Mandalorion;Guided;Mandalorion;Sensitivity;0.628720979917391
+LSK114_sequins;RATTLE;Ab initio;RATTLE;Sensitivity;0.42296918767507
+LSK114_sequins;RNAbloom2;Ab initio;RNAbloom2;Sensitivity;0.705648926237161
+LSK114_sequins;RNAbloom;Ab initio;RNAbloom;Sensitivity;0.692577030812325
+LSK114_sequins;Stringtie2;Guided;Stringtie2;Sensitivity;0.82281726249822
+LSK114_sequins;Stringtie2-noRef;De novo;Stringtie2;Sensitivity;0.690126050420168
+LSK114_sequins;TALON;Guided;TALON;Sensitivity;0.758564964447317
+LSK114_sequins;TALON_reco;Guided;TALON;Sensitivity;0.760504201680672
+LSK114_SIRVs;Bambu;Guided;Bambu;Sensitivity;0.99290780141844
+LSK114_SIRVs;Bambu-noRef;De novo;Bambu;Sensitivity;0.164480349810697
+LSK114_SIRVs;Control;RawReads;RawReads;Sensitivity;0.687841945288754
+LSK114_SIRVs;FLAIR;Guided;FLAIR;Sensitivity;0.442237982663515
+LSK114_SIRVs;FLAIR-noRef;De novo;FLAIR;Sensitivity;0.735772357723577
+LSK114_SIRVs;FLAMES;Guided;FLAMES;Sensitivity;0.375886524822695
+LSK114_SIRVs;isONclust2;Ab initio;isONclust2;Sensitivity;0.607759076955647
+LSK114_SIRVs;isONclust;Ab initio;isONclust;Sensitivity;0.669895204826929
+LSK114_SIRVs;isoQuant;Guided;isoQuant;Sensitivity;0.224743892828999
+LSK114_SIRVs;isoQuant-noRef;De novo;isoQuant;Sensitivity;0.224743892828999
+LSK114_SIRVs;Mandalorion;Guided;Mandalorion;Sensitivity;0.794326241134752
+LSK114_SIRVs;RATTLE;Ab initio;RATTLE;Sensitivity;0.528284363390746
+LSK114_SIRVs;RNAbloom2;Ab initio;RNAbloom2;Sensitivity;0.768805495057799
+LSK114_SIRVs;RNAbloom;Ab initio;RNAbloom;Sensitivity;0.751858842370167
+LSK114_SIRVs;Stringtie2;Guided;Stringtie2;Sensitivity;0.886524822695035
+LSK114_SIRVs;Stringtie2-noRef;De novo;Stringtie2;Sensitivity;0.463744680851064
+LSK114_SIRVs;TALON;Guided;TALON;Sensitivity;0.948148148148148
+LSK114_SIRVs;TALON_reco;Guided;TALON;Sensitivity;0.932330827067669
+LSK114_sequins;Bambu;Guided;Bambu;F1;0.851523297491039
+LSK114_sequins;Bambu-noRef;De novo;Bambu;F1;0.694166666666667
+LSK114_sequins;Control;RawReads;RawReads;F1;0.0281251621705266
+LSK114_sequins;FLAIR;Guided;FLAIR;F1;0.71000993309219
+LSK114_sequins;FLAIR-noRef;De novo;FLAIR;F1;0.260339364119942
+LSK114_sequins;FLAMES;Guided;FLAMES;F1;0.573139435414885
+LSK114_sequins;isONclust2;Ab initio;isONclust2;F1;0.585217192239455
+LSK114_sequins;isONclust;Ab initio;isONclust;F1;0.657254266248987
+LSK114_sequins;isoQuant;Guided;isoQuant;F1;0.880903324849513
+LSK114_sequins;isoQuant-noRef;De novo;isoQuant;F1;0.639608672659968
+LSK114_sequins;Mandalorion;Guided;Mandalorion;F1;0.730433737834915
+LSK114_sequins;RATTLE;Ab initio;RATTLE;F1;0.5
+LSK114_sequins;RNAbloom2;Ab initio;RNAbloom2;F1;0.660699062233589
+LSK114_sequins;RNAbloom;Ab initio;RNAbloom;F1;0.648522719063787
+LSK114_sequins;Stringtie2;Guided;Stringtie2;F1;0.846000376435159
+LSK114_sequins;Stringtie2-noRef;De novo;Stringtie2;F1;0.710363079976842
+LSK114_sequins;TALON;Guided;TALON;F1;0.604780167100397
+LSK114_sequins;TALON_reco;Guided;TALON;F1;0.732793522267206
+LSK114_SIRVs;Bambu;Guided;Bambu;F1;0.881901870920382
+LSK114_SIRVs;Bambu-noRef;De novo;Bambu;F1;0.264990998476665
+LSK114_SIRVs;Control;RawReads;RawReads;F1;0.0583088920260835
+LSK114_SIRVs;FLAIR;Guided;FLAIR;F1;0.576990161001789
+LSK114_SIRVs;FLAIR-noRef;De novo;FLAIR;F1;0.492993149436066
+LSK114_SIRVs;FLAMES;Guided;FLAMES;F1;0.544990748083532
+LSK114_SIRVs;isONclust2;Ab initio;isONclust2;F1;0.715701387359612
+LSK114_SIRVs;isONclust;Ab initio;isONclust;F1;0.729036598914081
+LSK114_SIRVs;isoQuant;Guided;isoQuant;F1;0.351412973667309
+LSK114_SIRVs;isoQuant-noRef;De novo;isoQuant;F1;0.351412973667309
+LSK114_SIRVs;Mandalorion;Guided;Mandalorion;F1;0.863227301078143
+LSK114_SIRVs;RATTLE;Ab initio;RATTLE;F1;0.616962880503628
+LSK114_SIRVs;RNAbloom2;Ab initio;RNAbloom2;F1;0.745988566922925
+LSK114_SIRVs;RNAbloom;Ab initio;RNAbloom;F1;0.758048099572513
+LSK114_SIRVs;Stringtie2;Guided;Stringtie2;F1;0.91743428140487
+LSK114_SIRVs;Stringtie2-noRef;De novo;Stringtie2;F1;0.470967741935484
+LSK114_SIRVs;TALON;Guided;TALON;F1;0.690026954177898
+LSK114_SIRVs;TALON_reco;Guided;TALON;F1;0.770186335403727
