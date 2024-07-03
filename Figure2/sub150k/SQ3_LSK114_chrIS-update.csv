@@ -1,0 +1,20 @@
+Assembly,TP,FP,FN,Method,Tool
+Bambu,136,29,0,Guided,Bambu
+Bambu-noRef,76,33,60,De novo,Bambu
+Control,102,57583,34,RawReads,RawReads
+FLAIR,95,55,41,Guided,FLAIR
+FLAIR-noRef,79,954,57,De novo,FLAIR
+FLAMES,69,1,67,Guided,FLAMES
+isONclust2,68,27,68,Ab initio,isONclust2
+isONclust,85,89,51,Ab initio,isONclust
+isONpipeline,96,142,40,Ab initio,isONpipeline
+isoQuant,111,8,25,Guided,isoQuant
+isoQuant-noRef,73,14,63,De novo,isoQuant
+Mandalorion,98,16,38,Guided,Mandalorion
+RATTLE,72,56,64,Ab initio,RATTLE
+RNAbloom2,96,187,40,Ab initio,RNAbloom2
+RNAbloom,98,147,38,Ab initio,RNAbloom
+Stringtie2,109,12,27,Guided,Stringtie2
+Stringtie2-noRef,87,38,49,De novo,Stringtie2
+TALON,102,280,34,Guided,TALON
+TALON_reco,101,103,35,Guided,TALON
