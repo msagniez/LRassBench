@@ -5,7 +5,7 @@ library(cowplot)
 setwd("D:/Assembly-Benchmarking/Fig2-PrecisionSensitivity")
 
 #sub40k
-inpt40 <- read.csv("sub40k/GFF-SQ3-PresRecallF1_average-update.csv", sep = ";", header = T)
+inpt40 <- read.csv("sub40k/GFF-SQ3-PresRecallF1_average.csv", sep = ";", header = T)
 inpt40$Dataset <- factor(inpt40$Dataset, levels=c("LSK114_SIRVs","LSK114_sequins"))
 
 Prec40 <- subset(inpt40,Vtype=="Precision")
@@ -48,7 +48,7 @@ F140_AbInitio <- F140_AbInitio + theme(legend.position = "none")
 
 
 #sub150k
-inpt150 <- read.csv("sub150k/GFF-SQ3-PresRecallF1_average-update.csv", sep = ";", header = T)
+inpt150 <- read.csv("sub150k/GFF-SQ3-PresRecallF1_average.csv", sep = ";", header = T)
 inpt150$Dataset <- factor(inpt150$Dataset, levels=c("LSK109_sequins","LSK114_sequins","RNA002_sequins","RNA004_sequins"))
 
 Prec150 <- subset(inpt150,Vtype=="Precision")
