@@ -6,15 +6,25 @@
 preprocess(){
 	~/apps/minimap2/minimap2-2.24/minimap2 -ax splice -t $threads --secondary=no $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}.sam
 	samtools view -b $InDir/${Sample}.sam | samtools sort - > $InDir/${Sample}.bam
-	#~/apps/minimap2/minimap2-2.24/minimap2 -ax splice -t $threads --secondary=no --MD $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}_MD.sam
+	~/apps/minimap2/minimap2-2.24/minimap2 -ax splice -t $threads --secondary=no --MD $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}_MD.sam
+}
+
+baseline(){
+	mkdir -p $InDir/$Sample/control/
+        cd $InDir/$Sample/control/
+        echo "Starting Control"
+	spliced_bam2gff -M $InDir/${Sample}.bam > ${Sample}_converted.gff
+	sed 's/;0/-0/g' ${Sample}_converted.gff | sed 's/;16/-16/g' > ${Sample}_converted-corrected.gff
+	rm ${Sample}.bam
+	rm ${Sample}_converted.gff
 }
 
 stringtie2(){
         mkdir -p $InDir/$Sample/stringtie2/
         cd $InDir/$Sample/stringtie2/
         echo "Starting Stringtie2"
-	stringtie -p $threads -L -G $reference_gtf -o ./${Sample}_strg2def.gtf $InDir/${Sample}.bam
-	stringtie -p $threads -L -o ./${Sample}_strg2def-noRef.gtf $InDir/${Sample}.bam
+	/usr/bin/time -v stringtie -p $threads -L -G $reference_gtf -o ./${Sample}_strg2def.gtf $InDir/${Sample}.bam
+	/usr/bin/time -v stringtie -p $threads -L -o ./${Sample}_strg2def-noRef.gtf $InDir/${Sample}.bam
 	echo "Stringtie2 terminates"
 }
 
@@ -82,7 +92,7 @@ TALON_reco(){
 	#SAM file generation
 	~/apps/minimap2/minimap2-2.24/minimap2 -t $threads -ax splice -uf -k14 --MD $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}_mm2talonreco.sam
 	#TranscriptClean
-	transcriptclean -t $threads --sam $InDir/${Sample}_mm2talonreco.sam --genome $reference_fa --outprefix ./
+	/usr/bin/time -v  transcriptclean -t $threads --sam $InDir/${Sample}_mm2talonreco.sam --genome $reference_fa --outprefix ./
 	#Subset sam to simulate 3 replicates
 	~/apps/samtools-1.19.2/samtools view -s 0.33 ./TC_clean.sam > ./Preprep1.sam
 	~/apps/samtools-1.19.2/samtools view -H ./TC_clean.sam | cat - ./Preprep1.sam > rep1.sam
@@ -94,21 +104,21 @@ TALON_reco(){
 	~/apps/samtools-1.19.2/samtools view -H ./TC_clean.sam | cat - ./Preprep3.sam > rep3.sam
 	rm ./Prep*.sam
 	#initialize transcriptome database
-	talon_initialize_database --f $reference_gtf_talon --g $chr --a ${chr}_annot --o ./${Sample}_talon_reco
+	/usr/bin/time -v talon_initialize_database --f $reference_gtf_talon --g $chr --a ${chr}_annot --o ./${Sample}_talon_reco
 	#add a SAM labels
-	talon_label_reads --f=./rep1.sam --g=$reference_fa --t=$threads --o=$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep1.labeled.sam
-	talon_label_reads --f=./rep2.sam --g=$reference_fa --t=$threads --o=$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep2.labeled.sam
-	talon_label_reads --f=./rep3.sam --g=$reference_fa --t=$threads --o=$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep3.labeled.sam
+	/usr/bin/time -v talon_label_reads --f=./rep1.sam --g=$reference_fa --t=$threads --o=$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep1.labeled.sam
+	/usr/bin/time -v talon_label_reads --f=./rep2.sam --g=$reference_fa --t=$threads --o=$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep2.labeled.sam
+	/usr/bin/time -v talon_label_reads --f=./rep3.sam --g=$reference_fa --t=$threads --o=$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep3.labeled.sam
 	#Configure samples
 	echo "Rep1,$chr,nanopore,$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep1.labeled.sam_labeled.sam" > ./dataset.config
 	echo "Rep2,$chr,nanopore,$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep2.labeled.sam_labeled.sam" >> ./dataset.config
 	echo "Rep3,$chr,nanopore,$InDir/$Sample/talon_reco/${Sample}_mm2talonreco.rep3.labeled.sam_labeled.sam" >> ./dataset.config
 	#Run TALON
-	talon --f dataset.config --db ${Sample}_talon_reco.db --build $chr --threads $threads --o ${Sample}_TALONpip
+	/usr/bin/time -v talon --f dataset.config --db ${Sample}_talon_reco.db --build $chr --threads $threads --o ${Sample}_TALONpip
 	#Filter
-	talon_filter_transcripts --db ${Sample}_talon_reco.db --datasets Rep1,Rep2,Rep3 -a ${chr}_annot --maxFracA 0.5 --minCount 5 --minDatasets 2 --o filtered_transcripts-A05C5.csv
+	/usr/bin/time -v talon_filter_transcripts --db ${Sample}_talon_reco.db --datasets Rep1,Rep2,Rep3 -a ${chr}_annot --maxFracA 0.5 --minCount 5 --minDatasets 2 --o filtered_transcripts-A05C5.csv
 	#Extract gtf
-	talon_create_GTF --db ${Sample}_talon_reco.db --whitelist filtered_transcripts-A05C5.csv -a ${chr}_annot --build $chr --o ${Sample}_gtf
+	/usr/bin/time -v talon_create_GTF --db ${Sample}_talon_reco.db --whitelist filtered_transcripts-A05C5.csv -a ${chr}_annot --build $chr --o ${Sample}_gtf
 	echo "TALON terminates"
 
 }
@@ -121,7 +131,7 @@ FLAMES(){
 	mkdir -p $InDir/${Sample}_fastq
 	cp $InDir/${Sample}.fastq $InDir/${Sample}_fastq/${Sample}.fastq
 
-	~/apps/FLAMES/python/bulk_long_pipeline.py --gff3 $reference_gtf --genomefa $reference_fa --outdir ./ --config_file ~/apps/FLAMES/examples/SIRV/data/SIRV_config.json --fq_dir $InDir/${Sample}_fastq
+	/usr/bin/time -v ~/apps/FLAMES/python/bulk_long_pipeline.py --gff3 $reference_gtf --genomefa $reference_fa --outdir ./ --config_file ~/apps/FLAMES/examples/SIRV/data/SIRV_config.json --fq_dir $InDir/${Sample}_fastq
 
 	#filter filtered.gtf on transcripts assessed as "True" in isoform_FSM_annotation.csv
 	awk -F"," '$4=="True" {print "transcript:"$1}' isoform_FSM_annotation.csv > True.lst
@@ -135,7 +145,7 @@ Mandalorion(){
         cd $InDir/$Sample/Mandalorion/
         echo "Starting Mandalorion"
 
-	python3 ~/apps/Mandalorion/Mando.py -t $threads -p ./ -g $reference_gtf -G $reference_fa -f $InDir/${Sample}.fastq
+	/usr/bin/time -v python3 ~/apps/Mandalorion/Mando.py -t $threads -p ./ -g $reference_gtf -G $reference_fa -f $InDir/${Sample}.fastq
 
 	echo "Mandalorion terminates"
 }
@@ -148,7 +158,7 @@ RATTLE(){
 	#Filter fastq to have only reads woth length > 150 (bad alloc error otherwise)
 	awk 'NR%4==1{a=$0} NR%4==2{b=$0} NR%4==3{c=$0} NR%4==0&&length(b)>150{print a"\n"b"\n"c"\n"$0;}' $InDir/${Sample}.fastq > $InDir/${Sample}_sup150.fastq
 
-	if [[ $sample =~ RNA ]] ; then
+	if [[ $Sample =~ RNA ]] ; then
         	echo "RNA mode ON"
 		rattle cluster -i $InDir/${Sample}_sup150.fastq -o ./ -t $threads --iso --rna
 	else
@@ -177,6 +187,7 @@ Isonclust(){
 	echo "isONclust terminates"
 }
 
+
 Isonclust2(){
 	mkdir -p $InDir/$Sample/isONclust2/
 	mkdir -p $InDir/$Sample/isONclust2/batches/
@@ -184,8 +195,20 @@ Isonclust2(){
 	mkdir -p $InDir/$Sample/isONclust2/results/
 	cd $InDir/$Sample/isONclust2/
 
+	if [[ $Sample =~ RNA ]]; then
+		echo "RNA set"
+		#isONclust2 can't take U in the input fastq ; conversion into T is necessary
+		if ! [ -f $InDir/${Sample}_Tconv.fastq ]; then
+
+			sed '/^[^>]/s/U/T/g' $InDir/${Sample}.fastq > $InDir/${Sample}_Tconv.fastq
+		fi
+		inputfastq=$InDir/${Sample}_Tconv.fastq
+	else
+		inputfastq=$InDir/${Sample}.fastq
+	fi
+
 	#Create batches (50000kb per batch)
-	isONclust2 sort -v -o ./batches $InDir/${Sample}.fastq
+	isONclust2 sort -v -o ./batches $inputfastq
 	#Initial clustering
 	for file in $InDir/$Sample/isONclust2/batches/batches/*.cer ; do
 		FILE_NAME=${file##*/}
@@ -256,6 +279,7 @@ GFF(){
 
 SQ3(){
 	cd $InDir/$Sample/Final-Assemblies
+	echo $InDir/$Sample/Final-Assemblies
         mkdir -p $InDir/$Sample/Final-Assemblies/processed
 	mkdir -p $InDir/$Sample/SQ3
         echo "SQANTI3 starts"
@@ -264,9 +288,11 @@ SQ3(){
 	export PYTHONPATH=$PYTHONPATH:~/apps/SQANTI3-5.2/cDNA_Cupcake/
 
 	for file in *.g* ; do
+		echo $file
 		python ~/apps/SQANTI3-5.2/sqanti3_qc.py --force_id_ignore --aligner_choice minimap2 -d processed/ --skipORF --report html $file $reference_gtf  $reference_fa
 	done
 	for file in *.f* ; do
+		echo $file
 		python ~/apps/SQANTI3-5.2/sqanti3_qc.py --force_id_ignore --aligner_choice minimap2 -d processed/ --skipORF --fasta --report html $file $reference_gtf $reference_fa
 	done
 	cp processed/*classification* ../SQ3/
@@ -274,30 +300,49 @@ SQ3(){
 	echo "SQANTI3 terminates"
 }
 
+
 TPFPFN(){
+	mkdir -p $InDir/$Sample/TPFP
 	cd $InDir/$Sample/TMAPs
-	if [[ -f "$InDir/$Sample/GFF-PrecisionSensitivity.csv" ]]; then rm $InDir/$Sample/GFF-PrecisionSensitivity.csv; fi
-	if [[ $Sample =~ SIRV ]]; then
-		for file in *.tmap ; do echo $file,$( awk '$3=="=" || $3=="c" {print $2}' $file | sort -u | wc -l ),$( awk '$3!="=" && $3!="c" && $3!="u" {print $2}' $file | grep -v "ref_gene_id" | wc -l ),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 ~/references/SIRV-list.tsv ) | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity.csv; done
+	if [[ -f "$InDir/$Sample/GFF-PrecisionSensitivity-update.csv" ]]; then rm $InDir/$Sample/GFF-PrecisionSensitivity.csv; fi
+	subset1=${Sample#*b}
+	if [[ $subset1 =~ k ]] ; then dividor=1000 ; else dividor=1 ; fi
+	subset=${subset1%*k}
+	LOD=$(awk "BEGIN {print $subset / $dividor}")
+
+	if [[ $Sample =~ SIRV ]] ; then
+		LODsirv=$(awk "BEGIN {print 0.108555 / $LOD}")
+        	awk -v LOD="$LODsirv" '$2 <= LOD {print $1}' ~/references/SIRV-list_abund.tsv > $InDir/$Sample/TPFP/Ttoremove.tsv
+        	awk -v LOD="$LODsirv" '$2 > LOD {print $1}' ~/references/SIRV-list_abund.tsv > $InDir/$Sample/TPFP/Ttokeep.tsv
 	else
-		for file in *.tmap ; do echo $file,$( awk '$3=="=" || $3=="c" {print $2}' $file | sort -u | wc -l ),$( awk '$3!="=" && $3!="c" && $3!="u" {print $2}' $file | grep -v "ref_id" | wc -l ),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 ~/references/rnasequin_isoforms_2.5.tsv ) | grep -v "NAME" | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity.csv; done
+		LODsequin=$(awk "BEGIN {print 0.0151965 / $LOD}")
+		awk -v LOD="$LODsequin" '$3 <= LOD {print $1}' ~/references/rnasequin_isoforms_2.5.tsv > $InDir/$Sample/TPFP/Ttoremove.tsv
+		awk -v LOD="$LODsequin" '$3 > LOD {print $1}' ~/references/rnasequin_isoforms_2.5.tsv | grep -v "NAME" > $InDir/$Sample/TPFP/Ttokeep.tsv
 	fi
 
+	for file in *.tmap ; do
+		TP=$( join -1 2 -2 1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | awk '$3=="=" || $3=="c" {print $1}' | sort -u | wc -l )
+		FP1=$( join -1 2 -2 1 -v1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | awk '$3!="=" && $3!="c" && $3!="u" {print $1}' | grep -v "ref_id" | wc -l )
+		FP2=$( join -1 2 -2 1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | wc -l )
+		echo $file,$TP,$(awk "BEGIN {print $FP1 + $FP2}"),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity.csv
+	done
+
 	cd $InDir/$Sample/SQ3
-	if [[ -f "$InDir/$Sample/SQ3-PrecisionSensitivity.csv" ]]; then rm $InDir/$Sample/SQ3-PrecisionSensitivity.csv; fi
-	if [[ $Sample =~ SIRV ]]; then
-		for file in *_classification.txt ; do echo $file,$( awk '$6=="full-splice_match" || ( $6=="incomplete-splice_match" && $14!="intron_retention" ) {print $8}' $file | sort -u | wc -l ),$( awk '$6!="full-splice_match" && ( $6!="incomplete-splice_match" || $15=="intron_retention" ) && $6!="intergenic" {print $8}' $file | grep -v "structural_category" | wc -l ),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 ~/references/SIRV-list.tsv ) | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity-SQ3.csv; done
-	else
-		for file in *_classification.txt ; do echo $file,$( awk '$6=="full-splice_match" || ( $6=="incomplete-splice_match" && $14!="intron_retention" ) {print $8}' $file | sort -u | wc -l ),$( awk '$6!="full-splice_match" && ( $6!="incomplete-splice_match" || $15=="intron_retention" ) && $6!="intergenic" {print $8}' $file | grep -v "structural_category" | wc -l ),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 ~/references/rnasequin_isoforms_2.5.tsv ) | grep -v "NAME" | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity.csv; done
-	fi
+	if [[ -f "$InDir/$Sample/SQ3-PrecisionSensitivity-update.csv" ]]; then rm $InDir/$Sample/SQ3-PrecisionSensitivity.csv; fi
+	for file in *_classification.txt ; do
+		TP=$( join -1 8 -2 1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | awk '$7=="full-splice_match" || ( $7=="incomplete-splice_match" && $14!="intron_retention" ) {print $1}' | sort -u | wc -l )
+		FP1=$( join -1 8 -2 1 -v1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | awk '$7!="full-splice_match" && ( $7!="incomplete-splice_match" || $15=="intron_retention" ) && $7!="intergenic" {print $1}' | grep -v "structural_category" | wc -l )
+		FP2=$( join -1 8 -2 1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | wc -l )
+		echo $file,$TP,$(awk "BEGIN {print $FP1 + $FP2}"),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity.csv
+	done
 }
 
 ## executing functions in order:
 main(){
-	Sample=SIRV_sub40k #Fill in sample name
-	InDir=/opt/benchmarking/data/sub40k #Fill directory with input .fastq files
+	Sample=PCS109_chrIS_mixA_cDNA_sub150k #Fill in sample name
+	InDir=/opt/benchmarking/data/sub150k #Fill directory with input .fastq files
 	molType=DNA  #<DNA> or <RNA>
-	threads=20
+	threads=8
 
 	if [[ $Sample =~ SIRV ]]; then
 		reference_gtf=~/references/SIRV_ERCC_longSIRV_multi-fasta_20210507.gtf
@@ -306,17 +351,18 @@ main(){
 		chr="SIRV"
 	else
 		reference_gtf=~/references/rnasequin_annotation_2.4.gtf
-		reference_gtf_talon=~/references/rnasequin_annotation_2.4.gtf
-		reference_fa=~/references/chrIS.fa
-		chr="chrIS"
+        	reference_gtf_talon=~/references/rnasequin_annotation_2.4.gtf
+        	reference_fa=~/references/chrIS.fa
+        	chr="chrIS"
 	fi
 
-	export Sample=$Sample
+        export Sample=$Sample
 	export mainInputDir=$InDir
 	export reference_gtf=$reference_gtf
 	export reference_gtf_talon=$reference_gtf_talon
         export reference_fa=$reference_fa
 	export chr=$chr
+	export moltype=$moltype
 	export threads=$threads
 
 	mkdir -p $Sample
@@ -324,6 +370,9 @@ main(){
 	mkdir -p ${Sample}/TMAPs
 
 	preprocess
+
+	baseline
+	cp $InDir/$Sample/control/${Sample}_converted-corrected.gff $InDir/$Sample/Final-Assemblies/Control.gff
 
 #Guided + De novo
 	stringtie2
@@ -345,7 +394,7 @@ main(){
 	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
 #Guided only
-	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5
+	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5              ----> think about testing TALON v6.0
 	TALON
 	cp $InDir/$Sample/talon/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON.gtf
 
@@ -362,7 +411,6 @@ main(){
 	cp $InDir/$Sample/Mandalorion/Isoforms.filtered.clean.gtf $InDir/$Sample/Final-Assemblies/Mandalorion.gtf
 
 #Ab initio
-
 	#run <bulker activate seqtools/seqtools> before running RATTLE
 	RATTLE
 	cp $InDir/$Sample/rattle/transcriptome.fq $InDir/$Sample/Final-Assemblies/RATTLE.fastq
@@ -371,6 +419,11 @@ main(){
 	source /home/sagmel/mambaforge/bin/activate isonclust #conda activate isonclust
 	Isonclust
 	cp $InDir/$Sample/isONclust/final_cluster_origins.fastq $InDir/$Sample/Final-Assemblies/isONclust.fastq
+	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+
+	source /home/sagmel/mambaforge/bin/activate isonform #conda activate isonform
+	IsonPipeline
+	cp $InDir/$Sample/isONpipeline/isoforms/transcriptome.fasta $InDir/$Sample/Final-Assemblies/isONpipeline.fa
 	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
 	Isonclust2
