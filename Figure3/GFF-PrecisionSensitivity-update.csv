@@ -1,0 +1,100 @@
+﻿Subset;Assembly;TP;FP;FN;Method;Tool
+Sub100k;Bambu;130;33;0;Guided;Bambu
+Sub100k;Bambu-noRef;77;28;46;De novo;Bambu
+Sub100k;Control;110;11383;18;RawReads;RawReads
+Sub100k;isONclust;60;41;54;Ab initio;isONclust
+Sub100k;isONclust2;48;23;68;Ab initio;isONclust2
+Sub100k;isoQuant;109;9;21;Guided;isoQuant
+Sub100k;isoQuant-noRef;70;13;53;De novo;isoQuant
+Sub100k;Stringtie2;106;15;23;Guided;Stringtie2
+Sub100k;Stringtie2-noRef;92;27;31;De novo;Stringtie2
+Sub10k;Bambu;93;67;0;Guided;Bambu
+Sub10k;Bambu-noRef;50;8;40;De novo;Bambu
+Sub10k;Control;83;1179;9;RawReads;RawReads
+Sub10k;isONclust;48;14;40;Ab initio;isONclust
+Sub10k;isONclust2;46;14;41;Ab initio;isONclust2
+Sub10k;isoQuant;78;5;15;Guided;isoQuant
+Sub10k;isoQuant-noRef;48;2;43;De novo;isoQuant
+Sub10k;Stringtie2;72;15;18;Guided;Stringtie2
+Sub10k;Stringtie2-noRef;59;17;26;De novo;Stringtie2
+Sub150k;Bambu;136;28;0;Guided;Bambu
+Sub150k;Bambu-noRef;74;34;52;De novo;Bambu
+Sub150k;Control;113;17075;21;RawReads;RawReads
+Sub150k;isONclust;66;44;56;Ab initio;isONclust
+Sub150k;isONclust2;53;23;68;Ab initio;isONclust2
+Sub150k;isoQuant;111;8;25;Guided;isoQuant
+Sub150k;isoQuant-noRef;72;16;56;De novo;isoQuant
+Sub150k;Stringtie2;110;11;25;Guided;Stringtie2
+Sub150k;Stringtie2-noRef;94;34;36;De novo;Stringtie2
+Sub1k;Bambu;61;99;0;Guided;Bambu
+Sub1k;Bambu-noRef;34;7;26;De novo;Bambu
+Sub1k;Control;53;136;8;RawReads;RawReads
+Sub1k;isONclust;34;12;25;Ab initio;isONclust
+Sub1k;isONclust2;33;11;26;Ab initio;isONclust2
+Sub1k;isoQuant;47;5;14;Guided;isoQuant
+Sub1k;isoQuant-noRef;25;2;35;De novo;isoQuant
+Sub1k;Stringtie2;46;7;14;Guided;Stringtie2
+Sub1k;Stringtie2-noRef;34;9;22;De novo;Stringtie2
+Sub1M;Bambu;157;12;0;Guided;Bambu
+Sub1M;Bambu-noRef;84;57;57;De novo;Bambu
+Sub1M;Control;144;114795;10;RawReads;RawReads
+Sub1M;isONclust;88;60;55;Ab initio;isONclust
+Sub1M;isONclust2;74;26;64;Ab initio;isONclust2
+Sub1M;isoQuant;137;8;20;Guided;isoQuant
+Sub1M;isoQuant-noRef;89;34;54;De novo;isoQuant
+Sub1M;Stringtie2;132;23;20;Guided;Stringtie2
+Sub1M;Stringtie2-noRef;108;76;33;De novo;Stringtie2
+Sub250k;Bambu;141;26;0;Guided;Bambu
+Sub250k;Bambu-noRef;76;37;54;De novo;Bambu
+Sub250k;Control;124;28770;13;RawReads;RawReads
+Sub250k;isONclust;78;49;48;Ab initio;isONclust
+Sub250k;isONclust2;66;24;61;Ab initio;isONclust2
+Sub250k;isoQuant;121;6;20;Guided;isoQuant
+Sub250k;isoQuant-noRef;73;18;61;De novo;isoQuant
+Sub250k;Stringtie2;120;12;19;Guided;Stringtie2
+Sub250k;Stringtie2-noRef;98;39;34;De novo;Stringtie2
+Sub2M;Bambu;158;10;0;Guided;Bambu
+Sub2M;Bambu-noRef;89;48;57;De novo;Bambu
+Sub2M;Control;151;229926;3;RawReads;RawReads
+Sub2M;isONclust;94;80;49;Ab initio;isONclust
+Sub2M;isONclust2;78;36;54;Ab initio;isONclust2
+Sub2M;isoQuant;140;11;18;Guided;isoQuant
+Sub2M;isoQuant-noRef;88;33;54;De novo;isoQuant
+Sub2M;Stringtie2;141;23;12;Guided;Stringtie2
+Sub2M;Stringtie2-noRef;118;84;21;De novo;Stringtie2
+Sub4.262M;Bambu;160;8;0;Guided;Bambu
+Sub4.262M;Bambu-noRef;88;51;61;De novo;Bambu
+Sub4.262M;Control;158;490215;0;RawReads;RawReads
+Sub4.262M;isONclust;94;110;50;Ab initio;isONclust
+Sub4.262M;isONclust2;100;40;42;Ab initio;isONclust2
+Sub4.262M;isoQuant;136;5;24;Guided;isoQuant
+Sub4.262M;isoQuant-noRef;84;59;53;De novo;isoQuant
+Sub4.262M;Stringtie2;151;27;5;Guided;Stringtie2
+Sub4.262M;Stringtie2-noRef;122;101;17;De novo;Stringtie2
+Sub4M;Bambu;159;8;0;Guided;Bambu
+Sub4M;Bambu-noRef;87;57;59;De novo;Bambu
+Sub4M;Control;156;459942;0;RawReads;RawReads
+Sub4M;isONclust;96;106;47;Ab initio;isONclust
+Sub4M;isONclust2;100;44;41;Ab initio;isONclust2
+Sub4M;isoQuant;153;20;6;Guided;isoQuant
+Sub4M;isoQuant-noRef;84;55;53;De novo;isoQuant
+Sub4M;Stringtie2;147;29;7;Guided;Stringtie2
+Sub4M;Stringtie2-noRef;123;96;18;De novo;Stringtie2
+Sub500k;Bambu;151;14;0;Guided;Bambu
+Sub500k;Bambu-noRef;81;40;57;De novo;Bambu
+Sub500k;Control;133;57747;13;RawReads;RawReads
+Sub500k;isONclust;81;53;53;Ab initio;isONclust
+Sub500k;isONclust2;76;27;59;Ab initio;isONclust2
+Sub500k;isoQuant;129;10;22;Guided;isoQuant
+Sub500k;isoQuant-noRef;76;25;65;De novo;isoQuant
+Sub500k;Stringtie2;125;18;22;Guided;Stringtie2
+Sub500k;Stringtie2-noRef;104;55;36;De novo;Stringtie2
+Sub50k;Bambu;121;39;0;Guided;Bambu
+Sub50k;Bambu-noRef;69;14;48;De novo;Bambu
+Sub50k;Control;107;5720;9;RawReads;RawReads
+Sub50k;isONclust;57;33;50;Ab initio;isONclust
+Sub50k;isONclust2;44;25;61;Ab initio;isONclust2
+Sub50k;isoQuant;102;6;19;Guided;isoQuant
+Sub50k;isoQuant-noRef;59;12;57;De novo;isoQuant
+Sub50k;Stringtie2;101;12;19;Guided;Stringtie2
+Sub50k;Stringtie2-noRef;83;26;31;De novo;Stringtie2
