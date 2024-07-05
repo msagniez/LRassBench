@@ -1,7 +1,7 @@
 library(ggplot2)
 library(cowplot)
 
-TPFP <- read.csv("GFF-PrecisionSensitivity-update.csv", sep=";", header=T)
+TPFP <- read.csv("GFF-PrecisionSensitivity.csv", sep=";", header=T)
 TPFP$Sensitivity <- TPFP$TP / (TPFP$TP + TPFP$FN )
 TPFP$Precision <- TPFP$TP / (TPFP$TP + TPFP$FP )
 
@@ -16,7 +16,7 @@ AI <- ggplot(AbInitio, aes(fill=Tool,x=Precision, y=Sensitivity, label=Subset)) 
 ledg <- ggplot(subset(TPFP,Subset=="Sub1k"), aes(fill=Tool,x=Precision, y=Sensitivity, label=Subset)) + geom_point(aes(colour = Tool, shape = Method)) + xlim(0,1) + ylim(0,1) + theme_bw() + scale_color_manual(values = c("Bambu" = "brown", "isONclust"="mediumpurple1","isONclust2"="purple","isoQuant"="turquoise2","Stringtie2"="palegreen4")) + scale_shape_manual(values=c(19,17,15,9))
 legend <- get_legend(ledg)
 
-SQTPFP <- read.csv("SQ3-PrecisionSensitivity-update.csv", sep=";", header=T)
+SQTPFP <- read.csv("SQ3-PrecisionSensitivity.csv", sep=";", header=T)
 SQTPFP$Sensitivity <- SQTPFP$TP / (SQTPFP$TP + SQTPFP$FN )
 SQTPFP$Precision <- SQTPFP$TP / (SQTPFP$TP + SQTPFP$FP )
 SQGuided <- subset(SQTPFP, Method=="Guided" | Method=="RawReads")
@@ -54,5 +54,3 @@ AVGAI <- AVGAI + theme(legend.position = "none")
 
 plot_grid(AVGGd,AVGDN,AVGAI,legend,nrow=1,rel_widths = c(6,6,6,3))
 #pdf 11x3
-
-plot_grid(Gd,DN,AI,legend,SQGd,SQDN,SQAI,"",AVGGd,AVGDN,AVGAI,legend, nrow=3,rel_widths = c(6,6,6,3))
