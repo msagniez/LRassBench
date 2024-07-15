@@ -1,6 +1,6 @@
 #Measure Bambu execution time _ dataset= LSK114_sequins_sub150k
 
-test.bam <- "LSK114_chrIS_mixA_cDNA_sub150k_mm2spliceNoseck14_GenSorted.bam"
+test.bam <- "LSK114_chrIS_mixA_cDNA_sub150k.bam"
 fa.file <- "chrIS.fa"
 gtf.file <- "D:/Anaquin-main/data/transcriptome/rnasequin_annotation_2.4.gtf"
 
