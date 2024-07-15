@@ -103,6 +103,8 @@ TALON(){
 TALON_reco(){
 #TALON - Wyman D, Balderrama-Gutierrez G, Reese F, Jiang S, Rahmanian S, Forner S, Matheos D, Zeng W, Williams B, Trout D, et al. 2020. A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification. bioRxiv 672931.
 #https://github.com/mortazavilab/TALON - v5.0
+#TranscriptClean - Wyman D, Mortazavi A. 2019. TranscriptClean: variant-aware correction of indels, mismatches and splice junctions in long-read transcripts. Bioinformatics 35: 340–342.
+#https://github.com/mortazavilab/TranscriptClean - v2.1
 	mkdir -p $InDir/$Sample/talon_reco/
 	cd $InDir/$Sample/talon_reco/
 	echo "Starting TALON"
@@ -163,6 +165,8 @@ FLAMES(){
 }
 
 Mandalorion(){
+#Mandalorion - Volden R, Schimke KD, Byrne A, Dubocanin D, Adams M, Vollmers C. 2023. Identifying and quantifying isoforms from accurate full-length transcriptome sequencing reads with Mandalorion. Genome Biol 24: 167.
+#https://github.com/christopher-vollmers/Mandalorion - v4.5.0
 	mkdir -p $InDir/$Sample/Mandalorion/
         cd $InDir/$Sample/Mandalorion/
         echo "Starting Mandalorion"
@@ -173,6 +177,8 @@ Mandalorion(){
 }
 
 RATTLE(){
+#RATTLE - de la Rubia I, Srivastava A, Xue W, Indi JA, Carbonell-Sala S, Lagarde J, Albà MM, Eyras E. 2022. RATTLE: reference-free reconstruction and quantification of transcriptomes from Nanopore sequencing. Genome Biol 23: 153.
+#https://github.com/comprna/RATTLE - v1.0
 	mkdir -p $InDir/$Sample/rattle/
 	cd $InDir/$Sample/rattle/
 	echo "Starting RATTLE"
@@ -196,6 +202,8 @@ RATTLE(){
 }
 
 Isonclust(){
+#isONclust - Sahlin K, Medvedev P. 2020. De Novo Clustering of Long-Read Transcriptome Data Using a Greedy, Quality Value-Based Algorithm. J Comput Biol 27: 472–484.
+#https://github.com/ksahlin/isONclust - v0.0.4
 	mkdir -p $InDir/$Sample/isONclust/
 	cd $InDir/$Sample/isONclust/
 	echo "Starting isONclust"
@@ -211,6 +219,8 @@ Isonclust(){
 
 
 Isonclust2(){
+#isONclust - (c) 2020 Oxford Nanopore Technologies Ltd.
+#https://github.com/nanoporetech/isONclust2 - v2.3
 	mkdir -p $InDir/$Sample/isONclust2/
 	mkdir -p $InDir/$Sample/isONclust2/batches/
 	mkdir -p $InDir/$Sample/isONclust2/cluster/
@@ -256,6 +266,8 @@ Isonclust2(){
 }
 
 RNAbloom(){
+#RNAbloom - Nip KM, Chiu R, Yang C, Chu J, Mohamadi H, Warren RL, Birol I. 2020. RNA-Bloom enables reference-free and reference-guided sequence assembly for single-cell transcriptomes. Genome Res 30: 1191–1200.
+#https://github.com/bcgsc/RNA-Bloom - v1.4.3
 	mkdir -p $InDir/$Sample/RNAbloom/
         cd $InDir/$Sample/RNAbloom/
         echo "Starting RNAbloom"
@@ -266,6 +278,8 @@ RNAbloom(){
 }
 
 RNAbloom2(){
+#RNAbloom2 - Nip KM, Hafezqorani S, Gagalova KK, Chiu R, Yang C, Warren RL, Birol I. 2023. Reference-free assembly of long-read transcriptome sequencing data with RNA-Bloom2. Nat Commun 14: 2940.
+#https://github.com/bcgsc/RNA-Bloom - v2.0.1
 	mkdir -p $InDir/$Sample/RNAbloom2/
         cd $InDir/$Sample/RNAbloom2/
         echo "Starting RNA bloom 2"
@@ -275,6 +289,8 @@ RNAbloom2(){
 }
 
 GFF(){
+#GFFcompare - Pertea G, Pertea M. 2020. GFF Utilities: GffRead and GffCompare. F1000Res 9. http://dx.doi.org/10.12688/f1000research.23297.2.
+#https://github.com/gpertea/gffcompare - v0.12.6
 	cd $InDir/$Sample/Final-Assemblies
 	mkdir -p $InDir/$Sample/Final-Assemblies/processed
 	echo "GFFcompare starts"
@@ -300,6 +316,8 @@ GFF(){
 }
 
 SQ3(){
+#SQANTI3 - Pardo-Palacios FJ, Arzalluz-Luque A, Kondratova L, Salguero P, Mestre-Tomás J, Amorín R, Estevan-Morió E, Liu T, Nanni A, McIntyre L, et al. 2024. SQANTI3: curation of long-read transcriptomes for accurate identification of known and novel isoforms. Nat Methods. https://doi.org/10.1038/s41592-024-02229-2.
+#https://github.com/ConesaLab/SQANTI3 - v5.2
 	cd $InDir/$Sample/Final-Assemblies
 	echo $InDir/$Sample/Final-Assemblies
         mkdir -p $InDir/$Sample/Final-Assemblies/processed
@@ -363,7 +381,6 @@ TPFPFN(){
 main(){
 	Sample=PCS109_chrIS_mixA_cDNA_sub150k #Fill in sample name
 	InDir=/opt/benchmarking/data/sub150k #Fill directory with input .fastq files
-	molType=DNA  #<DNA> or <RNA>
 	threads=8
 
 	if [[ $Sample =~ SIRV ]]; then
@@ -384,7 +401,6 @@ main(){
 	export reference_gtf_talon=$reference_gtf_talon
         export reference_fa=$reference_fa
 	export chr=$chr
-	export moltype=$moltype
 	export threads=$threads
 
 	mkdir -p $Sample
