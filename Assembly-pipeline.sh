@@ -4,12 +4,18 @@
 #Comment out sections you don't want to run
 
 preprocess(){
+#Minimap2 - Li H. 2021. New strategies to improve minimap2 alignment accuracy. Bioinformatics 37: 4572–4574
+#https://github.com/lh3/minimap2 - v2.24
+#Samtools - https://www.htslib.org/
+#https://github.com/samtools/samtools - v1.19.2
 	~/apps/minimap2/minimap2-2.24/minimap2 -ax splice -t $threads --secondary=no $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}.sam
 	samtools view -b $InDir/${Sample}.sam | samtools sort - > $InDir/${Sample}.bam
 	~/apps/minimap2/minimap2-2.24/minimap2 -ax splice -t $threads --secondary=no --MD $reference_fa $InDir/${Sample}.fastq > $InDir/${Sample}_MD.sam
 }
 
 baseline(){
+#spliced_bam2gff - (c) 2020 Oxford Nanopore Technologies Ltd.
+#https://github.com/nanoporetech/spliced_bam2gff - vJan. 2021
 	mkdir -p $InDir/$Sample/control/
         cd $InDir/$Sample/control/
         echo "Starting Control"
@@ -20,6 +26,8 @@ baseline(){
 }
 
 stringtie2(){
+#Stringtie2 - Pertea M, Pertea GM, Antonescu CM, Chang T-C, Mendell JT, Salzberg SL. 2015. StringTie enables improved reconstruction of a transcriptome from RNA-seq reads. Nat Biotechnol 33: 290–295.
+#https://github.com/gpertea/stringtie - v2.2.1-2.2.2
         mkdir -p $InDir/$Sample/stringtie2/
         cd $InDir/$Sample/stringtie2/
         echo "Starting Stringtie2"
@@ -29,6 +37,8 @@ stringtie2(){
 }
 
 Flair(){
+#FLAIR - Tang AD, Soulette CM, van Baren MJ, Hart K, Hrabeta-Robinson E, Wu CJ, Brooks AN. 2020. Full-length transcript characterization of SF3B1 mutation in chronic lymphocytic leukemia reveals downregulation of retained introns. Nat Commun 11: 1438.
+#https://github.com/BrooksLabUCSC/flair - v2.0
 	mkdir -p $InDir/$Sample/flair-noRef/
 	cd $InDir/$Sample/flair-noRef/
 	echo "Starting FLAIR"
@@ -43,6 +53,8 @@ Flair(){
 }
 
 isoQuant(){
+#IsoQuant - Prjibelski AD, Mikheenko A, Joglekar A, Smetanin A, Jarroux J, Lapidus AL, Tilgner HU. 2023. Accurate isoform discovery with IsoQuant using long reads. Nat Biotechnol 41: 915–918.
+#https://github.com/ablab/IsoQuant - v3.3.1
 	mkdir -p $InDir/$Sample/isoQuant/
 	cd $InDir/$Sample/isoQuant/
 	echo "Starting isoQuant"
@@ -54,6 +66,8 @@ isoQuant(){
 }
 
 isoQuant-noRef(){
+#IsoQuant - Prjibelski AD, Mikheenko A, Joglekar A, Smetanin A, Jarroux J, Lapidus AL, Tilgner HU. 2023. Accurate isoform discovery with IsoQuant using long reads. Nat Biotechnol 41: 915–918.
+#https://github.com/ablab/IsoQuant - v3.3.1
 	mkdir -p $InDir/$Sample/isoQuant-noRef/
 	cd $InDir/$Sample/isoQuant-noRef/
 	echo "Starting isoQuant"
@@ -65,6 +79,8 @@ isoQuant-noRef(){
 }
 
 TALON(){
+#TALON - Wyman D, Balderrama-Gutierrez G, Reese F, Jiang S, Rahmanian S, Forner S, Matheos D, Zeng W, Williams B, Trout D, et al. 2020. A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification. bioRxiv 672931.
+#https://github.com/mortazavilab/TALON - v5.0
 	mkdir -p $InDir/$Sample/talon/
 	cd $InDir/$Sample/talon/
 	echo "Starting TALON"
@@ -85,6 +101,8 @@ TALON(){
 }
 
 TALON_reco(){
+#TALON - Wyman D, Balderrama-Gutierrez G, Reese F, Jiang S, Rahmanian S, Forner S, Matheos D, Zeng W, Williams B, Trout D, et al. 2020. A technology-agnostic long-read analysis pipeline for transcriptome discovery and quantification. bioRxiv 672931.
+#https://github.com/mortazavilab/TALON - v5.0
 	mkdir -p $InDir/$Sample/talon_reco/
 	cd $InDir/$Sample/talon_reco/
 	echo "Starting TALON"
@@ -124,6 +142,10 @@ TALON_reco(){
 }
 
 FLAMES(){
+#FLAMES - Tian L, Jabbari JS, Thijssen R, Gouil Q, Amarasinghe SL, Voogd O, Kariyawasam H, Du MRM, Schuster J, Wang C, et al. 2021. Comprehensive characterization of single-cell full-length isoforms in human and mouse with long-read sequencing. Genome Biol 22: 310.
+#https://github.com/LuyiTian/FLAMES - v0.1
+#GFFread - Pertea G, Pertea M. 2020. GFF Utilities: GffRead and GffCompare. F1000Res 9. http://dx.doi.org/10.12688/f1000research.23297.2.
+#https://github.com/gpertea/gffread - v0.12.7
 	mkdir -p $InDir/$Sample/FLAMES/
 	cd $InDir/$Sample/FLAMES/
 	echo "Starting FLAMES"
@@ -394,7 +416,7 @@ main(){
 	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
 
 #Guided only
-	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5              ----> think about testing TALON v6.0
+	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5
 	TALON
 	cp $InDir/$Sample/talon/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON.gtf
 
