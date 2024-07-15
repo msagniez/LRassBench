@@ -1,6 +1,6 @@
 #!/bin/bash
 #Script to run all cDNA and dRNA assembly pipelines | Guided ; De novo ; Ab initio | for one single dataset
-#Fill in the 4 lines of information in the main
+#Fill in the 3 lines of information in the main
 #Comment out sections you don't want to run
 
 preprocess(){
