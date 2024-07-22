@@ -17,11 +17,11 @@ se_noRef <- bambu(reads = test.bam, genome = fa.file, NDR=1)
 end.time3 <- Sys.time()
 
 start.time4 <- Sys.time()
-writeBambuOutput(se, path = "test/")
+writeBambuOutput(se, path = "Bambu/")
 end.time4 <- Sys.time()
 
 start.time5 <- Sys.time()
-writeBambuOutput(se_noRef, path = "test_noRef/")
+writeBambuOutput(se_noRef, path = "Bambu-noRef/")
 end.time5 <- Sys.time()
 
 time.taken1 <- round(end.time1 - start.time1,2)
