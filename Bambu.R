@@ -30,8 +30,8 @@ time.taken3 <- round(end.time3 - start.time3,2)
 time.taken4 <- round(end.time4 - start.time4,2)
 time.taken5 <- round(end.time5 - start.time5,2)
 
-time.taken1
-time.taken2
-time.taken3
-time.taken4
-time.taken5
+time.taken1 #Time to prepare annotations (pre-processing)
+time.taken2 #Time to run Bambu
+time.taken3 #Time to run Bambu-noRef
+time.taken4 #Time to write Bambu output (post-processing)
+time.taken5 #Time to write Bambu-noRef output (post-processing)
