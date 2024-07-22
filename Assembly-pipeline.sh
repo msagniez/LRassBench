@@ -340,41 +340,59 @@ SQ3(){
 	echo "SQANTI3 terminates"
 }
 
-
 TPFPFN(){
-	mkdir -p $InDir/$Sample/TPFP
-	cd $InDir/$Sample/TMAPs
-	if [[ -f "$InDir/$Sample/GFF-PrecisionSensitivity-update.csv" ]]; then rm $InDir/$Sample/GFF-PrecisionSensitivity.csv; fi
-	subset1=${Sample#*b}
-	if [[ $subset1 =~ k ]] ; then dividor=1000 ; else dividor=1 ; fi
-	subset=${subset1%*k}
-	LOD=$(awk "BEGIN {print $subset / $dividor}")
+#Compute TP;FP;FN for all sequins and SIRVs assemblies with both GFFcompare and SQANTI3
+        cd $InDir/$Sample/TMAPs
+        if [[ -f "$InDir/$Sample/GFF-PrecisionSensitivity.csv" ]]; then rm $InDir/$Sample/GFF-PrecisionSensitivity.csv; fi
+        if [[ $Sample =~ SIRV ]]; then
+                for file in *.tmap ; do echo $file,$( awk '$3=="=" || $3=="c" {print $2}' $file | sort -u | wc -l ),$( awk '$3!="=" && $3!="c" && $3!="u" {print $2}' $file | grep -v "ref_id" | wc -l ),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 ~/references/SIRV-list.tsv ) | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity.csv; done
+        else
+                for file in *.tmap ; do echo $file,$( awk '$3=="=" || $3=="c" {print $2}' $file | sort -u | wc -l ),$( awk '$3!="=" && $3!="c" && $3!="u" {print $2}' $file | grep -v "ref_id" | wc -l ),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 ~/references/rnasequin_isoforms_2.5.tsv ) | grep -v "NAME" | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity.csv; done
+        fi
 
-	if [[ $Sample =~ SIRV ]] ; then
-		LODsirv=$(awk "BEGIN {print 0.108555 / $LOD}")
-        	awk -v LOD="$LODsirv" '$2 <= LOD {print $1}' ~/references/SIRV-list_abund.tsv > $InDir/$Sample/TPFP/Ttoremove.tsv
-        	awk -v LOD="$LODsirv" '$2 > LOD {print $1}' ~/references/SIRV-list_abund.tsv > $InDir/$Sample/TPFP/Ttokeep.tsv
-	else
-		LODsequin=$(awk "BEGIN {print 0.0151965 / $LOD}")
-		awk -v LOD="$LODsequin" '$3 <= LOD {print $1}' ~/references/rnasequin_isoforms_2.5.tsv > $InDir/$Sample/TPFP/Ttoremove.tsv
-		awk -v LOD="$LODsequin" '$3 > LOD {print $1}' ~/references/rnasequin_isoforms_2.5.tsv | grep -v "NAME" > $InDir/$Sample/TPFP/Ttokeep.tsv
-	fi
+        cd $InDir/$Sample/SQ3
+        if [[ -f "$InDir/$Sample/SQ3-PrecisionSensitivity.csv" ]]; then rm $InDir/$Sample/SQ3-PrecisionSensitivity.csv; fi
+        if [[ $Sample =~ SIRV ]]; then
+                for file in *_classification.txt ; do echo $file,$( awk '$6=="full-splice_match" || ( $6=="incomplete-splice_match" && $14!="intron_retention" ) {print $8}' $file | sort -u | wc -l ),$( awk '$6!="full-splice_match" && ( $6!="incomplete-splice_match" || $15=="intron_retention" ) && $6!="intergenic" {print $8}' $file | grep -v "associated_transcript" | wc -l ),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 ~/references/SIRV-list.tsv ) | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity-SQ3.csv; done
+        else
+                for file in *_classification.txt ; do echo $file,$( awk '$6=="full-splice_match" || ( $6=="incomplete-splice_match" && $14!="intron_retention" ) {print $8}' $file | sort -u | wc -l ),$( awk '$6!="full-splice_match" && ( $6!="incomplete-splice_match" || $15=="intron_retention" ) && $6!="intergenic" {print $8}' $file | grep -v "associated_transcript" | wc -l ),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 ~/references/rnasequin_isoforms_2.5.tsv ) | grep -v "NAME" | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity.csv; done
+        fi
+}
+TPFPupdate(){
+#Compute TP;FP;FN according to Limit of Detection (LoD) for all sequins and SIRVs assemblies with both GFFcompare and SQANTI3
+        mkdir -p $InDir/$Sample/TPFP
+        cd $InDir/$Sample/TMAPs
+        if [[ -f "$InDir/$Sample/GFF-PrecisionSensitivity-update.csv" ]]; then rm $InDir/$Sample/GFF-PrecisionSensitivity-update.csv; fi
+        subset1=${Sample#*b}
+        if [[ $subset1 =~ k ]] ; then dividor=1000 ; else dividor=1 ; fi
+        subset=${subset1%*k}
+        LOD=$(awk "BEGIN {print $subset / $dividor}")
 
-	for file in *.tmap ; do
-		TP=$( join -1 2 -2 1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | awk '$3=="=" || $3=="c" {print $1}' | sort -u | wc -l )
-		FP1=$( join -1 2 -2 1 -v1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | awk '$3!="=" && $3!="c" && $3!="u" {print $1}' | grep -v "ref_id" | wc -l )
-		FP2=$( join -1 2 -2 1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | wc -l )
-		echo $file,$TP,$(awk "BEGIN {print $FP1 + $FP2}"),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity.csv
-	done
+        if [[ $Sample =~ SIRV ]] ; then
+                LODsirv=$(awk "BEGIN {print 0.108555 / $LOD}")
+                awk -v LOD="$LODsirv" '$2 <= LOD {print $1}' ~/references/SIRV-list_abund.tsv > $InDir/$Sample/TPFP/Ttoremove.tsv
+                awk -v LOD="$LODsirv" '$2 > LOD {print $1}' ~/references/SIRV-list_abund.tsv > $InDir/$Sample/TPFP/Ttokeep.tsv
+        else
+                LODsequin=$(awk "BEGIN {print 0.0151965 / $LOD}")
+                awk -v LOD="$LODsequin" '$3 <= LOD {print $1}' ~/references/rnasequin_isoforms_2.5.tsv > $InDir/$Sample/TPFP/Ttoremove.tsv
+                awk -v LOD="$LODsequin" '$3 > LOD {print $1}' ~/references/rnasequin_isoforms_2.5.tsv | grep -v "NAME" > $InDir/$Sample/TPFP/Ttokeep.tsv
+        fi
 
-	cd $InDir/$Sample/SQ3
-	if [[ -f "$InDir/$Sample/SQ3-PrecisionSensitivity-update.csv" ]]; then rm $InDir/$Sample/SQ3-PrecisionSensitivity.csv; fi
-	for file in *_classification.txt ; do
-		TP=$( join -1 8 -2 1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | awk '$7=="full-splice_match" || ( $7=="incomplete-splice_match" && $14!="intron_retention" ) {print $1}' | sort -u | wc -l )
-		FP1=$( join -1 8 -2 1 -v1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | awk '$7!="full-splice_match" && ( $7!="incomplete-splice_match" || $15=="intron_retention" ) && $7!="intergenic" {print $1}' | grep -v "structural_category" | wc -l )
-		FP2=$( join -1 8 -2 1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | wc -l )
-		echo $file,$TP,$(awk "BEGIN {print $FP1 + $FP2}"),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity.csv
-	done
+        for file in *.tmap ; do
+                TP=$( join -1 2 -2 1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | awk '$3=="=" || $3=="c" {print $1}' | sort -u | wc -l )
+                FP1=$( join -1 2 -2 1 -v1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | awk '$3!="=" && $3!="c" && $3!="u" {print $1}' | grep -v "ref_id" | wc -l )
+                FP2=$( join -1 2 -2 1 <( sort -k2,2 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | wc -l )
+                echo $file,$TP,$(awk "BEGIN {print $FP1 + $FP2}"),$( join -1 2 -2 1 -v 2  <( sort -k2,2 $file) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | wc -l ) | sed 's/.tmap//g' >> $InDir/$Sample/GFF-PrecisionSensitivity-update.csv
+        done
+
+        cd $InDir/$Sample/SQ3
+        if [[ -f "$InDir/$Sample/SQ3-PrecisionSensitivity-update.csv" ]]; then rm $InDir/$Sample/SQ3-PrecisionSensitivity-update.csv; fi
+        for file in *_classification.txt ; do
+                TP=$( join -1 8 -2 1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | awk '$7=="full-splice_match" || ( $7=="incomplete-splice_match" && $14!="intron_retention" ) {print $1}' | sort -u | wc -l )
+                FP1=$( join -1 8 -2 1 -v1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | awk '$7!="full-splice_match" && ( $7!="incomplete-splice_match" || $15=="intron_retention" ) && $7!="intergenic" {print $1}' | grep -v "associated_transcript" | wc -l )
+                FP2=$( join -1 8 -2 1 <( sort -k8,8 $file ) <( sort -k1,1 $InDir/$Sample/TPFP/Ttoremove.tsv ) | wc -l )
+                echo $file,$TP,$(awk "BEGIN {print $FP1 + $FP2}"),$( join -1 8 -2 1 -v 2  <( sort -k8,8 $file) <( sort -k1,1 $InDir/$Sample/TPFP/Ttokeep.tsv ) | wc -l ) | sed 's/_classification.txt//g' >> $InDir/$Sample/SQ3-PrecisionSensitivity-update.csv
+        done
 }
 
 ## executing functions in order:
@@ -474,7 +492,7 @@ main(){
 	cp $InDir/$Sample/RNAbloom2/rnabloom.transcripts.fa $InDir/$Sample/Final-Assemblies/RNAbloom2.fa
 
 
-#	bambu   #Doesn't work within the script --> run manually on the side
+#	bambu   #Doesn't work within the script --> run Bambu.R
 
 #Post-process
 	GFF
@@ -482,7 +500,8 @@ main(){
 	SQ3
 	source /home/sagmel/mambaforge/bin/deactivate
 
-	TPFPFN
+	TPFPFN #without LoD (sub150k ; TPmax=160)
+ 	TPFPupdate #with LoD (sub150k ; TPmax=136)
 
 	echo "All Done"
 }
