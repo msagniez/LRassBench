@@ -1,4 +1,6 @@
 #Run Bambu and record execution time _ dataset= LSK114_sequins_sub150k
+#Bambu v3.2.6 - https://github.com/GoekeLab/bambu
+#Chen Y, Sim A, Wan YK, Yeo K, Lee JJX, Ling MH, Love MI, Göke J. 2023. Context-aware transcript quantification from long-read RNA-seq data with Bambu. Nat Methods 20: 1187–1195.
 
 test.bam <- "LSK114_chrIS_mixA_cDNA_sub150k.bam"
 fa.file <- "chrIS.fa"
