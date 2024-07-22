@@ -1,0 +1,298 @@
+﻿Subset;Assembly;TP;FP;FN;Precision;Sensitivity;Method;Tool;Dataset;Evaluator
+ALL;Bambu;160;8;0;0.952380952380952;1;Guided;Bambu;LSK114_sequins;Average
+ALL;Bambu-noRef;87.5;50;67;0.636363636363636;0.566343042071197;De novo;Bambu;LSK114_sequins;Average
+ALL;Control;151;1065563;8;0.000141689046029235;0.949685534591195;RawReads;RawReads;LSK114_sequins;Average
+ALL;isONclust;110;256;42;0.300546448087432;0.723684210526316;Ab initio;isONclust;LSK114_sequins;Average
+ALL;isONclust2;110.5;47;40.5;0.701587301587302;0.731788079470199;Ab initio;isONclust2;LSK114_sequins;Average
+ALL;isoQuant;136;5;24;0.964539007092199;0.85;Guided;isoQuant;LSK114_sequins;Average
+ALL;isoQuant-noRef;84.5;58.5;64;0.590909090909091;0.569023569023569;De novo;isoQuant;LSK114_sequins;Average
+ALL;Stringtie2;151.5;24;6.5;0.863247863247863;0.958860759493671;Guided;Stringtie2;LSK114_sequins;Average
+ALL;Stringtie2-noRef;119.5;100;30;0.544419134396355;0.79933110367893;De novo;Stringtie2;LSK114_sequins;Average
+Sub100k;Bambu;160;3;0;0.98159509202454;1;Guided;Bambu;LSK114_sequins;Average
+Sub100k;Bambu-noRef;78.5;26;77.5;0.751196172248804;0.503205128205128;De novo;Bambu;LSK114_sequins;Average
+Sub100k;Control;109.5;24792;47.5;0.00439732546232155;0.697452229299363;RawReads;RawReads;LSK114_sequins;Average
+Sub100k;isONclust;74.5;57;76;0.566539923954373;0.495016611295681;Ab initio;isONclust;LSK114_sequins;Average
+Sub100k;isONclust2;60.5;20;91;0.751552795031056;0.399339933993399;Ab initio;isONclust2;LSK114_sequins;Average
+Sub100k;isoQuant;115;3;45;0.974576271186441;0.71875;Guided;isoQuant;LSK114_sequins;Average
+Sub100k;isoQuant-noRef;70;12.5;86.5;0.848484848484849;0.447284345047923;De novo;isoQuant;LSK114_sequins;Average
+Sub100k;Stringtie2;111.5;9.5;48;0.921487603305785;0.699059561128527;Guided;Stringtie2;LSK114_sequins;Average
+Sub100k;Stringtie2-noRef;89.5;28.5;66.5;0.758474576271186;0.573717948717949;De novo;Stringtie2;LSK114_sequins;Average
+Sub10k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;Average
+Sub10k;Bambu-noRef;51;6.5;107.5;0.88695652173913;0.321766561514196;De novo;Bambu;LSK114_sequins;Average
+Sub10k;Control;87.5;2535;71.5;0.0333651096282174;0.550314465408805;RawReads;RawReads;LSK114_sequins;Average
+Sub10k;isONclust;59;12;98;0.830985915492958;0.375796178343949;Ab initio;isONclust;LSK114_sequins;Average
+Sub10k;isONclust2;56.5;9;100;0.862595419847328;0.361022364217252;Ab initio;isONclust2;LSK114_sequins;Average
+Sub10k;isoQuant;83;0;77;1;0.51875;Guided;isoQuant;LSK114_sequins;Average
+Sub10k;isoQuant-noRef;48;2;111;0.96;0.30188679245283;De novo;isoQuant;LSK114_sequins;Average
+Sub10k;Stringtie2;79;8.5;79.5;0.902857142857143;0.498422712933754;Guided;Stringtie2;LSK114_sequins;Average
+Sub10k;Stringtie2-noRef;59;17;97;0.776315789473684;0.378205128205128;De novo;Stringtie2;LSK114_sequins;Average
+Sub150k;Bambu;160;4;0;0.975609756097561;1;Guided;Bambu;LSK114_sequins;Average
+Sub150k;Bambu-noRef;76;32;78.5;0.703703703703704;0.491909385113269;De novo;Bambu;LSK114_sequins;Average
+Sub150k;Control;111.5;37322.5;45.5;0.00297857562643586;0.710191082802548;RawReads;RawReads;LSK114_sequins;Average
+Sub150k;isONclust;78.5;63;73;0.554770318021201;0.518151815181518;Ab initio;isONclust;LSK114_sequins;Average
+Sub150k;isONclust2;62.5;22.5;88.5;0.735294117647059;0.413907284768212;Ab initio;isONclust2;LSK114_sequins;Average
+Sub150k;isoQuant;117;1.5;43;0.987341772151899;0.73125;Guided;isoQuant;LSK114_sequins;Average
+Sub150k;isoQuant-noRef;72.5;14.5;83.5;0.833333333333333;0.46474358974359;De novo;isoQuant;LSK114_sequins;Average
+Sub150k;Stringtie2;114.5;6;45;0.950207468879668;0.717868338557994;Guided;Stringtie2;LSK114_sequins;Average
+Sub150k;Stringtie2-noRef;91.5;34.5;64.5;0.726190476190476;0.586538461538462;De novo;Stringtie2;LSK114_sequins;Average
+Sub1k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;Average
+Sub1k;Bambu-noRef;35.5;5;124;0.876543209876543;0.22257053291536;De novo;Bambu;LSK114_sequins;Average
+Sub1k;Control;57;257.5;103;0.181240063593005;0.35625;RawReads;RawReads;LSK114_sequins;Average
+Sub1k;isONclust;42.5;5;116;0.894736842105263;0.26813880126183;Ab initio;isONclust;LSK114_sequins;Average
+Sub1k;isONclust2;42;4;116.5;0.91304347826087;0.264984227129338;Ab initio;isONclust2;LSK114_sequins;Average
+Sub1k;isoQuant;52;0;108;1;0.325;Guided;isoQuant;LSK114_sequins;Average
+Sub1k;isoQuant-noRef;25;2;134.5;0.925925925925926;0.156739811912226;De novo;isoQuant;LSK114_sequins;Average
+Sub1k;Stringtie2;49;4;110.5;0.924528301886792;0.307210031347962;Guided;Stringtie2;LSK114_sequins;Average
+Sub1k;Stringtie2-noRef;35;8;122.5;0.813953488372093;0.222222222222222;De novo;Stringtie2;LSK114_sequins;Average
+Sub1M;Bambu;160;9;0;0.946745562130177;1;Guided;Bambu;LSK114_sequins;Average
+Sub1M;Bambu-noRef;83.5;55.5;68.5;0.600719424460432;0.549342105263158;De novo;Bambu;LSK114_sequins;Average
+Sub1M;Control;136.5;249549;22;0.000546687733168326;0.861198738170347;RawReads;RawReads;LSK114_sequins;Average
+Sub1M;isONclust;99;133;54;0.426724137931034;0.647058823529412;Ab initio;isONclust;LSK114_sequins;Average
+Sub1M;isONclust2;85;27;65.5;0.758928571428571;0.564784053156146;Ab initio;isONclust2;LSK114_sequins;Average
+Sub1M;isoQuant;137;8;23;0.944827586206897;0.85625;Guided;isoQuant;LSK114_sequins;Average
+Sub1M;isoQuant-noRef;89;33.5;64;0.726530612244898;0.581699346405229;De novo;isoQuant;LSK114_sequins;Average
+Sub1M;Stringtie2;132;21.5;25.5;0.859934853420195;0.838095238095238;Guided;Stringtie2;LSK114_sequins;Average
+Sub1M;Stringtie2-noRef;105;76;47;0.580110497237569;0.690789473684211;De novo;Stringtie2;LSK114_sequins;Average
+Sub250k;Bambu;160;7;0;0.958083832335329;1;Guided;Bambu;LSK114_sequins;Average
+Sub250k;Bambu-noRef;77;36.5;77;0.6784140969163;0.5;De novo;Bambu;LSK114_sequins;Average
+Sub250k;Control;122;62380;34;0.00195193753799878;0.782051282051282;RawReads;RawReads;LSK114_sequins;Average
+Sub250k;isONclust;87.5;77.5;64;0.53030303030303;0.577557755775578;Ab initio;isONclust;LSK114_sequins;Average
+Sub250k;isONclust2;74;24.5;78;0.751269035532995;0.486842105263158;Ab initio;isONclust2;LSK114_sequins;Average
+Sub250k;isoQuant;124;2.5;36;0.980237154150198;0.775;Guided;isoQuant;LSK114_sequins;Average
+Sub250k;isoQuant-noRef;73.5;17;82.5;0.812154696132597;0.471153846153846;De novo;isoQuant;LSK114_sequins;Average
+Sub250k;Stringtie2;121;10;38;0.923664122137405;0.761006289308176;Guided;Stringtie2;LSK114_sequins;Average
+Sub250k;Stringtie2-noRef;93.5;41.5;61;0.692592592592593;0.605177993527508;De novo;Stringtie2;LSK114_sequins;Average
+Sub2M;Bambu;160;8;0;0.952380952380952;1;Guided;Bambu;LSK114_sequins;Average
+Sub2M;Bambu-noRef;89;47;65;0.654411764705882;0.577922077922078;De novo;Bambu;LSK114_sequins;Average
+Sub2M;Control;145.5;499781.5;12.5;0.000291042492203862;0.920886075949367;RawReads;RawReads;LSK114_sequins;Average
+Sub2M;isONclust;109.5;186;43;0.370558375634518;0.718032786885246;Ab initio;isONclust;LSK114_sequins;Average
+Sub2M;isONclust2;92.5;36;54.5;0.719844357976654;0.629251700680272;Ab initio;isONclust2;LSK114_sequins;Average
+Sub2M;isoQuant;140;11;20;0.927152317880795;0.875;Guided;isoQuant;LSK114_sequins;Average
+Sub2M;isoQuant-noRef;88.5;32.5;63.5;0.731404958677686;0.582236842105263;De novo;isoQuant;LSK114_sequins;Average
+Sub2M;Stringtie2;142.5;19.5;15;0.87962962962963;0.904761904761905;Guided;Stringtie2;LSK114_sequins;Average
+Sub2M;Stringtie2-noRef;115;84;35.5;0.577889447236181;0.764119601328904;De novo;Stringtie2;LSK114_sequins;Average
+Sub4M;Bambu;160;7;0;0.958083832335329;1;Guided;Bambu;LSK114_sequins;Average
+Sub4M;Bambu-noRef;86.5;56;67;0.607017543859649;0.563517915309446;De novo;Bambu;LSK114_sequins;Average
+Sub4M;Control;149.5;999759.5;9;0.000149513605738122;0.943217665615142;RawReads;RawReads;LSK114_sequins;Average
+Sub4M;isONclust;111;260;41;0.299191374663073;0.730263157894737;Ab initio;isONclust;LSK114_sequins;Average
+Sub4M;isONclust2;109.5;55.5;41.5;0.663636363636364;0.725165562913907;Ab initio;isONclust2;LSK114_sequins;Average
+Sub4M;isoQuant;154;19;6;0.890173410404624;0.9625;Guided;isoQuant;LSK114_sequins;Average
+Sub4M;isoQuant-noRef;84.5;54.5;64.5;0.607913669064748;0.567114093959732;De novo;isoQuant;LSK114_sequins;Average
+Sub4M;Stringtie2;148.5;25;9;0.855907780979827;0.942857142857143;Guided;Stringtie2;LSK114_sequins;Average
+Sub4M;Stringtie2-noRef;119.5;96;31.5;0.554524361948956;0.791390728476821;De novo;Stringtie2;LSK114_sequins;Average
+Sub500k;Bambu;160;5;0;0.96969696969697;1;Guided;Bambu;LSK114_sequins;Average
+Sub500k;Bambu-noRef;81;38.5;72;0.677824267782427;0.529411764705882;De novo;Bambu;LSK114_sequins;Average
+Sub500k;Control;129.5;125256.5;27.5;0.00103281068061825;0.82484076433121;RawReads;RawReads;LSK114_sequins;Average
+Sub500k;isONclust;91;37;60;0.7109375;0.602649006622517;Ab initio;isONclust;LSK114_sequins;Average
+Sub500k;isONclust2;88.5;24;63;0.786666666666667;0.584158415841584;Ab initio;isONclust2;LSK114_sequins;Average
+Sub500k;isoQuant;131;8;29;0.942446043165468;0.81875;Guided;isoQuant;LSK114_sequins;Average
+Sub500k;isoQuant-noRef;76;24.5;78.5;0.756218905472637;0.491909385113269;De novo;isoQuant;LSK114_sequins;Average
+Sub500k;Stringtie2;126.5;15.5;31.5;0.890845070422535;0.800632911392405;Guided;Stringtie2;LSK114_sequins;Average
+Sub500k;Stringtie2-noRef;101;56.5;52.5;0.641269841269841;0.657980456026059;De novo;Stringtie2;LSK114_sequins;Average
+Sub50k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;Average
+Sub50k;Bambu-noRef;70.5;13.5;87.5;0.839285714285714;0.44620253164557;De novo;Bambu;LSK114_sequins;Average
+Sub50k;Control;104;12445;52;0.00828751294923898;0.666666666666667;RawReads;RawReads;LSK114_sequins;Average
+Sub50k;isONclust;67.5;44;84;0.605381165919282;0.445544554455446;Ab initio;isONclust;LSK114_sequins;Average
+Sub50k;isONclust2;54.5;22.5;96;0.707792207792208;0.362126245847176;Ab initio;isONclust2;LSK114_sequins;Average
+Sub50k;isoQuant;105;3;55;0.972222222222222;0.65625;Guided;isoQuant;LSK114_sequins;Average
+Sub50k;isoQuant-noRef;59;11.5;98.5;0.836879432624113;0.374603174603175;De novo;isoQuant;LSK114_sequins;Average
+Sub50k;Stringtie2;103.5;9;56;0.92;0.648902821316614;Guided;Stringtie2;LSK114_sequins;Average
+Sub50k;Stringtie2-noRef;79.5;29;76.5;0.732718894009217;0.509615384615385;De novo;Stringtie2;LSK114_sequins;Average
+ALL;Bambu;160;8;0;0.952380952380952;1;Guided;Bambu;LSK114_sequins;GFFcompare
+ALL;Bambu-noRef;88;51;61;0.633093525179856;0.590604026845638;De novo;Bambu;LSK114_sequins;GFFcompare
+ALL;Control;158;490215;0;0.000322203710236901;1;RawReads;RawReads;LSK114_sequins;GFFcompare
+ALL;isONclust;94;110;50;0.46078431372549;0.652777777777778;Ab initio;isONclust;LSK114_sequins;GFFcompare
+ALL;isONclust2;100;40;42;0.714285714285714;0.704225352112676;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+ALL;isoQuant;136;5;24;0.964539007092199;0.85;Guided;isoQuant;LSK114_sequins;GFFcompare
+ALL;isoQuant-noRef;84;59;53;0.587412587412587;0.613138686131387;De novo;isoQuant;LSK114_sequins;GFFcompare
+ALL;Stringtie2;151;27;5;0.848314606741573;0.967948717948718;Guided;Stringtie2;LSK114_sequins;GFFcompare
+ALL;Stringtie2-noRef;122;101;17;0.547085201793722;0.877697841726619;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub100k;Bambu;160;3;0;0.98159509202454;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub100k;Bambu-noRef;78;27;74;0.742857142857143;0.513157894736842;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub100k;Control;115;11377;39;0.0100069613644274;0.746753246753247;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub100k;isONclust;65;36;76;0.643564356435644;0.460992907801418;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub100k;isONclust2;51;20;92;0.71830985915493;0.356643356643357;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub100k;isoQuant;115;3;45;0.974576271186441;0.71875;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub100k;isoQuant-noRef;70;13;83;0.843373493975904;0.457516339869281;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub100k;Stringtie2;112;9;47;0.925619834710744;0.70440251572327;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub100k;Stringtie2-noRef;93;26;59;0.781512605042017;0.611842105263158;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub10k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub10k;Bambu-noRef;51;7;106;0.879310344827586;0.32484076433121;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub10k;Control;93;1166;65;0.073868149324861;0.588607594936709;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub10k;isONclust;54;8;100;0.870967741935484;0.350649350649351;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub10k;isONclust2;52;8;101;0.866666666666667;0.339869281045752;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub10k;isoQuant;83;0;77;1;0.51875;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub10k;isoQuant-noRef;48;2;110;0.96;0.30379746835443;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub10k;Stringtie2;78;9;79;0.896551724137931;0.496815286624204;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub10k;Stringtie2-noRef;60;16;92;0.789473684210526;0.394736842105263;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub150k;Bambu;160;4;0;0.975609756097561;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub150k;Bambu-noRef;75;33;74;0.694444444444444;0.503355704697987;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub150k;Control;117;17069;37;0.00680786686838124;0.75974025974026;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub150k;isONclust;69;41;74;0.627272727272727;0.482517482517482;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub150k;isONclust2;55;21;87;0.723684210526316;0.387323943661972;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub150k;isoQuant;117;2;43;0.983193277310924;0.73125;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub150k;isoQuant-noRef;72;16;80;0.818181818181818;0.473684210526316;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub150k;Stringtie2;115;6;44;0.950413223140496;0.723270440251572;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub150k;Stringtie2-noRef;95;33;57;0.7421875;0.625;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub1k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub1k;Bambu-noRef;35;6;124;0.853658536585366;0.220125786163522;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub1k;Control;62;126;98;0.329787234042553;0.3875;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub1k;isONclust;42;4;115;0.91304347826087;0.267515923566879;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub1k;isONclust2;41;3;116;0.931818181818182;0.261146496815287;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub1k;isoQuant;52;0;108;1;0.325;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub1k;isoQuant-noRef;25;2;134;0.925925925925926;0.157232704402516;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub1k;Stringtie2;49;4;110;0.924528301886792;0.308176100628931;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub1k;Stringtie2-noRef;36;7;119;0.837209302325581;0.232258064516129;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub1M;Bambu;160;9;0;0.946745562130177;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub1M;Bambu-noRef;84;57;60;0.595744680851064;0.583333333333333;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub1M;Control;144;114795;13;0.00125283846214079;0.917197452229299;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub1M;isONclust;88;60;58;0.594594594594595;0.602739726027397;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub1M;isONclust2;74;26;67;0.74;0.524822695035461;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub1M;isoQuant;137;8;23;0.944827586206897;0.85625;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub1M;isoQuant-noRef;89;34;57;0.723577235772358;0.60958904109589;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub1M;Stringtie2;132;23;23;0.851612903225806;0.851612903225806;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub1M;Stringtie2-noRef;108;76;36;0.58695652173913;0.75;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub250k;Bambu;160;7;0;0.958083832335329;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub250k;Bambu-noRef;76;37;72;0.672566371681416;0.513513513513513;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub250k;Control;127;28767;25;0.00439537620267184;0.835526315789474;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub250k;isONclust;80;47;63;0.62992125984252;0.559440559440559;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub250k;isONclust2;68;22;76;0.755555555555556;0.472222222222222;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub250k;isoQuant;124;3;36;0.976377952755906;0.775;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub250k;isoQuant-noRef;73;18;79;0.802197802197802;0.480263157894737;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub250k;Stringtie2;122;10;36;0.924242424242424;0.772151898734177;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub250k;Stringtie2-noRef;98;39;51;0.715328467153285;0.657718120805369;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub2M;Bambu;160;8;0;0.952380952380952;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub2M;Bambu-noRef;89;48;59;0.64963503649635;0.601351351351351;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub2M;Control;153;229924;3;0.000664994762622948;0.980769230769231;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub2M;isONclust;95;79;50;0.545977011494253;0.655172413793103;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub2M;isONclust2;79;35;55;0.692982456140351;0.58955223880597;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub2M;isoQuant;140;11;20;0.927152317880795;0.875;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub2M;isoQuant-noRef;88;33;56;0.727272727272727;0.611111111111111;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub2M;Stringtie2;142;22;13;0.865853658536585;0.916129032258065;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub2M;Stringtie2-noRef;118;84;23;0.584158415841584;0.836879432624113;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub4M;Bambu;160;7;0;0.958083832335329;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub4M;Bambu-noRef;87;57;60;0.604166666666667;0.591836734693878;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub4M;Control;157;459940;0;0.000341232392299885;1;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub4M;isONclust;96;106;48;0.475247524752475;0.666666666666667;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub4M;isONclust2;100;44;42;0.694444444444444;0.704225352112676;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub4M;isoQuant;154;19;6;0.890173410404624;0.9625;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub4M;isoQuant-noRef;84;55;54;0.60431654676259;0.608695652173913;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub4M;Stringtie2;148;28;7;0.840909090909091;0.954838709677419;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub4M;Stringtie2-noRef;123;96;19;0.561643835616438;0.866197183098592;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub500k;Bambu;160;5;0;0.96969696969697;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub500k;Bambu-noRef;81;40;65;0.669421487603306;0.554794520547945;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub500k;Control;136;57744;18;0.00234968901174844;0.883116883116883;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub500k;isONclust;82;52;60;0.611940298507463;0.577464788732394;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub500k;isONclust2;77;26;66;0.747572815533981;0.538461538461538;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub500k;isoQuant;131;8;29;0.942446043165468;0.81875;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub500k;isoQuant-noRef;76;25;73;0.752475247524752;0.51006711409396;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub500k;Stringtie2;127;16;29;0.888111888111888;0.814102564102564;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub500k;Stringtie2-noRef;105;54;42;0.660377358490566;0.714285714285714;De novo;Stringtie2;LSK114_sequins;GFFcompare
+Sub50k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;GFFcompare
+Sub50k;Bambu-noRef;69;14;87;0.831325301204819;0.442307692307692;De novo;Bambu;LSK114_sequins;GFFcompare
+Sub50k;Control;110;5717;42;0.0188776385790287;0.723684210526316;RawReads;RawReads;LSK114_sequins;GFFcompare
+Sub50k;isONclust;60;30;83;0.666666666666667;0.41958041958042;Ab initio;isONclust;LSK114_sequins;GFFcompare
+Sub50k;isONclust2;47;22;94;0.681159420289855;0.333333333333333;Ab initio;isONclust2;LSK114_sequins;GFFcompare
+Sub50k;isoQuant;105;3;55;0.972222222222222;0.65625;Guided;isoQuant;LSK114_sequins;GFFcompare
+Sub50k;isoQuant-noRef;59;12;96;0.830985915492958;0.380645161290323;De novo;isoQuant;LSK114_sequins;GFFcompare
+Sub50k;Stringtie2;104;9;55;0.920353982300885;0.654088050314465;Guided;Stringtie2;LSK114_sequins;GFFcompare
+Sub50k;Stringtie2-noRef;83;26;69;0.761467889908257;0.546052631578947;De novo;Stringtie2;LSK114_sequins;GFFcompare
+ALL;Bambu;160;8;0;0.952380952380952;1;Guided;Bambu;LSK114_sequins;SQANTI3
+ALL;Bambu-noRef;87;49;73;0.639705882352941;0.54375;De novo;Bambu;LSK114_sequins;SQANTI3
+ALL;Control;144;1640911;16;0.0000877484301257423;0.9;RawReads;RawReads;LSK114_sequins;SQANTI3
+ALL;isONclust;126;402;34;0.238636363636364;0.7875;Ab initio;isONclust;LSK114_sequins;SQANTI3
+ALL;isONclust2;121;54;39;0.691428571428571;0.75625;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+ALL;isoQuant;136;5;24;0.964539007092199;0.85;Guided;isoQuant;LSK114_sequins;SQANTI3
+ALL;isoQuant-noRef;85;58;75;0.594405594405594;0.53125;De novo;isoQuant;LSK114_sequins;SQANTI3
+ALL;Stringtie2;152;21;8;0.878612716763006;0.95;Guided;Stringtie2;LSK114_sequins;SQANTI3
+ALL;Stringtie2-noRef;117;99;43;0.541666666666667;0.73125;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub100k;Bambu;160;3;0;0.98159509202454;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub100k;Bambu-noRef;79;25;81;0.759615384615385;0.49375;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub100k;Control;104;38207;56;0.00271462504241602;0.65;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub100k;isONclust;84;78;76;0.518518518518518;0.525;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub100k;isONclust2;70;20;90;0.777777777777778;0.4375;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub100k;isoQuant;115;3;45;0.974576271186441;0.71875;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub100k;isoQuant-noRef;70;12;90;0.853658536585366;0.4375;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub100k;Stringtie2;111;10;49;0.917355371900826;0.69375;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub100k;Stringtie2-noRef;86;31;74;0.735042735042735;0.5375;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub10k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub10k;Bambu-noRef;51;6;109;0.894736842105263;0.31875;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub10k;Control;82;3904;78;0.0205720020070246;0.5125;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub10k;isONclust;64;16;96;0.8;0.4;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub10k;isONclust2;61;10;99;0.859154929577465;0.38125;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub10k;isoQuant;83;0;77;1;0.51875;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub10k;isoQuant-noRef;48;2;112;0.96;0.3;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub10k;Stringtie2;80;8;80;0.909090909090909;0.5;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub10k;Stringtie2-noRef;58;18;102;0.763157894736842;0.3625;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub150k;Bambu;160;4;0;0.975609756097561;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub150k;Bambu-noRef;77;31;83;0.712962962962963;0.48125;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub150k;Control;106;57576;54;0.00183766166221698;0.6625;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub150k;isONclust;88;85;72;0.508670520231214;0.55;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub150k;isONclust2;70;24;90;0.74468085106383;0.4375;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub150k;isoQuant;117;1;43;0.991525423728814;0.73125;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub150k;isoQuant-noRef;73;13;87;0.848837209302326;0.45625;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub150k;Stringtie2;114;6;46;0.95;0.7125;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub150k;Stringtie2-noRef;88;36;72;0.709677419354839;0.55;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub1k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub1k;Bambu-noRef;36;4;124;0.9;0.225;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub1k;Control;52;389;108;0.117913832199546;0.325;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub1k;isONclust;43;6;117;0.877551020408163;0.26875;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub1k;isONclust2;43;5;117;0.895833333333333;0.26875;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub1k;isoQuant;52;0;108;1;0.325;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub1k;isoQuant-noRef;25;2;135;0.925925925925926;0.15625;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub1k;Stringtie2;49;4;111;0.924528301886792;0.30625;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub1k;Stringtie2-noRef;34;9;126;0.790697674418605;0.2125;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub1M;Bambu;160;9;0;0.946745562130177;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub1M;Bambu-noRef;83;54;77;0.605839416058394;0.51875;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub1M;Control;129;384303;31;0.000335559995005619;0.80625;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub1M;isONclust;110;206;50;0.348101265822785;0.6875;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub1M;isONclust2;96;28;64;0.774193548387097;0.6;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub1M;isoQuant;137;8;23;0.944827586206897;0.85625;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub1M;isoQuant-noRef;89;33;71;0.729508196721312;0.55625;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub1M;Stringtie2;132;20;28;0.868421052631579;0.825;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub1M;Stringtie2-noRef;102;76;58;0.573033707865168;0.6375;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub250k;Bambu;160;7;0;0.958083832335329;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub250k;Bambu-noRef;78;36;82;0.684210526315789;0.4875;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub250k;Control;117;95993;43;0.00121735511393195;0.73125;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub250k;isONclust;95;108;65;0.467980295566502;0.59375;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub250k;isONclust2;80;27;80;0.747663551401869;0.5;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub250k;isoQuant;124;2;36;0.984126984126984;0.775;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub250k;isoQuant-noRef;74;16;86;0.822222222222222;0.4625;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub250k;Stringtie2;120;10;40;0.923076923076923;0.75;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub250k;Stringtie2-noRef;89;44;71;0.669172932330827;0.55625;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub2M;Bambu;160;8;0;0.952380952380952;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub2M;Bambu-noRef;89;46;71;0.659259259259259;0.55625;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub2M;Control;138;769639;22;0.000179272698456826;0.8625;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub2M;isONclust;124;293;36;0.297362110311751;0.775;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub2M;isONclust2;106;37;54;0.741258741258741;0.6625;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub2M;isoQuant;140;11;20;0.927152317880795;0.875;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub2M;isoQuant-noRef;89;32;71;0.735537190082645;0.55625;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub2M;Stringtie2;143;17;17;0.89375;0.89375;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub2M;Stringtie2-noRef;112;84;48;0.571428571428571;0.7;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub4M;Bambu;160;7;0;0.958083832335329;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub4M;Bambu-noRef;86;55;74;0.609929078014184;0.5375;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub4M;Control;142;1539579;18;0.0000922245004127371;0.8875;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub4M;isONclust;126;414;34;0.233333333333333;0.7875;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub4M;isONclust2;119;67;41;0.639784946236559;0.74375;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub4M;isoQuant;154;19;6;0.890173410404624;0.9625;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub4M;isoQuant-noRef;85;54;75;0.611510791366906;0.53125;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub4M;Stringtie2;149;22;11;0.871345029239766;0.93125;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub4M;Stringtie2-noRef;116;96;44;0.547169811320755;0.725;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub500k;Bambu;160;5;0;0.96969696969697;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub500k;Bambu-noRef;81;37;79;0.686440677966102;0.50625;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub500k;Control;123;192769;37;0.000637662526180453;0.76875;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub500k;isONclust;100;22;60;0.819672131147541;0.625;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub500k;isONclust2;100;22;60;0.819672131147541;0.625;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub500k;isoQuant;131;8;29;0.942446043165468;0.81875;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub500k;isoQuant-noRef;76;24;84;0.76;0.475;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub500k;Stringtie2;126;15;34;0.893617021276596;0.7875;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub500k;Stringtie2-noRef;97;59;63;0.621794871794872;0.60625;De novo;Stringtie2;LSK114_sequins;SQANTI3
+Sub50k;Bambu;160;0;0;1;1;Guided;Bambu;LSK114_sequins;SQANTI3
+Sub50k;Bambu-noRef;72;13;88;0.847058823529412;0.45;De novo;Bambu;LSK114_sequins;SQANTI3
+Sub50k;Control;98;19173;62;0.0050853614239012;0.6125;RawReads;RawReads;LSK114_sequins;SQANTI3
+Sub50k;isONclust;75;58;85;0.56390977443609;0.46875;Ab initio;isONclust;LSK114_sequins;SQANTI3
+Sub50k;isONclust2;62;23;98;0.729411764705882;0.3875;Ab initio;isONclust2;LSK114_sequins;SQANTI3
+Sub50k;isoQuant;105;3;55;0.972222222222222;0.65625;Guided;isoQuant;LSK114_sequins;SQANTI3
+Sub50k;isoQuant-noRef;59;11;101;0.842857142857143;0.36875;De novo;isoQuant;LSK114_sequins;SQANTI3
+Sub50k;Stringtie2;103;9;57;0.919642857142857;0.64375;Guided;Stringtie2;LSK114_sequins;SQANTI3
+Sub50k;Stringtie2-noRef;76;32;84;0.703703703703704;0.475;De novo;Stringtie2;LSK114_sequins;SQANTI3
