@@ -1,4 +1,4 @@
-#Measure Bambu execution time _ dataset= LSK114_sequins_sub150k
+#Run Bambu and record execution time _ dataset= LSK114_sequins_sub150k
 
 test.bam <- "LSK114_chrIS_mixA_cDNA_sub150k.bam"
 fa.file <- "chrIS.fa"
