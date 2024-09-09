@@ -9,6 +9,8 @@ inputs consist of 5 datasets :
   - RNA002_chrIS_mixA_dRNA
   - RNA004_chrIS_mixA_dRNA
 
+![Figure1-Methods](Figure1-Methods.pdf "Overview of study design")
+
 See Figure1 for more information about this analysis.
 
 - Tools-guide.txt = Installation guidelines and how tools were executed.
