@@ -10,8 +10,9 @@ inputs consist of 5 datasets :
   - RNA004_chrIS_mixA_dRNA
 
 ![Figure1-Methods](Figure1-Methods.png "Overview of study design")
-
-See Figure1 for more information about this analysis.
+**Figure 1. Overview of the study design for cDNA and dRNA assembly generation and quality assessment.** 
+          LSK: Ligation sequencing kit; cDNA: complementary DNA; dRNA: direct RNA.
+For further details please refer to our publication: doi: [https://doi.org/10.1101/2024.03.21.586080](https://doi.org/10.1101/2024.03.21.586080)
 
 - Tools-guide.txt = Installation guidelines and how tools were executed.
 - Assembly-pipeline.sh = Commandlines executed for each of the tools tested (except Bambu which runs on R --> see Bambu-time.R instead).
