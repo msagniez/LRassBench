@@ -1,5 +1,5 @@
-This section contains codes corresponding to the 'Novel Discovery of Transcripts benchmarked across various pipelines' section of the Supplementary Materials.
-Please note 'half' or 'partial' is used interchangeably in this section
+This section contains codes corresponding to the 'Novel Discovery of Transcripts benchmarked across various pipelines' section of the Supplementary Materials.  
+Please note 'half' or 'partial' is used interchangeably in this section.  
 
 In the order of execution of the code, the files in this folder are:
 
