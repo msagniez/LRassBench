@@ -1,0 +1,6 @@
+full_half_null
+full_null_half
+half_full_null
+half_null_full
+null_full_half
+null_half_full
