@@ -9,7 +9,7 @@ inputs consist of 5 datasets :
   - RNA002_chrIS_mixA_dRNA
   - RNA004_chrIS_mixA_dRNA
 
-![Figure1-Methods](Figure1-Methods.png "Overview of study design")
+![Figure1-Method](Figure1-Method.png "Overview of study design")
 **Figure 1. Overview of the study design for cDNA and dRNA assembly generation and quality assessment.**   
   LSK: Ligation sequencing kit; cDNA: complementary DNA; dRNA: direct RNA.  
 
