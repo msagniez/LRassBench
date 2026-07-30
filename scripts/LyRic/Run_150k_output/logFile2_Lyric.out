@@ -1,0 +1,1716 @@
+Using profiles /home/sagmel/apps_new/LyRic/workflow/profiles/default and workflow specific profile /home/sagmel/apps_new/LyRic/workflow/profiles/default for setting default command line arguments.
+No genome annotation(s) file provided.
+No primary targets file provided.
+No CAGE annotation file provided.
+No DHS annotation file provided.
+No SIRVinfo file provided.
+Assuming unrestricted shared filesystem usage.
+host: benchmarking-vm
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Singularity containers: ignored
+Job stats:
+job                                   count
+----------------------------------  -------
+all                                       1
+bamToSam                                  4
+basicFASTQqc                              4
+catMergedReadsForGroupedSampleReps        4
+getHCGMintrons                            4
+getHiSeqSupportedHCGMs                    4
+getIntronMotif                            4
+highConfidenceReads                       4
+integratePolyaAndSjInfo                   4
+longReadMapping                           4
+makeIntrons                               4
+mergedReads                               4
+mergedReadsGroupedSampleReps              4
+polyAmapping                              4
+readBamToBed                              4
+readBedToGff                              4
+removeIntraPriming                        4
+removePolyAERCCs                          4
+splitTmsBySplicedStatus                   4
+strandGffs                                4
+strandedGffToBed                          4
+total                                    81
+
+Select jobs to execute...
+Failed to solve scheduling problem with ILP solver, falling back to greedy scheduler. You likely have to fix your ILP solver installation. Error message: PULP_CBC_CMD: Not Available (check permissions on cbc)
+Execute 4 jobs...
+
+[Tue Nov 25 18:28:11 2025]
+localrule basicFASTQqc:
+    input: fastqs/LSK109_Sequins_0_Rep1.fastq.gz
+    output: output/fastqs/qc/LSK109_Sequins_0.Rep1.dupl.txt
+    jobid: 48
+    reason: Missing output files: output/fastqs/qc/LSK109_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:28:11 2025]
+localrule basicFASTQqc:
+    input: fastqs/LSK114_Sequins_0_Rep1.fastq.gz
+    output: output/fastqs/qc/LSK114_Sequins_0.Rep1.dupl.txt
+    jobid: 12
+    reason: Missing output files: output/fastqs/qc/LSK114_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:28:11 2025]
+localrule basicFASTQqc:
+    input: fastqs/RNA004_Sequins_0_Rep1.fastq.gz
+    output: output/fastqs/qc/RNA004_Sequins_0.Rep1.dupl.txt
+    jobid: 66
+    reason: Missing output files: output/fastqs/qc/RNA004_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:28:11 2025]
+localrule basicFASTQqc:
+    input: fastqs/RNA002_Sequins_0_Rep1.fastq.gz
+    output: output/fastqs/qc/RNA002_Sequins_0.Rep1.dupl.txt
+    jobid: 30
+    reason: Missing output files: output/fastqs/qc/RNA002_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:28:13 2025]
+Finished jobid: 30 (Rule: basicFASTQqc)
+1 of 81 steps (1%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:28:13 2025]
+localrule longReadMapping:
+    input: fastqs/RNA002_Sequins_0_Rep1.fastq.gz, references/chrIS.sorted.fa, output/fastqs/qc/RNA002_Sequins_0.Rep1.dupl.txt
+    output: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam, output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam.bai
+    jobid: 29
+    reason: Missing output files: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam; Input files updated by another job: output/fastqs/qc/RNA002_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    threads: 2
+    resources: mem_mb=5000, mem_mib=4769, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10, cpus_per_task=2
+Mapping
+[Tue Nov 25 18:28:13 2025]
+Finished jobid: 66 (Rule: basicFASTQqc)
+2 of 81 steps (2%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:28:13 2025]
+localrule longReadMapping:
+    input: fastqs/RNA004_Sequins_0_Rep1.fastq.gz, references/chrIS.sorted.fa, output/fastqs/qc/RNA004_Sequins_0.Rep1.dupl.txt
+    output: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam, output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam.bai
+    jobid: 65
+    reason: Missing output files: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam; Input files updated by another job: output/fastqs/qc/RNA004_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    threads: 2
+    resources: mem_mb=5000, mem_mib=4769, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10, cpus_per_task=2
+Mapping
+[Tue Nov 25 18:28:13 2025]
+Finished jobid: 12 (Rule: basicFASTQqc)
+3 of 81 steps (4%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:28:13 2025]
+localrule longReadMapping:
+    input: fastqs/LSK114_Sequins_0_Rep1.fastq.gz, references/chrIS.sorted.fa, output/fastqs/qc/LSK114_Sequins_0.Rep1.dupl.txt
+    output: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam, output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam.bai
+    jobid: 10
+    reason: Missing output files: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam; Input files updated by another job: output/fastqs/qc/LSK114_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    threads: 2
+    resources: mem_mb=5000, mem_mib=4769, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10, cpus_per_task=2
+Mapping
+[M::mm_idx_gen::0.547*1.00] collected minimizers
+[Tue Nov 25 18:28:14 2025]
+Finished jobid: 48 (Rule: basicFASTQqc)
+4 of 81 steps (5%) done
+Select jobs to execute...
+[M::mm_idx_gen::0.560*1.00] collected minimizers
+Execute 1 jobs...
+
+[Tue Nov 25 18:28:14 2025]
+localrule longReadMapping:
+    input: fastqs/LSK109_Sequins_0_Rep1.fastq.gz, references/chrIS.sorted.fa, output/fastqs/qc/LSK109_Sequins_0.Rep1.dupl.txt
+    output: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam, output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam.bai
+    jobid: 47
+    reason: Missing output files: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam; Input files updated by another job: output/fastqs/qc/LSK109_Sequins_0.Rep1.dupl.txt
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    threads: 2
+    resources: mem_mb=5000, mem_mib=4769, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10, cpus_per_task=2
+Mapping
+[M::mm_idx_gen::0.729*1.24] sorted minimizers
+[M::main::0.730*1.24] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.797*1.22] mid_occ = 38
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 1
+[M::mm_idx_gen::0.732*1.23] sorted minimizers
+[M::main::0.732*1.23] loaded/built the index for 1 target sequence(s)
+[M::mm_idx_stat::0.845*1.21] distinct minimizers: 3249458 (94.80% are singletons); average occurrences: 1.109; average spacing: 2.933; total length: 10567884
+[M::mm_mapopt_update::0.805*1.21] mid_occ = 38
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 1
+[M::mm_idx_gen::0.541*1.00] collected minimizers
+[M::mm_idx_stat::0.856*1.20] distinct minimizers: 3249458 (94.80% are singletons); average occurrences: 1.109; average spacing: 2.933; total length: 10567884
+[M::mm_idx_gen::0.718*1.24] sorted minimizers
+[M::main::0.718*1.24] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.789*1.22] mid_occ = 38
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 1
+[M::mm_idx_gen::0.521*1.00] collected minimizers
+[M::mm_idx_stat::0.839*1.21] distinct minimizers: 3249458 (94.80% are singletons); average occurrences: 1.109; average spacing: 2.933; total length: 10567884
+[M::mm_idx_gen::0.698*1.25] sorted minimizers
+[M::main::0.698*1.25] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.771*1.23] mid_occ = 38
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::0.822*1.21] distinct minimizers: 3249458 (94.80% are singletons); average occurrences: 1.109; average spacing: 2.933; total length: 10567884
+[M::worker_pipeline::302.724*1.98] mapped 150000 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 --MD -x splice -t 2 --secondary=no -L -a references/chrIS.sorted.fa fastqs/RNA002_Sequins_0_Rep1.fastq.gz
+[M::main] Real time: 302.749 sec; CPU: 600.281 sec; Peak RSS: 2.068 GB
+Mapping done
+Creating/sorting BAM
+[bam_sort_core] merging from 0 files and 2 in-memory blocks...
+Done creating/sorting BAM
+[Tue Nov 25 18:33:26 2025]
+Finished jobid: 29 (Rule: longReadMapping)
+5 of 81 steps (6%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Tue Nov 25 18:33:26 2025]
+localrule bamToSam:
+    input: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam
+    output: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.sam
+    jobid: 35
+    reason: Missing output files: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.sam; Input files updated by another job: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:26 2025]
+localrule readBamToBed:
+    input: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam
+    output: output/mappings/readBamToBed/RNA002_Sequins_0_Rep1.bed.gz
+    jobid: 28
+    reason: Missing output files: output/mappings/readBamToBed/RNA002_Sequins_0_Rep1.bed.gz; Input files updated by another job: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:28 2025]
+Finished jobid: 28 (Rule: readBamToBed)
+6 of 81 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:28 2025]
+localrule readBedToGff:
+    input: output/mappings/readBamToBed/RNA002_Sequins_0_Rep1.bed.gz
+    output: output/mappings/readBedToGff/RNA002_Sequins_0_Rep1.gff.gz
+    jobid: 27
+    reason: Missing output files: output/mappings/readBedToGff/RNA002_Sequins_0_Rep1.gff.gz; Input files updated by another job: output/mappings/readBamToBed/RNA002_Sequins_0_Rep1.bed.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:29 2025]
+Finished jobid: 35 (Rule: bamToSam)
+7 of 81 steps (9%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:29 2025]
+localrule polyAmapping:
+    input: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.sam, references/chrIS.sorted.fa
+    output: output/mappings/polyAmapping/RNA002_Sequins_0_Rep1.polyAsites.bed.gz
+    jobid: 34
+    reason: Missing output files: output/mappings/polyAmapping/RNA002_Sequins_0_Rep1.polyAsites.bed.gz; Input files updated by another job: output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.sam
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Will try to discard false polyA tails resulting from internal mis-priming.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:33:33 2025]
+Finished jobid: 27 (Rule: readBedToGff)
+8 of 81 steps (10%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:33 2025]
+localrule makeIntrons:
+    input: output/mappings/readBedToGff/RNA002_Sequins_0_Rep1.gff.gz
+    output: output/mappings/makeIntrons/RNA002_Sequins_0_Rep1.introns.gff.gz
+    jobid: 26
+    reason: Missing output files: output/mappings/makeIntrons/RNA002_Sequins_0_Rep1.introns.gff.gz; Input files updated by another job: output/mappings/readBedToGff/RNA002_Sequins_0_Rep1.gff.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:35 2025]
+Finished jobid: 34 (Rule: polyAmapping)
+9 of 81 steps (11%) done
+Removing temporary output output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:35 2025]
+localrule removePolyAERCCs:
+    input: output/mappings/polyAmapping/RNA002_Sequins_0_Rep1.polyAsites.bed.gz
+    output: output/mappings/removePolyAERCCs/RNA002_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed
+    jobid: 33
+    reason: Missing output files: output/mappings/removePolyAERCCs/RNA002_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed; Input files updated by another job: output/mappings/polyAmapping/RNA002_Sequins_0_Rep1.polyAsites.bed.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:35 2025]
+Finished jobid: 33 (Rule: removePolyAERCCs)
+10 of 81 steps (12%) done
+[Tue Nov 25 18:33:38 2025]
+Finished jobid: 26 (Rule: makeIntrons)
+11 of 81 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:38 2025]
+localrule getIntronMotif:
+    input: output/mappings/makeIntrons/RNA002_Sequins_0_Rep1.introns.gff.gz, references/chrIS.sorted.fa
+    output: output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.introns.gff.gz, output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.transcripts.tsv.gz
+    jobid: 25
+    reason: Missing output files: output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.transcripts.tsv.gz; Input files updated by another job: output/mappings/makeIntrons/RNA002_Sequins_0_Rep1.introns.gff.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845 (#1)
+    (W syntax) There is a possible problem with the mixing of a control
+    flow operator (e.g. return) and a low-precedence operator like
+    or.  Consider:
+    
+        sub { return $a or $b; }
+    
+    This is parsed as:
+    
+        sub { (return $a) or $b; }
+    
+    Which is effectively just:
+    
+        sub { return $a; }
+    
+    Either use parentheses or the high-precedence variant of the operator.
+    
+    Note this may be also triggered for constructs like:
+    
+        sub { 1 if die; }
+    
+Reading GFF in and extracting SJ sequences...
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304 (#2)
+    (W redefine) You redefined a subroutine.  To suppress this warning, say
+    
+        {
+            no warnings 'redefine';
+            eval "sub name { ... }";
+        }
+    
+	Processed 10000 intron records
+	Processed 20000 intron records
+	Processed 30000 intron records
+	Processed 40000 intron records
+	Processed 50000 intron records
+	Processed 60000 intron records
+	Processed 70000 intron records
+	Processed 80000 intron records
+	Processed 90000 intron records
+	Processed 100000 intron records
+	Processed 110000 intron records
+	Processed 120000 intron records
+	Processed 130000 intron records
+	Processed 140000 intron records
+	Processed 150000 intron records
+	Processed 160000 intron records
+	Processed 170000 intron records
+	Processed 180000 intron records
+	Processed 190000 intron records
+	Processed 200000 intron records
+	Processed 210000 intron records
+	Processed 220000 intron records
+	Processed 230000 intron records
+DONE reading GFF in and extracting SJ sequences.
+(Found 231074 intron records in file). Output is in:
+/tmp/53b8554d-6ddf-42b4-9499-63d83b27c0c5/RNA002_Sequins_0_Rep1.transcripts.tsv
+and
+/tmp/53b8554d-6ddf-42b4-9499-63d83b27c0c5/RNA002_Sequins_0_Rep1.introns.gff
+[Tue Nov 25 18:33:42 2025]
+Finished jobid: 25 (Rule: getIntronMotif)
+12 of 81 steps (15%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:42 2025]
+localrule integratePolyaAndSjInfo:
+    input: output/mappings/removePolyAERCCs/RNA002_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.transcripts.tsv.gz
+    output: output/mappings/integratePolyaAndSjInfo/RNA002_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv, output/mappings/removePolyAERCCs/RNA002_Sequins_0_Rep1.wrongPolyAs.list
+    jobid: 32
+    reason: Missing output files: output/mappings/integratePolyaAndSjInfo/RNA002_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv; Input files updated by another job: output/mappings/removePolyAERCCs/RNA002_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.transcripts.tsv.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:43 2025]
+Finished jobid: 32 (Rule: integratePolyaAndSjInfo)
+13 of 81 steps (16%) done
+Removing temporary output output/mappings/removePolyAERCCs/RNA002_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:43 2025]
+localrule strandGffs:
+    input: output/mappings/readBedToGff/RNA002_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/RNA002_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    output: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.gff.gz
+    jobid: 31
+    reason: Missing output files: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.gff.gz; Input files updated by another job: output/mappings/readBedToGff/RNA002_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/RNA002_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:47 2025]
+Finished jobid: 31 (Rule: strandGffs)
+14 of 81 steps (17%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:47 2025]
+localrule strandedGffToBed:
+    input: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.gff.gz
+    output: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.bed
+    jobid: 37
+    reason: Missing output files: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.bed; Input files updated by another job: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.gff.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:33:48 2025]
+Finished jobid: 37 (Rule: strandedGffToBed)
+15 of 81 steps (19%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:48 2025]
+localrule removeIntraPriming:
+    input: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.bed, references/chrIS.sorted.fa
+    output: output/mappings/intraPriming/RNA002_Sequins_0_Rep1.list, output/statsFiles/tmp/RNA002_Sequins_0_Rep1.intraPriming.stats.tsv
+    jobid: 36
+    reason: Missing output files: output/mappings/intraPriming/RNA002_Sequins_0_Rep1.list; Input files updated by another job: output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.bed
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:33:50 2025]
+Finished jobid: 36 (Rule: removeIntraPriming)
+16 of 81 steps (20%) done
+Removing temporary output output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:33:50 2025]
+localrule highConfidenceReads:
+    input: output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.gff.gz, output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam, output/mappings/intraPriming/RNA002_Sequins_0_Rep1.list
+    output: output/mappings/highConfidenceReads/RNA002_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/statsFiles/tmp/RNA002_Sequins_0_Rep1.highConfSplicedReads.stats.tsv
+    jobid: 24
+    reason: Missing output files: output/mappings/highConfidenceReads/RNA002_Sequins_0_Rep1.strandedHCGMs.gff.gz; Input files updated by another job: output/mappings/intraPriming/RNA002_Sequins_0_Rep1.list, output/mappings/getIntronMotif/RNA002_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/longReadMapping/RNA002_Sequins_0_Rep1.bam, output/mappings/strandGffs/RNA002_Sequins_0_Rep1.stranded.gff.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+80221 /tmp/700c2bd1-d4ff-4009-85c7-1d08a0824299.reads.hcSJs.list.tmp
+[M::worker_pipeline::345.022*1.98] mapped 150000 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 --MD -x splice -t 2 --secondary=no -L -a references/chrIS.sorted.fa fastqs/RNA004_Sequins_0_Rep1.fastq.gz
+[M::main] Real time: 345.056 sec; CPU: 684.469 sec; Peak RSS: 1.379 GB
+Mapping done
+Creating/sorting BAM
+[bam_sort_core] merging from 0 files and 2 in-memory blocks...
+Done creating/sorting BAM
+[Tue Nov 25 18:34:07 2025]
+Finished jobid: 65 (Rule: longReadMapping)
+17 of 81 steps (21%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Tue Nov 25 18:34:07 2025]
+localrule readBamToBed:
+    input: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam
+    output: output/mappings/readBamToBed/RNA004_Sequins_0_Rep1.bed.gz
+    jobid: 64
+    reason: Missing output files: output/mappings/readBamToBed/RNA004_Sequins_0_Rep1.bed.gz; Input files updated by another job: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:07 2025]
+localrule bamToSam:
+    input: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam
+    output: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.sam
+    jobid: 71
+    reason: Missing output files: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.sam; Input files updated by another job: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:10 2025]
+Finished jobid: 71 (Rule: bamToSam)
+18 of 81 steps (22%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:10 2025]
+localrule polyAmapping:
+    input: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.sam, references/chrIS.sorted.fa
+    output: output/mappings/polyAmapping/RNA004_Sequins_0_Rep1.polyAsites.bed.gz
+    jobid: 70
+    reason: Missing output files: output/mappings/polyAmapping/RNA004_Sequins_0_Rep1.polyAsites.bed.gz; Input files updated by another job: output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.sam
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:10 2025]
+Finished jobid: 64 (Rule: readBamToBed)
+19 of 81 steps (23%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:10 2025]
+localrule readBedToGff:
+    input: output/mappings/readBamToBed/RNA004_Sequins_0_Rep1.bed.gz
+    output: output/mappings/readBedToGff/RNA004_Sequins_0_Rep1.gff.gz
+    jobid: 63
+    reason: Missing output files: output/mappings/readBedToGff/RNA004_Sequins_0_Rep1.gff.gz; Input files updated by another job: output/mappings/readBamToBed/RNA004_Sequins_0_Rep1.bed.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Will try to discard false polyA tails resulting from internal mis-priming.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:34:16 2025]
+Finished jobid: 63 (Rule: readBedToGff)
+20 of 81 steps (25%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:16 2025]
+localrule makeIntrons:
+    input: output/mappings/readBedToGff/RNA004_Sequins_0_Rep1.gff.gz
+    output: output/mappings/makeIntrons/RNA004_Sequins_0_Rep1.introns.gff.gz
+    jobid: 62
+    reason: Missing output files: output/mappings/makeIntrons/RNA004_Sequins_0_Rep1.introns.gff.gz; Input files updated by another job: output/mappings/readBedToGff/RNA004_Sequins_0_Rep1.gff.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:16 2025]
+Finished jobid: 70 (Rule: polyAmapping)
+21 of 81 steps (26%) done
+Removing temporary output output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:16 2025]
+localrule removePolyAERCCs:
+    input: output/mappings/polyAmapping/RNA004_Sequins_0_Rep1.polyAsites.bed.gz
+    output: output/mappings/removePolyAERCCs/RNA004_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed
+    jobid: 69
+    reason: Missing output files: output/mappings/removePolyAERCCs/RNA004_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed; Input files updated by another job: output/mappings/polyAmapping/RNA004_Sequins_0_Rep1.polyAsites.bed.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:16 2025]
+Finished jobid: 69 (Rule: removePolyAERCCs)
+22 of 81 steps (27%) done
+220126 /tmp/700c2bd1-d4ff-4009-85c7-1d08a0824299.gtag.gff
+0
+[Tue Nov 25 18:34:22 2025]
+Finished jobid: 62 (Rule: makeIntrons)
+23 of 81 steps (28%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:22 2025]
+localrule getIntronMotif:
+    input: output/mappings/makeIntrons/RNA004_Sequins_0_Rep1.introns.gff.gz, references/chrIS.sorted.fa
+    output: output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.introns.gff.gz, output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.transcripts.tsv.gz
+    jobid: 61
+    reason: Missing output files: output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.transcripts.tsv.gz; Input files updated by another job: output/mappings/makeIntrons/RNA004_Sequins_0_Rep1.introns.gff.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:22 2025]
+Finished jobid: 24 (Rule: highConfidenceReads)
+24 of 81 steps (30%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:22 2025]
+localrule getHCGMintrons:
+    input: output/mappings/highConfidenceReads/RNA002_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/introns/RNA002_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    jobid: 23
+    reason: Missing output files: output/mappings/highConfidenceReads/introns/RNA002_Sequins_0_Rep1.strandedHCGMs.introns.tsv; Input files updated by another job: output/mappings/highConfidenceReads/RNA002_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845 (#1)
+    (W syntax) There is a possible problem with the mixing of a control
+    flow operator (e.g. return) and a low-precedence operator like
+    or.  Consider:
+    
+        sub { return $a or $b; }
+    
+    This is parsed as:
+    
+        sub { (return $a) or $b; }
+    
+    Which is effectively just:
+    
+        sub { return $a; }
+    
+    Either use parentheses or the high-precedence variant of the operator.
+    
+    Note this may be also triggered for constructs like:
+    
+        sub { 1 if die; }
+    
+Reading GFF in and extracting SJ sequences...
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304 (#2)
+    (W redefine) You redefined a subroutine.  To suppress this warning, say
+    
+        {
+            no warnings 'redefine';
+            eval "sub name { ... }";
+        }
+    
+	Processed 10000 intron records
+	Processed 20000 intron records
+	Processed 30000 intron records
+	Processed 40000 intron records
+	Processed 50000 intron records
+	Processed 60000 intron records
+	Processed 70000 intron records
+	Processed 80000 intron records
+	Processed 90000 intron records
+	Processed 100000 intron records
+	Processed 110000 intron records
+	Processed 120000 intron records
+	Processed 130000 intron records
+	Processed 140000 intron records
+	Processed 150000 intron records
+	Processed 160000 intron records
+	Processed 170000 intron records
+	Processed 180000 intron records
+	Processed 190000 intron records
+	Processed 200000 intron records
+	Processed 210000 intron records
+	Processed 220000 intron records
+	Processed 230000 intron records
+	Processed 240000 intron records
+	Processed 250000 intron records
+	Processed 260000 intron records
+	Processed 270000 intron records
+	Processed 280000 intron records
+	Processed 290000 intron records
+DONE reading GFF in and extracting SJ sequences.
+[Tue Nov 25 18:34:24 2025]
+Finished jobid: 23 (Rule: getHCGMintrons)
+25 of 81 steps (31%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:24 2025]
+localrule getHiSeqSupportedHCGMs:
+    input: /dev/null, output/mappings/highConfidenceReads/introns/RNA002_Sequins_0_Rep1.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/RNA002_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/HiSS/RNA002_Sequins_0_Rep1.HiSS.gff.gz
+    jobid: 22
+    reason: Missing output files: output/mappings/highConfidenceReads/HiSS/RNA002_Sequins_0_Rep1.HiSS.gff.gz; Input files updated by another job: output/mappings/highConfidenceReads/RNA002_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/mappings/highConfidenceReads/introns/RNA002_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+#########################
+Use HiSeq SJs: donot
+#########################
+[Tue Nov 25 18:34:24 2025]
+Finished jobid: 22 (Rule: getHiSeqSupportedHCGMs)
+26 of 81 steps (32%) done
+Removing temporary output output/mappings/highConfidenceReads/introns/RNA002_Sequins_0_Rep1.strandedHCGMs.introns.tsv.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:24 2025]
+localrule mergedReads:
+    input: output/mappings/highConfidenceReads/HiSS/RNA002_Sequins_0_Rep1.HiSS.gff.gz
+    output: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    jobid: 21
+    reason: Missing output files: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff; Input files updated by another job: output/mappings/highConfidenceReads/HiSS/RNA002_Sequins_0_Rep1.HiSS.gff.gz
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): RNA002_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 5 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 5 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+(Found 292525 intron records in file). Output is in:
+/tmp/7c3ef77e-be8e-4e71-b1e6-bf9a3677fe51/RNA004_Sequins_0_Rep1.transcripts.tsv
+and
+/tmp/7c3ef77e-be8e-4e71-b1e6-bf9a3677fe51/RNA004_Sequins_0_Rep1.introns.gff
+Done. Found 233223 exons and 75775 transcripts.
+Building contigs (sets of overlapping transcripts)...
+[Tue Nov 25 18:34:27 2025]
+Finished jobid: 61 (Rule: getIntronMotif)
+27 of 81 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:27 2025]
+localrule integratePolyaAndSjInfo:
+    input: output/mappings/removePolyAERCCs/RNA004_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.transcripts.tsv.gz
+    output: output/mappings/integratePolyaAndSjInfo/RNA004_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv, output/mappings/removePolyAERCCs/RNA004_Sequins_0_Rep1.wrongPolyAs.list
+    jobid: 68
+    reason: Missing output files: output/mappings/integratePolyaAndSjInfo/RNA004_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv; Input files updated by another job: output/mappings/removePolyAERCCs/RNA004_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.transcripts.tsv.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Done. Built 68 contigs.
+Comparing transcript structures...
+[Tue Nov 25 18:34:28 2025]
+Finished jobid: 68 (Rule: integratePolyaAndSjInfo)
+28 of 81 steps (35%) done
+Removing temporary output output/mappings/removePolyAERCCs/RNA004_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:28 2025]
+localrule strandGffs:
+    input: output/mappings/readBedToGff/RNA004_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/RNA004_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    output: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.gff.gz
+    jobid: 67
+    reason: Missing output files: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.gff.gz; Input files updated by another job: output/mappings/integratePolyaAndSjInfo/RNA004_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv, output/mappings/readBedToGff/RNA004_Sequins_0_Rep1.gff.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:33 2025]
+Finished jobid: 67 (Rule: strandGffs)
+29 of 81 steps (36%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:33 2025]
+localrule strandedGffToBed:
+    input: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.gff.gz
+    output: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.bed
+    jobid: 73
+    reason: Missing output files: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.bed; Input files updated by another job: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.gff.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:34:35 2025]
+Finished jobid: 73 (Rule: strandedGffToBed)
+30 of 81 steps (37%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:35 2025]
+localrule removeIntraPriming:
+    input: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.bed, references/chrIS.sorted.fa
+    output: output/mappings/intraPriming/RNA004_Sequins_0_Rep1.list, output/statsFiles/tmp/RNA004_Sequins_0_Rep1.intraPriming.stats.tsv
+    jobid: 72
+    reason: Missing output files: output/mappings/intraPriming/RNA004_Sequins_0_Rep1.list; Input files updated by another job: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.bed
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:34:37 2025]
+Finished jobid: 72 (Rule: removeIntraPriming)
+31 of 81 steps (38%) done
+Removing temporary output output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:34:37 2025]
+localrule highConfidenceReads:
+    input: output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.gff.gz, output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam, output/mappings/intraPriming/RNA004_Sequins_0_Rep1.list
+    output: output/mappings/highConfidenceReads/RNA004_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/statsFiles/tmp/RNA004_Sequins_0_Rep1.highConfSplicedReads.stats.tsv
+    jobid: 60
+    reason: Missing output files: output/mappings/highConfidenceReads/RNA004_Sequins_0_Rep1.strandedHCGMs.gff.gz; Input files updated by another job: output/mappings/strandGffs/RNA004_Sequins_0_Rep1.stranded.gff.gz, output/mappings/intraPriming/RNA004_Sequins_0_Rep1.list, output/mappings/getIntronMotif/RNA004_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/longReadMapping/RNA004_Sequins_0_Rep1.bam
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+96686 /tmp/d83bcb9a-adf4-42d8-8448-d53e825edea8.reads.hcSJs.list.tmp
+298523 /tmp/d83bcb9a-adf4-42d8-8448-d53e825edea8.gtag.gff
+0
+[Tue Nov 25 18:35:15 2025]
+Finished jobid: 60 (Rule: highConfidenceReads)
+32 of 81 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:35:15 2025]
+localrule getHCGMintrons:
+    input: output/mappings/highConfidenceReads/RNA004_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/introns/RNA004_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    jobid: 59
+    reason: Missing output files: output/mappings/highConfidenceReads/introns/RNA004_Sequins_0_Rep1.strandedHCGMs.introns.tsv; Input files updated by another job: output/mappings/highConfidenceReads/RNA004_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:35:17 2025]
+Finished jobid: 59 (Rule: getHCGMintrons)
+33 of 81 steps (41%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:35:17 2025]
+localrule getHiSeqSupportedHCGMs:
+    input: /dev/null, output/mappings/highConfidenceReads/introns/RNA004_Sequins_0_Rep1.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/RNA004_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/HiSS/RNA004_Sequins_0_Rep1.HiSS.gff.gz
+    jobid: 58
+    reason: Missing output files: output/mappings/highConfidenceReads/HiSS/RNA004_Sequins_0_Rep1.HiSS.gff.gz; Input files updated by another job: output/mappings/highConfidenceReads/RNA004_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/mappings/highConfidenceReads/introns/RNA004_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+#########################
+Use HiSeq SJs: donot
+#########################
+[Tue Nov 25 18:35:17 2025]
+Finished jobid: 58 (Rule: getHiSeqSupportedHCGMs)
+34 of 81 steps (42%) done
+Removing temporary output output/mappings/highConfidenceReads/introns/RNA004_Sequins_0_Rep1.strandedHCGMs.introns.tsv.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:35:17 2025]
+localrule mergedReads:
+    input: output/mappings/highConfidenceReads/HiSS/RNA004_Sequins_0_Rep1.HiSS.gff.gz
+    output: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    jobid: 57
+    reason: Missing output files: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff; Input files updated by another job: output/mappings/highConfidenceReads/HiSS/RNA004_Sequins_0_Rep1.HiSS.gff.gz
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): RNA004_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 5 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 5 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 325783 exons and 107585 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 69 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:35:25 2025]
+Finished jobid: 21 (Rule: mergedReads)
+35 of 81 steps (43%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:35:25 2025]
+localrule splitTmsBySplicedStatus:
+    input: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    output: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    jobid: 20
+    reason: Missing output files: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    wildcards: techname=RNA002, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1, splicedStatus=all
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:35:26 2025]
+Finished jobid: 20 (Rule: splitTmsBySplicedStatus)
+36 of 81 steps (44%) done
+Removing temporary output output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:35:26 2025]
+localrule catMergedReadsForGroupedSampleReps:
+    input: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    output: output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    jobid: 79
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff; Input files updated by another job: output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    wildcards: groupedSampleRepBasename=RNA002_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:35:26 2025]
+Finished jobid: 79 (Rule: catMergedReadsForGroupedSampleReps)
+37 of 81 steps (46%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:35:26 2025]
+localrule mergedReadsGroupedSampleReps:
+    input: output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    output: output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 78
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff
+    wildcards: groupedSampleRepBasename=RNA002_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Min Read Support: 1
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): RNA002_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 0 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 0 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 5539 exons and 1149 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 68 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:35:27 2025]
+Finished jobid: 78 (Rule: mergedReadsGroupedSampleReps)
+38 of 81 steps (47%) done
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt.
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.
+Done.
+[Tue Nov 25 18:36:34 2025]
+Finished jobid: 57 (Rule: mergedReads)
+39 of 81 steps (48%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:36:34 2025]
+localrule splitTmsBySplicedStatus:
+    input: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    output: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    jobid: 56
+    reason: Missing output files: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    wildcards: techname=RNA004, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1, splicedStatus=all
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:36:35 2025]
+Finished jobid: 56 (Rule: splitTmsBySplicedStatus)
+40 of 81 steps (49%) done
+Removing temporary output output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:36:35 2025]
+localrule catMergedReadsForGroupedSampleReps:
+    input: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    output: output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    jobid: 81
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff; Input files updated by another job: output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    wildcards: groupedSampleRepBasename=RNA004_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:36:35 2025]
+Finished jobid: 81 (Rule: catMergedReadsForGroupedSampleReps)
+41 of 81 steps (51%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:36:35 2025]
+localrule mergedReadsGroupedSampleReps:
+    input: output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    output: output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 80
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff
+    wildcards: groupedSampleRepBasename=RNA004_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Min Read Support: 1
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): RNA004_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 0 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 0 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 6384 exons and 1252 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 69 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:36:36 2025]
+Finished jobid: 80 (Rule: mergedReadsGroupedSampleReps)
+42 of 81 steps (52%) done
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt.
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.
+[M::worker_pipeline::556.623*1.99] mapped 150000 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 --MD -x splice -t 2 --secondary=no -L -a references/chrIS.sorted.fa fastqs/LSK114_Sequins_0_Rep1.fastq.gz
+[M::main] Real time: 556.659 sec; CPU: 1107.015 sec; Peak RSS: 1.267 GB
+Mapping done
+Creating/sorting BAM
+[bam_sort_core] merging from 0 files and 2 in-memory blocks...
+Done creating/sorting BAM
+[Tue Nov 25 18:37:40 2025]
+Finished jobid: 10 (Rule: longReadMapping)
+43 of 81 steps (53%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Tue Nov 25 18:37:40 2025]
+localrule readBamToBed:
+    input: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam
+    output: output/mappings/readBamToBed/LSK114_Sequins_0_Rep1.bed.gz
+    jobid: 9
+    reason: Missing output files: output/mappings/readBamToBed/LSK114_Sequins_0_Rep1.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:37:40 2025]
+localrule bamToSam:
+    input: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam
+    output: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.sam
+    jobid: 17
+    reason: Missing output files: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.sam; Input files updated by another job: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:37:43 2025]
+Finished jobid: 17 (Rule: bamToSam)
+44 of 81 steps (54%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:37:43 2025]
+localrule polyAmapping:
+    input: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.sam, references/chrIS.sorted.fa
+    output: output/mappings/polyAmapping/LSK114_Sequins_0_Rep1.polyAsites.bed.gz
+    jobid: 16
+    reason: Missing output files: output/mappings/polyAmapping/LSK114_Sequins_0_Rep1.polyAsites.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.sam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Will try to discard false polyA tails resulting from internal mis-priming.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:37:43 2025]
+Finished jobid: 9 (Rule: readBamToBed)
+45 of 81 steps (56%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:37:43 2025]
+localrule readBedToGff:
+    input: output/mappings/readBamToBed/LSK114_Sequins_0_Rep1.bed.gz
+    output: output/mappings/readBedToGff/LSK114_Sequins_0_Rep1.gff.gz
+    jobid: 8
+    reason: Missing output files: output/mappings/readBedToGff/LSK114_Sequins_0_Rep1.gff.gz; Input files updated by another job: output/mappings/readBamToBed/LSK114_Sequins_0_Rep1.bed.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:37:46 2025]
+Finished jobid: 16 (Rule: polyAmapping)
+46 of 81 steps (57%) done
+Removing temporary output output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:37:46 2025]
+localrule removePolyAERCCs:
+    input: output/mappings/polyAmapping/LSK114_Sequins_0_Rep1.polyAsites.bed.gz
+    output: output/mappings/removePolyAERCCs/LSK114_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed
+    jobid: 15
+    reason: Missing output files: output/mappings/removePolyAERCCs/LSK114_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed; Input files updated by another job: output/mappings/polyAmapping/LSK114_Sequins_0_Rep1.polyAsites.bed.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:37:46 2025]
+Finished jobid: 15 (Rule: removePolyAERCCs)
+47 of 81 steps (58%) done
+[Tue Nov 25 18:37:49 2025]
+Finished jobid: 8 (Rule: readBedToGff)
+48 of 81 steps (59%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:37:49 2025]
+localrule makeIntrons:
+    input: output/mappings/readBedToGff/LSK114_Sequins_0_Rep1.gff.gz
+    output: output/mappings/makeIntrons/LSK114_Sequins_0_Rep1.introns.gff.gz
+    jobid: 7
+    reason: Missing output files: output/mappings/makeIntrons/LSK114_Sequins_0_Rep1.introns.gff.gz; Input files updated by another job: output/mappings/readBedToGff/LSK114_Sequins_0_Rep1.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:37:57 2025]
+Finished jobid: 7 (Rule: makeIntrons)
+49 of 81 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:37:57 2025]
+localrule getIntronMotif:
+    input: output/mappings/makeIntrons/LSK114_Sequins_0_Rep1.introns.gff.gz, references/chrIS.sorted.fa
+    output: output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.introns.gff.gz, output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.transcripts.tsv.gz
+    jobid: 6
+    reason: Missing output files: output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.transcripts.tsv.gz; Input files updated by another job: output/mappings/makeIntrons/LSK114_Sequins_0_Rep1.introns.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845 (#1)
+    (W syntax) There is a possible problem with the mixing of a control
+    flow operator (e.g. return) and a low-precedence operator like
+    or.  Consider:
+    
+        sub { return $a or $b; }
+    
+    This is parsed as:
+    
+        sub { (return $a) or $b; }
+    
+    Which is effectively just:
+    
+        sub { return $a; }
+    
+    Either use parentheses or the high-precedence variant of the operator.
+    
+    Note this may be also triggered for constructs like:
+    
+        sub { 1 if die; }
+    
+Reading GFF in and extracting SJ sequences...
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304 (#2)
+    (W redefine) You redefined a subroutine.  To suppress this warning, say
+    
+        {
+            no warnings 'redefine';
+            eval "sub name { ... }";
+        }
+    
+	Processed 10000 intron records
+	Processed 20000 intron records
+	Processed 30000 intron records
+	Processed 40000 intron records
+	Processed 50000 intron records
+	Processed 60000 intron records
+	Processed 70000 intron records
+	Processed 80000 intron records
+	Processed 90000 intron records
+	Processed 100000 intron records
+	Processed 110000 intron records
+	Processed 120000 intron records
+	Processed 130000 intron records
+	Processed 140000 intron records
+	Processed 150000 intron records
+	Processed 160000 intron records
+	Processed 170000 intron records
+	Processed 180000 intron records
+	Processed 190000 intron records
+	Processed 200000 intron records
+	Processed 210000 intron records
+	Processed 220000 intron records
+	Processed 230000 intron records
+	Processed 240000 intron records
+	Processed 250000 intron records
+	Processed 260000 intron records
+	Processed 270000 intron records
+	Processed 280000 intron records
+	Processed 290000 intron records
+	Processed 300000 intron records
+	Processed 310000 intron records
+	Processed 320000 intron records
+	Processed 330000 intron records
+	Processed 340000 intron records
+	Processed 350000 intron records
+DONE reading GFF in and extracting SJ sequences.
+(Found 355623 intron records in file). Output is in:
+/tmp/f69665bf-ae97-4489-aeba-826ccacc1428/LSK114_Sequins_0_Rep1.transcripts.tsv
+and
+/tmp/f69665bf-ae97-4489-aeba-826ccacc1428/LSK114_Sequins_0_Rep1.introns.gff
+[Tue Nov 25 18:38:02 2025]
+Finished jobid: 6 (Rule: getIntronMotif)
+50 of 81 steps (62%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:02 2025]
+localrule integratePolyaAndSjInfo:
+    input: output/mappings/removePolyAERCCs/LSK114_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.transcripts.tsv.gz
+    output: output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv, output/mappings/removePolyAERCCs/LSK114_Sequins_0_Rep1.wrongPolyAs.list
+    jobid: 14
+    reason: Missing output files: output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv; Input files updated by another job: output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/removePolyAERCCs/LSK114_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:38:03 2025]
+Finished jobid: 14 (Rule: integratePolyaAndSjInfo)
+51 of 81 steps (63%) done
+Removing temporary output output/mappings/removePolyAERCCs/LSK114_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:03 2025]
+localrule strandGffs:
+    input: output/mappings/readBedToGff/LSK114_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    output: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.gff.gz
+    jobid: 13
+    reason: Missing output files: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.gff.gz; Input files updated by another job: output/mappings/readBedToGff/LSK114_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:38:09 2025]
+Finished jobid: 13 (Rule: strandGffs)
+52 of 81 steps (64%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:09 2025]
+localrule strandedGffToBed:
+    input: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.gff.gz
+    output: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.bed
+    jobid: 19
+    reason: Missing output files: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.bed; Input files updated by another job: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:38:11 2025]
+Finished jobid: 19 (Rule: strandedGffToBed)
+53 of 81 steps (65%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:11 2025]
+localrule removeIntraPriming:
+    input: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.bed, references/chrIS.sorted.fa
+    output: output/mappings/intraPriming/LSK114_Sequins_0_Rep1.list, output/statsFiles/tmp/LSK114_Sequins_0_Rep1.intraPriming.stats.tsv
+    jobid: 18
+    reason: Missing output files: output/mappings/intraPriming/LSK114_Sequins_0_Rep1.list; Input files updated by another job: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.bed
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:38:13 2025]
+Finished jobid: 18 (Rule: removeIntraPriming)
+54 of 81 steps (67%) done
+Removing temporary output output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:13 2025]
+localrule highConfidenceReads:
+    input: output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.gff.gz, output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam, output/mappings/intraPriming/LSK114_Sequins_0_Rep1.list
+    output: output/mappings/highConfidenceReads/LSK114_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/statsFiles/tmp/LSK114_Sequins_0_Rep1.highConfSplicedReads.stats.tsv
+    jobid: 5
+    reason: Missing output files: output/mappings/highConfidenceReads/LSK114_Sequins_0_Rep1.strandedHCGMs.gff.gz; Input files updated by another job: output/mappings/strandGffs/LSK114_Sequins_0_Rep1.stranded.gff.gz, output/mappings/longReadMapping/LSK114_Sequins_0_Rep1.bam, output/mappings/getIntronMotif/LSK114_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/intraPriming/LSK114_Sequins_0_Rep1.list
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+104996 /tmp/640b0077-c4ea-49b8-af05-190d40220f81.reads.hcSJs.list.tmp
+357620 /tmp/640b0077-c4ea-49b8-af05-190d40220f81.gtag.gff
+0
+[Tue Nov 25 18:38:49 2025]
+Finished jobid: 5 (Rule: highConfidenceReads)
+55 of 81 steps (68%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:49 2025]
+localrule getHCGMintrons:
+    input: output/mappings/highConfidenceReads/LSK114_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    jobid: 4
+    reason: Missing output files: output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_Rep1.strandedHCGMs.introns.tsv; Input files updated by another job: output/mappings/highConfidenceReads/LSK114_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:38:52 2025]
+Finished jobid: 4 (Rule: getHCGMintrons)
+56 of 81 steps (69%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:52 2025]
+localrule getHiSeqSupportedHCGMs:
+    input: /dev/null, output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_Rep1.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/LSK114_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_Rep1.HiSS.gff.gz
+    jobid: 3
+    reason: Missing output files: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_Rep1.HiSS.gff.gz; Input files updated by another job: output/mappings/highConfidenceReads/LSK114_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+#########################
+Use HiSeq SJs: donot
+#########################
+[Tue Nov 25 18:38:52 2025]
+Finished jobid: 3 (Rule: getHiSeqSupportedHCGMs)
+57 of 81 steps (70%) done
+Removing temporary output output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_Rep1.strandedHCGMs.introns.tsv.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:38:52 2025]
+localrule mergedReads:
+    input: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_Rep1.HiSS.gff.gz
+    output: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    jobid: 2
+    reason: Missing output files: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff; Input files updated by another job: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_Rep1.HiSS.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK114_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 5 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 5 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 361796 exons and 93723 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 64 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:39:25 2025]
+Finished jobid: 2 (Rule: mergedReads)
+58 of 81 steps (72%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:39:25 2025]
+localrule splitTmsBySplicedStatus:
+    input: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    output: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    jobid: 1
+    reason: Missing output files: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1, splicedStatus=all
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:39:27 2025]
+Finished jobid: 1 (Rule: splitTmsBySplicedStatus)
+59 of 81 steps (73%) done
+Removing temporary output output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:39:27 2025]
+localrule catMergedReadsForGroupedSampleReps:
+    input: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    output: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    jobid: 77
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff; Input files updated by another job: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    wildcards: groupedSampleRepBasename=LSK114_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:39:27 2025]
+Finished jobid: 77 (Rule: catMergedReadsForGroupedSampleReps)
+60 of 81 steps (74%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:39:27 2025]
+localrule mergedReadsGroupedSampleReps:
+    input: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    output: output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 76
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff
+    wildcards: groupedSampleRepBasename=LSK114_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Min Read Support: 1
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK114_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 0 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 0 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 5546 exons and 1139 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 64 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:39:28 2025]
+Finished jobid: 76 (Rule: mergedReadsGroupedSampleReps)
+61 of 81 steps (75%) done
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt.
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.
+[M::worker_pipeline::744.421*1.99] mapped 150000 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 --MD -x splice -t 2 --secondary=no -L -a references/chrIS.sorted.fa fastqs/LSK109_Sequins_0_Rep1.fastq.gz
+[M::main] Real time: 744.457 sec; CPU: 1480.846 sec; Peak RSS: 1.401 GB
+Mapping done
+Creating/sorting BAM
+[bam_sort_core] merging from 0 files and 2 in-memory blocks...
+Done creating/sorting BAM
+[Tue Nov 25 18:40:49 2025]
+Finished jobid: 47 (Rule: longReadMapping)
+62 of 81 steps (77%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Tue Nov 25 18:40:49 2025]
+localrule readBamToBed:
+    input: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam
+    output: output/mappings/readBamToBed/LSK109_Sequins_0_Rep1.bed.gz
+    jobid: 46
+    reason: Missing output files: output/mappings/readBamToBed/LSK109_Sequins_0_Rep1.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:40:49 2025]
+localrule bamToSam:
+    input: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam
+    output: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.sam
+    jobid: 53
+    reason: Missing output files: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.sam; Input files updated by another job: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:40:53 2025]
+Finished jobid: 53 (Rule: bamToSam)
+63 of 81 steps (78%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:40:53 2025]
+localrule polyAmapping:
+    input: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.sam, references/chrIS.sorted.fa
+    output: output/mappings/polyAmapping/LSK109_Sequins_0_Rep1.polyAsites.bed.gz
+    jobid: 52
+    reason: Missing output files: output/mappings/polyAmapping/LSK109_Sequins_0_Rep1.polyAsites.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.sam
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Will try to discard false polyA tails resulting from internal mis-priming.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:40:53 2025]
+Finished jobid: 46 (Rule: readBamToBed)
+64 of 81 steps (79%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:40:53 2025]
+localrule readBedToGff:
+    input: output/mappings/readBamToBed/LSK109_Sequins_0_Rep1.bed.gz
+    output: output/mappings/readBedToGff/LSK109_Sequins_0_Rep1.gff.gz
+    jobid: 45
+    reason: Missing output files: output/mappings/readBedToGff/LSK109_Sequins_0_Rep1.gff.gz; Input files updated by another job: output/mappings/readBamToBed/LSK109_Sequins_0_Rep1.bed.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:40:59 2025]
+Finished jobid: 52 (Rule: polyAmapping)
+65 of 81 steps (80%) done
+Removing temporary output output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:40:59 2025]
+localrule removePolyAERCCs:
+    input: output/mappings/polyAmapping/LSK109_Sequins_0_Rep1.polyAsites.bed.gz
+    output: output/mappings/removePolyAERCCs/LSK109_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed
+    jobid: 51
+    reason: Missing output files: output/mappings/removePolyAERCCs/LSK109_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed; Input files updated by another job: output/mappings/polyAmapping/LSK109_Sequins_0_Rep1.polyAsites.bed.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:40:59 2025]
+Finished jobid: 51 (Rule: removePolyAERCCs)
+66 of 81 steps (81%) done
+[Tue Nov 25 18:41:01 2025]
+Finished jobid: 45 (Rule: readBedToGff)
+67 of 81 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:01 2025]
+localrule makeIntrons:
+    input: output/mappings/readBedToGff/LSK109_Sequins_0_Rep1.gff.gz
+    output: output/mappings/makeIntrons/LSK109_Sequins_0_Rep1.introns.gff.gz
+    jobid: 44
+    reason: Missing output files: output/mappings/makeIntrons/LSK109_Sequins_0_Rep1.introns.gff.gz; Input files updated by another job: output/mappings/readBedToGff/LSK109_Sequins_0_Rep1.gff.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:41:10 2025]
+Finished jobid: 44 (Rule: makeIntrons)
+68 of 81 steps (84%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:10 2025]
+localrule getIntronMotif:
+    input: output/mappings/makeIntrons/LSK109_Sequins_0_Rep1.introns.gff.gz, references/chrIS.sorted.fa
+    output: output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.introns.gff.gz, output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.transcripts.tsv.gz
+    jobid: 43
+    reason: Missing output files: output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.transcripts.tsv.gz; Input files updated by another job: output/mappings/makeIntrons/LSK109_Sequins_0_Rep1.introns.gff.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845 (#1)
+    (W syntax) There is a possible problem with the mixing of a control
+    flow operator (e.g. return) and a low-precedence operator like
+    or.  Consider:
+    
+        sub { return $a or $b; }
+    
+    This is parsed as:
+    
+        sub { (return $a) or $b; }
+    
+    Which is effectively just:
+    
+        sub { return $a; }
+    
+    Either use parentheses or the high-precedence variant of the operator.
+    
+    Note this may be also triggered for constructs like:
+    
+        sub { 1 if die; }
+    
+Reading GFF in and extracting SJ sequences...
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304 (#2)
+    (W redefine) You redefined a subroutine.  To suppress this warning, say
+    
+        {
+            no warnings 'redefine';
+            eval "sub name { ... }";
+        }
+    
+	Processed 10000 intron records
+	Processed 20000 intron records
+	Processed 30000 intron records
+	Processed 40000 intron records
+	Processed 50000 intron records
+	Processed 60000 intron records
+	Processed 70000 intron records
+	Processed 80000 intron records
+	Processed 90000 intron records
+	Processed 100000 intron records
+	Processed 110000 intron records
+	Processed 120000 intron records
+	Processed 130000 intron records
+	Processed 140000 intron records
+	Processed 150000 intron records
+	Processed 160000 intron records
+	Processed 170000 intron records
+	Processed 180000 intron records
+	Processed 190000 intron records
+	Processed 200000 intron records
+	Processed 210000 intron records
+	Processed 220000 intron records
+	Processed 230000 intron records
+	Processed 240000 intron records
+	Processed 250000 intron records
+	Processed 260000 intron records
+	Processed 270000 intron records
+	Processed 280000 intron records
+	Processed 290000 intron records
+	Processed 300000 intron records
+	Processed 310000 intron records
+	Processed 320000 intron records
+	Processed 330000 intron records
+	Processed 340000 intron records
+	Processed 350000 intron records
+	Processed 360000 intron records
+	Processed 370000 intron records
+	Processed 380000 intron records
+	Processed 390000 intron records
+	Processed 400000 intron records
+	Processed 410000 intron records
+	Processed 420000 intron records
+	Processed 430000 intron records
+DONE reading GFF in and extracting SJ sequences.
+(Found 434966 intron records in file). Output is in:
+/tmp/64e93ada-c981-407b-ad38-c36dccb4a273/LSK109_Sequins_0_Rep1.transcripts.tsv
+and
+/tmp/64e93ada-c981-407b-ad38-c36dccb4a273/LSK109_Sequins_0_Rep1.introns.gff
+[Tue Nov 25 18:41:16 2025]
+Finished jobid: 43 (Rule: getIntronMotif)
+69 of 81 steps (85%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:16 2025]
+localrule integratePolyaAndSjInfo:
+    input: output/mappings/removePolyAERCCs/LSK109_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.transcripts.tsv.gz
+    output: output/mappings/integratePolyaAndSjInfo/LSK109_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv, output/mappings/removePolyAERCCs/LSK109_Sequins_0_Rep1.wrongPolyAs.list
+    jobid: 50
+    reason: Missing output files: output/mappings/integratePolyaAndSjInfo/LSK109_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv; Input files updated by another job: output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/removePolyAERCCs/LSK109_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:41:17 2025]
+Finished jobid: 50 (Rule: integratePolyaAndSjInfo)
+70 of 81 steps (86%) done
+Removing temporary output output/mappings/removePolyAERCCs/LSK109_Sequins_0_Rep1.polyAsitesNoErcc.tmp.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:17 2025]
+localrule strandGffs:
+    input: output/mappings/readBedToGff/LSK109_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/LSK109_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    output: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.gff.gz
+    jobid: 49
+    reason: Missing output files: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.gff.gz; Input files updated by another job: output/mappings/readBedToGff/LSK109_Sequins_0_Rep1.gff.gz, output/mappings/integratePolyaAndSjInfo/LSK109_Sequins_0_Rep1.polyA+SJ.strandInfo.tsv
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:41:24 2025]
+Finished jobid: 49 (Rule: strandGffs)
+71 of 81 steps (88%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:24 2025]
+localrule strandedGffToBed:
+    input: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.gff.gz
+    output: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.bed
+    jobid: 55
+    reason: Missing output files: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.bed; Input files updated by another job: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.gff.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:41:26 2025]
+Finished jobid: 55 (Rule: strandedGffToBed)
+72 of 81 steps (89%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:26 2025]
+localrule removeIntraPriming:
+    input: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.bed, references/chrIS.sorted.fa
+    output: output/mappings/intraPriming/LSK109_Sequins_0_Rep1.list, output/statsFiles/tmp/LSK109_Sequins_0_Rep1.intraPriming.stats.tsv
+    jobid: 54
+    reason: Missing output files: output/mappings/intraPriming/LSK109_Sequins_0_Rep1.list; Input files updated by another job: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.bed
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Tue Nov 25 18:41:29 2025]
+Finished jobid: 54 (Rule: removeIntraPriming)
+73 of 81 steps (90%) done
+Removing temporary output output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:41:29 2025]
+localrule highConfidenceReads:
+    input: output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.gff.gz, output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam, output/mappings/intraPriming/LSK109_Sequins_0_Rep1.list
+    output: output/mappings/highConfidenceReads/LSK109_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/statsFiles/tmp/LSK109_Sequins_0_Rep1.highConfSplicedReads.stats.tsv
+    jobid: 42
+    reason: Missing output files: output/mappings/highConfidenceReads/LSK109_Sequins_0_Rep1.strandedHCGMs.gff.gz; Input files updated by another job: output/mappings/strandGffs/LSK109_Sequins_0_Rep1.stranded.gff.gz, output/mappings/intraPriming/LSK109_Sequins_0_Rep1.list, output/mappings/getIntronMotif/LSK109_Sequins_0_Rep1.transcripts.tsv.gz, output/mappings/longReadMapping/LSK109_Sequins_0_Rep1.bam
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+117802 /tmp/62ebaa3d-af96-4184-ab50-26ca79927874.reads.hcSJs.list.tmp
+334472 /tmp/62ebaa3d-af96-4184-ab50-26ca79927874.gtag.gff
+0
+[Tue Nov 25 18:42:09 2025]
+Finished jobid: 42 (Rule: highConfidenceReads)
+74 of 81 steps (91%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:09 2025]
+localrule getHCGMintrons:
+    input: output/mappings/highConfidenceReads/LSK109_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/introns/LSK109_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    jobid: 41
+    reason: Missing output files: output/mappings/highConfidenceReads/introns/LSK109_Sequins_0_Rep1.strandedHCGMs.introns.tsv; Input files updated by another job: output/mappings/highConfidenceReads/LSK109_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:42:12 2025]
+Finished jobid: 41 (Rule: getHCGMintrons)
+75 of 81 steps (93%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:12 2025]
+localrule getHiSeqSupportedHCGMs:
+    input: /dev/null, output/mappings/highConfidenceReads/introns/LSK109_Sequins_0_Rep1.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/LSK109_Sequins_0_Rep1.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/HiSS/LSK109_Sequins_0_Rep1.HiSS.gff.gz
+    jobid: 40
+    reason: Missing output files: output/mappings/highConfidenceReads/HiSS/LSK109_Sequins_0_Rep1.HiSS.gff.gz; Input files updated by another job: output/mappings/highConfidenceReads/LSK109_Sequins_0_Rep1.strandedHCGMs.gff.gz, output/mappings/highConfidenceReads/introns/LSK109_Sequins_0_Rep1.strandedHCGMs.introns.tsv
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+#########################
+Use HiSeq SJs: donot
+#########################
+[Tue Nov 25 18:42:12 2025]
+Finished jobid: 40 (Rule: getHiSeqSupportedHCGMs)
+76 of 81 steps (94%) done
+Removing temporary output output/mappings/highConfidenceReads/introns/LSK109_Sequins_0_Rep1.strandedHCGMs.introns.tsv.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:12 2025]
+localrule mergedReads:
+    input: output/mappings/highConfidenceReads/HiSS/LSK109_Sequins_0_Rep1.HiSS.gff.gz
+    output: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    jobid: 39
+    reason: Missing output files: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff; Input files updated by another job: output/mappings/highConfidenceReads/HiSS/LSK109_Sequins_0_Rep1.HiSS.gff.gz
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK109_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 5 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 5 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 340778 exons and 89360 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 66 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:42:48 2025]
+Finished jobid: 39 (Rule: mergedReads)
+77 of 81 steps (95%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:48 2025]
+localrule splitTmsBySplicedStatus:
+    input: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    output: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    jobid: 38
+    reason: Missing output files: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff
+    wildcards: techname=LSK109, capDesign=Sequins, sizeFrac=0, sampleRep=Rep1, minReadSupport=1, splicedStatus=all
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:42:50 2025]
+Finished jobid: 38 (Rule: splitTmsBySplicedStatus)
+78 of 81 steps (96%) done
+Removing temporary output output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.endSupport-all.gff.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:50 2025]
+localrule catMergedReadsForGroupedSampleReps:
+    input: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    output: output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    jobid: 75
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt; Input files updated by another job: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    wildcards: groupedSampleRepBasename=LSK109_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:42:50 2025]
+Finished jobid: 75 (Rule: catMergedReadsForGroupedSampleReps)
+79 of 81 steps (98%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:50 2025]
+localrule mergedReadsGroupedSampleReps:
+    input: output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    output: output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 74
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    wildcards: groupedSampleRepBasename=LSK109_Sequins_0_Rep1, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Min Read Support: 1
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK109_Sequins_0_Rep1.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 0 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 0 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 6473 exons and 1175 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 66 contigs.
+Comparing transcript structures...
+Done.
+[Tue Nov 25 18:42:52 2025]
+Finished jobid: 74 (Rule: mergedReadsGroupedSampleReps)
+80 of 81 steps (99%) done
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.countFiles.txt.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Tue Nov 25 18:42:52 2025]
+localrule all:
+    input: output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 0
+    reason: Input files updated by another job: output/mappings/mergedReads/LSK109_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/RNA002_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/LSK109_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/RNA004_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/LSK114_Sequins_0_Rep1.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/RNA002_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/RNA004_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_Rep1.min1reads.splicing_status-all.endSupport-all.gff.gz
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Tue Nov 25 18:42:52 2025]
+Finished jobid: 0 (Rule: all)
+81 of 81 steps (100%) done
+Complete log(s): /opt/benchmarking/data/20251118_Benchmarking/LyRic_testRun1/.snakemake/log/2025-11-25T182810.347045.snakemake.log
+LyRic workflow finished smoothly.

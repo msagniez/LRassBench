@@ -25,15 +25,83 @@ baseline(){
 	rm ${Sample}_converted.gff
 }
 
-stringtie2(){
-#Stringtie2 - Pertea M, Pertea GM, Antonescu CM, Chang T-C, Mendell JT, Salzberg SL. 2015. StringTie enables improved reconstruction of a transcriptome from RNA-seq reads. Nat Biotechnol 33: 290–295.
-#https://github.com/gpertea/stringtie - v2.2.1-2.2.2
-        mkdir -p $InDir/$Sample/stringtie2/
-        cd $InDir/$Sample/stringtie2/
-        echo "Starting Stringtie2"
-	/usr/bin/time -v stringtie -p $threads -L -G $reference_gtf -o ./${Sample}_strg2def.gtf $InDir/${Sample}.bam
-	/usr/bin/time -v stringtie -p $threads -L -o ./${Sample}_strg2def-noRef.gtf $InDir/${Sample}.bam
-	echo "Stringtie2 terminates"
+StringTie3(){
+#StringTie3 - Shinder, I., Pertea, G., Hu, R., Rudnick, Z., & Pertea, M. (2026). StringTie3 improves total RNA-seq assembly by resolving nascent and mature transcripts. Nature methods, 23(6), 1126–1137.
+#https://github.com/gpertea/stringtie - v 3.0.3
+    mkdir -p $sample_dir/StringTie3/
+    cd $sample_dir/StringTie3/
+
+    echo "[StringTie3] Reference-guided"
+    /usr/bin/time -v ~/apps_new/stringtie-3.0.3.Linux_x86_64/stringtie \
+        -p $threads -L \
+        -G $reference_gtf \
+        -o ${Sample}_stringtie3_ref.gtf \
+        $sample_dir/${Sample}.bam
+
+    echo "[StringTie3] De novo"
+    /usr/bin/time -v ~/apps_new/stringtie-3.0.3.Linux_x86_64/stringtie \
+        -p $threads -L \
+        -o ${Sample}_stringtie3_denovo.gtf \
+        $sample_dir/${Sample}.bam
+}
+
+IsoQuant(){
+#IsoQuant - Prjibelski AD, Mikheenko A, Joglekar A, Smetanin A, Jarroux J, Lapidus AL, Tilgner HU. 2023. Accurate isoform discovery with IsoQuant using long reads. Nat Biotechnol 41: 915–918.
+#https://github.com/ablab/IsoQuant - v.3.10.0
+    mkdir -p $sample_dir/IsoQuant_ref/
+    mkdir -p $sample_dir/IsoQuant_denovo/
+
+    echo "[IsoQuant] Reference-guided"
+    source ~/mambaforge/bin/activate
+    conda activate isoquant_3.10.0
+
+    /usr/bin/time -v isoquant.py \
+        -t $threads \
+        --clean_start \
+        --reference $reference_fa \
+        --genedb $reference_gtf \
+        --complete_genedb \
+        --fastq $fq \
+        --data_type nanopore \
+        -o $sample_dir/IsoQuant_ref/
+
+    echo "[IsoQuant] De novo"
+    /usr/bin/time -v isoquant.py \
+        -t $threads \
+        --clean_start \
+        --reference $reference_fa \
+        --fastq $fq \
+        --data_type nanopore \
+        -o $sample_dir/IsoQuant_denovo/
+
+    conda deactivate
+}
+
+lraa(){
+#LRAA - Accurate strand-specific long-read transcript isoform discovery and quantification at bulk, single-cell, and single-nucleus resolution. https://doi.org/10.64898/2026.02.12.705617
+#https://github.com/MethodsDev/LongReadAlignmentAssembler/tree/main v0.12.7
+    mkdir -p $sample_dir/LRAA_ref/
+    mkdir -p $sample_dir/LRAA_denovo/
+
+    source ~/mambaforge/bin/activate
+    conda activate lraa
+
+    echo "[LRAA] Reference-guided"
+    /usr/bin/time -v ~/apps_new/LongReadAlignmentAssembler/LRAA \
+        --reads $fq \
+        --genome $reference_fa \
+        --annotation $reference_gtf \
+        --threads $threads \
+        --out_prefix $sample_dir/LRAA_ref/${Sample}_LRAA_ref
+
+    echo "[LRAA] De novo"
+    /usr/bin/time -v ~/apps_new/LongReadAlignmentAssembler/LRAA \
+        --reads $fq \
+        --genome $reference_fa \
+        --threads $threads \
+        --out_prefix $sample_dir/LRAA_denovo/${Sample}_LRAA_denovo
+
+    conda deactivate
 }
 
 Flair(){
@@ -50,32 +118,6 @@ Flair(){
 
 	flair 123 -r $InDir/${Sample}.fastq -g $reference_fa -f $reference_gtf -o ${Sample}_flair -t $threads
 	echo "FLAIR terminates"
-}
-
-isoQuant(){
-#IsoQuant - Prjibelski AD, Mikheenko A, Joglekar A, Smetanin A, Jarroux J, Lapidus AL, Tilgner HU. 2023. Accurate isoform discovery with IsoQuant using long reads. Nat Biotechnol 41: 915–918.
-#https://github.com/ablab/IsoQuant - v3.3.1
-	mkdir -p $InDir/$Sample/isoQuant/
-	cd $InDir/$Sample/isoQuant/
-	echo "Starting isoQuant"
-
-	isoquant.py -t $threads --clean_start --reference $reference_fa --genedb $reference_gtf --complete_genedb --fastq $InDir/${Sample}.fastq --data_type nanopore -o ./
-
-	echo "isoQuant terminates"
-
-}
-
-isoQuant-noRef(){
-#IsoQuant - Prjibelski AD, Mikheenko A, Joglekar A, Smetanin A, Jarroux J, Lapidus AL, Tilgner HU. 2023. Accurate isoform discovery with IsoQuant using long reads. Nat Biotechnol 41: 915–918.
-#https://github.com/ablab/IsoQuant - v3.3.1
-	mkdir -p $InDir/$Sample/isoQuant-noRef/
-	cd $InDir/$Sample/isoQuant-noRef/
-	echo "Starting isoQuant"
-
-	isoquant.py -t $threads --clean_start --reference $reference_fa --fastq $InDir/${Sample}.fastq --data_type nanopore -o ./
-
-	echo "isoQuant-noRef terminates"
-
 }
 
 TALON(){
@@ -288,6 +330,7 @@ RNAbloom2(){
 	echo "RNABloom2 terminates"
 }
 
+
 GFF(){
 #GFFcompare - Pertea G, Pertea M. 2020. GFF Utilities: GffRead and GffCompare. F1000Res 9. http://dx.doi.org/10.12688/f1000research.23297.2.
 #https://github.com/gpertea/gffcompare - v0.12.6
@@ -413,11 +456,11 @@ main(){
         	chr="chrIS"
 	fi
 
-        export Sample=$Sample
+    export Sample=$Sample
 	export mainInputDir=$InDir
 	export reference_gtf=$reference_gtf
 	export reference_gtf_talon=$reference_gtf_talon
-        export reference_fa=$reference_fa
+    export reference_fa=$reference_fa
 	export chr=$chr
 	export threads=$threads
 
@@ -431,37 +474,37 @@ main(){
 	cp $InDir/$Sample/control/${Sample}_converted-corrected.gff $InDir/$Sample/Final-Assemblies/Control.gff
 
 #Guided + De novo
-	stringtie2
-	cp $InDir/$Sample/stringtie2/${Sample}_strg2def.gtf $InDir/$Sample/Final-Assemblies/Stringtie2.gtf
-	cp $InDir/$Sample/stringtie2/${Sample}_strg2def-noRef.gtf $InDir/$Sample/Final-Assemblies/Stringtie2-noRef.gtf
+	StringTie3
+	cp $sample_dir/StringTie3/${Sample}_stringtie3_ref.gtf    $sample_dir/Final-Assemblies/StringTie3_ref.gtf
+	cp $sample_dir/StringTie3/${Sample}_stringtie3_denovo.gtf $sample_dir/Final-Assemblies/StringTie3_denovo.gtf
 
-	source /home/sagmel/mambaforge/bin/activate flair #conda activate flair
+	IsoQuant
+	cp $sample_dir/IsoQuant_ref/OUT.transcript_models.gtf    $sample_dir/Final-Assemblies/IsoQuant_ref.gtf
+	cp $sample_dir/IsoQuant_denovo/OUT.transcript_models.gtf $sample_dir/Final-Assemblies/IsoQuant_denovo.gtf
+
+	lraa
+	cp $sample_dir/LRAA_ref/${Sample}_LRAA_ref.gtf      $sample_dir/Final-Assemblies/LRAA_ref.gtf
+	cp $sample_dir/LRAA_denovo/${Sample}_LRAA_denovo.gtf $sample_dir/Final-Assemblies/LRAA_denovo.gtf
+
+	source ~/mambaforge/bin/activate flair #conda activate flair
 	Flair
 	cp $InDir/$Sample/flair/${Sample}_flair.isoforms.gtf $InDir/$Sample/Final-Assemblies/FLAIR.gtf
 	cp $InDir/$Sample/flair-noRef/${Sample}_flair-noRef.isoforms.fa $InDir/$Sample/Final-Assemblies/FLAIR-noRef.fa
-	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
-
-	source /home/sagmel/mambaforge/bin/activate isoquant #conda activate isoquant
-	isoQuant
-	cp $InDir/$Sample/isoQuant/OUT/OUT.transcript_models.gtf $InDir/$Sample/Final-Assemblies/isoQuant.gtf
-
-	isoQuant-noRef
-	cp $InDir/$Sample/isoQuant-noRef/OUT/OUT.transcript_models.gtf $InDir/$Sample/Final-Assemblies/isoQuant-noRef.gtf
-	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source ~/mambaforge/bin/deactivate #conda deactivate
 
 #Guided only
-	source /home/sagmel/mambaforge/bin/activate TALON5 #conda activate TALON5
+	source ~/mambaforge/bin/activate TALON5 #conda activate TALON5
 	TALON
 	cp $InDir/$Sample/talon/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON.gtf
 
 	TALON_reco
 	cp $InDir/$Sample/talon_reco/${Sample}_gtf_talon.gtf $InDir/$Sample/Final-Assemblies/TALON_reco.gtf
-	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source ~/mambaforge/bin/deactivate #conda deactivate
 
-	source /home/sagmel/mambaforge/bin/activate FLAMES #conda activate FLAMES
+	source ~/mambaforge/bin/activate FLAMES #conda activate FLAMES
 	FLAMES
 	cp $InDir/$Sample/FLAMES/isoform_annotated.filtered_True.gff3 $InDir/$Sample/Final-Assemblies/FLAMES.gff3
-	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source ~/mambaforge/bin/deactivate #conda deactivate
 
 	Mandalorion
 	cp $InDir/$Sample/Mandalorion/Isoforms.filtered.clean.gtf $InDir/$Sample/Final-Assemblies/Mandalorion.gtf
@@ -472,15 +515,10 @@ main(){
 	cp $InDir/$Sample/rattle/transcriptome.fq $InDir/$Sample/Final-Assemblies/RATTLE.fastq
 	#close bulker before running anything else <exit>
 
-	source /home/sagmel/mambaforge/bin/activate isonclust #conda activate isonclust
+	source ~/mambaforge/bin/activate isonclust #conda activate isonclust
 	Isonclust
 	cp $InDir/$Sample/isONclust/final_cluster_origins.fastq $InDir/$Sample/Final-Assemblies/isONclust.fastq
-	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
-
-	source /home/sagmel/mambaforge/bin/activate isonform #conda activate isonform
-	IsonPipeline
-	cp $InDir/$Sample/isONpipeline/isoforms/transcriptome.fasta $InDir/$Sample/Final-Assemblies/isONpipeline.fa
-	source /home/sagmel/mambaforge/bin/deactivate #conda deactivate
+	source ~/mambaforge/bin/deactivate #conda deactivate
 
 	Isonclust2
 	cp $InDir/$Sample/isONclust2/results/cluster_cons.fq $InDir/$Sample/Final-Assemblies/isONclust2.fastq
@@ -492,13 +530,14 @@ main(){
 	cp $InDir/$Sample/RNAbloom2/rnabloom.transcripts.fa $InDir/$Sample/Final-Assemblies/RNAbloom2.fa
 
 
-#	bambu   #Doesn't work within the script --> run Bambu.R
+#	bambu   #Doesn't work within the script --> run scripts/Bambu.R
+#   LyRic   #Doesn't work within the script --> run scripts/LyRic/*.sh
 
 #Post-process
 	GFF
-	source /home/sagmel/mambaforge/bin/activate SQANTI3.env
+	source ~/mambaforge/bin/activate SQANTI3.env
 	SQ3
-	source /home/sagmel/mambaforge/bin/deactivate
+	source ~/mambaforge/bin/deactivate
 
 	TPFPFN #without LoD (sub150k ; TPmax=160)
  	TPFPupdate #with LoD (sub150k ; TPmax=136)

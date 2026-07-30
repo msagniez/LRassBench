@@ -1,0 +1,3 @@
+sample_name	sample_group	capDesign	sizeFrac	tissue	filter_SJ_Qscore	subProject	seqPlatform	use_matched_HiSeq
+"LSK114S_SIRV_0_R40k"	LSK114S	SIRV	0	NA	10	MAIN	ONT	false
+"LSK114_Sequins_0_R40k"	LSK114	Sequins	0	NA	10	MAIN	ONT	false

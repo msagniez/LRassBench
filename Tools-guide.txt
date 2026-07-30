@@ -30,25 +30,12 @@ make
 #run: ~/apps/restrander/restrander
 
 Minimap2
-#v2.24
-wget "https://github.com/lh3/minimap2/releases/download/v2.24/minimap2-2.24_x64-linux.tar.bz2"
-tar -xf minimap2-2.24_x64-linux.tar.bz2
-#run: ~/apps/minimap2/minimap2-2.24/minimap2
-
-#v2.26 [last]
+#v2.26 
 git clone https://github.com/lh3/minimap2
 cd minimap2 && make
 #run: ~/apps/minimap2/minimap2-2.26/minimap2
 
 Samtools
-#v1.17
-wget "https://github.com/samtools/samtools/releases/download/1.17/samtools-1.17.tar.bz2"
-tar -xf samtools-1.17.tar.bz
-cd samtools-1.17/
-./configure --without-curses --disable-bz2 --disable-lzma
-make
-#run: ~/apps/samtools-1.17/samtools
-
 #v1.19.2
 wget "https://github.com/samtools/samtools/releases/download/1.19.2/samtools-1.19.2.tar.bz2"
 tar -xf samtools-1.19.2.tar.bz2
@@ -57,11 +44,11 @@ cd samtools-1.19.2/
 #run: samtools
 #run: ~/apps/samtools-1.19.2/samtools
 
-
 Stringtie
-#v2.2.1-2.2.2
+#v 3.0.3
 #run: stringtie
-#run ~/apps/stringtie/stringtie
+# git clone 
+#run ~/apps_new/stringtie-3.0.3.Linux_x86_64/stringtie
 
 FLAIR
 #v2.0
@@ -69,7 +56,7 @@ conda create -n flair -c conda-forge -c bioconda flair
 #run: conda activate flair ; flair
 
 isoQuant
-#v3.3.1
+#v.3.10.0
 conda create -c conda-forge -c bioconda -n isoquant python=3.8 isoquant
 #run: conda activate isoquant ; isoquant.py
 
@@ -138,6 +125,16 @@ spliced_bam2gff
 conda install spliced_bam2gff
 #run: spliced_bam2gff
 
+LRAA 
+#v0.12.7
+git clone https://github.com/MethodsDev/LongReadAlignmentAssembler 
+#run: ~/apps_new/LongReadAlignmentAssembler/LRAA
+
+LyRic
+#v1.0.4
+git clone https://github.com/guigolab/LyRic 
+#run with Snakemake
+
 GFFcompare
 #v0.12.6
 git clone https://github.com/gpertea/gffcompare
@@ -166,3 +163,4 @@ cd Mandalorion
 chmod +x setup.sh
 sh setup.sh
 #run : python3 ~/apps/Mandalorion/Mando.py
+

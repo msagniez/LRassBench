@@ -1,0 +1,6 @@
+sample_name	sample_group	capDesign	sizeFrac	tissue	filter_SJ_Qscore	subProject	seqPlatform	use_matched_HiSeq
+"LSK109_Sequins_0_Rep1"	LSK109	Sequins	0	NA	10	MAIN	ONT	false
+"LSK114_Sequins_0_Rep1"	LSK114	Sequins	0	NA	10	MAIN	ONT	false
+"RNA002_Sequins_0_Rep1"	RNA002	Sequins	0	NA	10	MAIN	ONT	false
+"RNA004_Sequins_0_Rep1"	RNA004	Sequins	0	NA	10	MAIN	ONT	false
+
