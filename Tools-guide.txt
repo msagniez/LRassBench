@@ -130,12 +130,24 @@ conda install spliced_bam2gff
 LRAA 
 #v0.12.7
 git clone https://github.com/MethodsDev/LongReadAlignmentAssembler 
-#run: ~/apps_new/LongReadAlignmentAssembler/LRAA
-
-LyRic
-#v1.0.4
-git clone https://github.com/guigolab/LyRic 
-#run with conda env
+#run: activate conda env ; ~/apps_new/LongReadAlignmentAssembler/LRAA
+conda create -n lraa python=3.10 pip -y
+conda activate lraa
+pip install numpy pandas matplotlib seaborn
+pip install pysam pyfaidx
+pip install intervaltree
+pip install biopython
+pip install scipy
+pip install tqdm
+pip install igraph leidenalg
+## checking install
+$ ./LRAA --version
+LRAA VERSION: v0.12.7
+## using LRAA
+source /home/sagmel/mambaforge/bin/activate
+conda activate lraa
+./home/sagmel/apps_new/LongReadAlignmentAssembler/LRAA --version
+conda deactivate
 
 
 GFFcompare
@@ -181,5 +193,6 @@ snakemake \
   --use-conda \
   --cores 8
 
-
+RATTLE
+v1.0
 
