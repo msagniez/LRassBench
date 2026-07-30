@@ -1,0 +1,847 @@
+Using profiles /home/sagmel/apps_new/LyRic/workflow/profiles/default and workflow specific profile /home/sagmel/apps_new/LyRic/workflow/profiles/default for setting default command line arguments.
+No genome annotation(s) file provided.
+No primary targets file provided.
+No CAGE annotation file provided.
+No DHS annotation file provided.
+No SIRVinfo file provided.
+Assuming unrestricted shared filesystem usage.
+host: benchmarking-vm
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 8
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Singularity containers: ignored
+Job stats:
+job                                   count
+----------------------------------  -------
+all                                       1
+bamToSam                                  2
+basicFASTQqc                              2
+catMergedReadsForGroupedSampleReps        2
+getHCGMintrons                            2
+getHiSeqSupportedHCGMs                    2
+getIntronMotif                            2
+highConfidenceReads                       2
+integratePolyaAndSjInfo                   2
+longReadMapping                           2
+makeIntrons                               2
+mergedReads                               2
+mergedReadsGroupedSampleReps              2
+polyAmapping                              2
+readBamToBed                              2
+readBedToGff                              2
+removeIntraPriming                        2
+removePolyAERCCs                          2
+sortIndexGenome                           1
+splitTmsBySplicedStatus                   2
+strandGffs                                2
+strandedGffToBed                          2
+total                                    42
+
+Select jobs to execute...
+Failed to solve scheduling problem with ILP solver, falling back to greedy scheduler. You likely have to fix your ILP solver installation. Error message: PULP_CBC_CMD: Not Available (check permissions on cbc)
+Execute 3 jobs...
+
+[Thu Dec  4 15:47:32 2025]
+localrule sortIndexGenome:
+    input: references/SIRV.fa
+    output: references/SIRV.sorted.fa, references/SIRV.sorted.fa.index.pag
+    jobid: 11
+    reason: Missing output files: references/SIRV.sorted.fa
+    wildcards: genome=SIRV
+    resources: mem_mb=2000, mem_mib=1908, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:47:32 2025]
+localrule basicFASTQqc:
+    input: fastqs/LSK114_Sequins_0_R40k.fastq.gz
+    output: output/fastqs/qc/LSK114_Sequins_0.R40k.dupl.txt
+    jobid: 31
+    reason: Missing output files: output/fastqs/qc/LSK114_Sequins_0.R40k.dupl.txt
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:47:32 2025]
+localrule basicFASTQqc:
+    input: fastqs/LSK114S_SIRV_0_R40k.fastq.gz
+    output: output/fastqs/qc/LSK114S_SIRV_0.R40k.dupl.txt
+    jobid: 12
+    reason: Missing output files: output/fastqs/qc/LSK114S_SIRV_0.R40k.dupl.txt
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+[Thu Dec  4 15:47:32 2025]
+Finished jobid: 11 (Rule: sortIndexGenome)
+1 of 42 steps (2%) done
+[Thu Dec  4 15:47:33 2025]
+Finished jobid: 31 (Rule: basicFASTQqc)
+2 of 42 steps (5%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:47:33 2025]
+localrule longReadMapping:
+    input: fastqs/LSK114_Sequins_0_R40k.fastq.gz, references/chrIS.sorted.fa, output/fastqs/qc/LSK114_Sequins_0.R40k.dupl.txt
+    output: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam, output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam.bai
+    jobid: 29
+    reason: Missing output files: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam; Input files updated by another job: output/fastqs/qc/LSK114_Sequins_0.R40k.dupl.txt
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    threads: 2
+    resources: mem_mb=5000, mem_mib=4769, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10, cpus_per_task=2
+Mapping
+[Thu Dec  4 15:47:33 2025]
+Finished jobid: 12 (Rule: basicFASTQqc)
+3 of 42 steps (7%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:47:33 2025]
+localrule longReadMapping:
+    input: fastqs/LSK114S_SIRV_0_R40k.fastq.gz, references/SIRV.sorted.fa, output/fastqs/qc/LSK114S_SIRV_0.R40k.dupl.txt
+    output: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam, output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam.bai
+    jobid: 10
+    reason: Missing output files: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam; Input files updated by another job: output/fastqs/qc/LSK114S_SIRV_0.R40k.dupl.txt, references/SIRV.sorted.fa
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    threads: 2
+    resources: mem_mb=5000, mem_mib=4769, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10, cpus_per_task=2
+Mapping
+[M::mm_idx_gen::0.021*1.07] collected minimizers
+[M::mm_idx_gen::0.034*1.36] sorted minimizers
+[M::main::0.034*1.36] loaded/built the index for 114 target sequence(s)
+[M::mm_mapopt_update::0.037*1.33] mid_occ = 12
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 114
+[M::mm_idx_stat::0.038*1.31] distinct minimizers: 108121 (85.66% are singletons); average occurrences: 1.330; average spacing: 2.952; total length: 424365
+[M::mm_idx_gen::0.733*0.71] collected minimizers
+[M::mm_idx_gen::0.898*0.95] sorted minimizers
+[M::main::0.898*0.95] loaded/built the index for 1 target sequence(s)
+[M::mm_mapopt_update::0.967*0.95] mid_occ = 38
+[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 1
+[M::mm_idx_stat::1.020*0.95] distinct minimizers: 3249458 (94.80% are singletons); average occurrences: 1.109; average spacing: 2.933; total length: 10567884
+[M::worker_pipeline::21.787*1.95] mapped 40000 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 --MD -x splice -t 2 --secondary=no -L -a references/SIRV.sorted.fa fastqs/LSK114S_SIRV_0_R40k.fastq.gz
+[M::main] Real time: 21.795 sec; CPU: 42.489 sec; Peak RSS: 0.375 GB
+Mapping done
+Creating/sorting BAM
+[bam_sort_core] merging from 0 files and 2 in-memory blocks...
+Done creating/sorting BAM
+[Thu Dec  4 15:47:58 2025]
+Finished jobid: 10 (Rule: longReadMapping)
+4 of 42 steps (10%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Dec  4 15:47:58 2025]
+localrule readBamToBed:
+    input: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam
+    output: output/mappings/readBamToBed/LSK114S_SIRV_0_R40k.bed.gz
+    jobid: 9
+    reason: Missing output files: output/mappings/readBamToBed/LSK114S_SIRV_0_R40k.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:47:58 2025]
+localrule bamToSam:
+    input: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam
+    output: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.sam
+    jobid: 17
+    reason: Missing output files: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.sam; Input files updated by another job: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:47:59 2025]
+Finished jobid: 17 (Rule: bamToSam)
+5 of 42 steps (12%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:47:59 2025]
+localrule polyAmapping:
+    input: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.sam, references/SIRV.sorted.fa
+    output: output/mappings/polyAmapping/LSK114S_SIRV_0_R40k.polyAsites.bed.gz
+    jobid: 16
+    reason: Missing output files: output/mappings/polyAmapping/LSK114S_SIRV_0_R40k.polyAsites.bed.gz; Input files updated by another job: references/SIRV.sorted.fa, output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.sam
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:47:59 2025]
+Finished jobid: 9 (Rule: readBamToBed)
+6 of 42 steps (14%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:47:59 2025]
+localrule readBedToGff:
+    input: output/mappings/readBamToBed/LSK114S_SIRV_0_R40k.bed.gz
+    output: output/mappings/readBedToGff/LSK114S_SIRV_0_R40k.gff.gz
+    jobid: 8
+    reason: Missing output files: output/mappings/readBedToGff/LSK114S_SIRV_0_R40k.gff.gz; Input files updated by another job: output/mappings/readBamToBed/LSK114S_SIRV_0_R40k.bed.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Will try to discard false polyA tails resulting from internal mis-priming.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Thu Dec  4 15:48:00 2025]
+Finished jobid: 16 (Rule: polyAmapping)
+7 of 42 steps (17%) done
+Removing temporary output output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:00 2025]
+localrule removePolyAERCCs:
+    input: output/mappings/polyAmapping/LSK114S_SIRV_0_R40k.polyAsites.bed.gz
+    output: output/mappings/removePolyAERCCs/LSK114S_SIRV_0_R40k.polyAsitesNoErcc.tmp.bed
+    jobid: 15
+    reason: Missing output files: output/mappings/removePolyAERCCs/LSK114S_SIRV_0_R40k.polyAsitesNoErcc.tmp.bed; Input files updated by another job: output/mappings/polyAmapping/LSK114S_SIRV_0_R40k.polyAsites.bed.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:00 2025]
+Finished jobid: 15 (Rule: removePolyAERCCs)
+8 of 42 steps (19%) done
+[Thu Dec  4 15:48:00 2025]
+Finished jobid: 8 (Rule: readBedToGff)
+9 of 42 steps (21%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:00 2025]
+localrule makeIntrons:
+    input: output/mappings/readBedToGff/LSK114S_SIRV_0_R40k.gff.gz
+    output: output/mappings/makeIntrons/LSK114S_SIRV_0_R40k.introns.gff.gz
+    jobid: 7
+    reason: Missing output files: output/mappings/makeIntrons/LSK114S_SIRV_0_R40k.introns.gff.gz; Input files updated by another job: output/mappings/readBedToGff/LSK114S_SIRV_0_R40k.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:01 2025]
+Finished jobid: 7 (Rule: makeIntrons)
+10 of 42 steps (24%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:01 2025]
+localrule getIntronMotif:
+    input: output/mappings/makeIntrons/LSK114S_SIRV_0_R40k.introns.gff.gz, references/SIRV.sorted.fa
+    output: output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.introns.gff.gz, output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.transcripts.tsv.gz
+    jobid: 6
+    reason: Missing output files: output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.transcripts.tsv.gz; Input files updated by another job: references/SIRV.sorted.fa, output/mappings/makeIntrons/LSK114S_SIRV_0_R40k.introns.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845 (#1)
+    (W syntax) There is a possible problem with the mixing of a control
+    flow operator (e.g. return) and a low-precedence operator like
+    or.  Consider:
+    
+        sub { return $a or $b; }
+    
+    This is parsed as:
+    
+        sub { (return $a) or $b; }
+    
+    Which is effectively just:
+    
+        sub { return $a; }
+    
+    Either use parentheses or the high-precedence variant of the operator.
+    
+    Note this may be also triggered for constructs like:
+    
+        sub { 1 if die; }
+    
+Reading GFF in and extracting SJ sequences...
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304 (#2)
+    (W redefine) You redefined a subroutine.  To suppress this warning, say
+    
+        {
+            no warnings 'redefine';
+            eval "sub name { ... }";
+        }
+    
+	Processed 10000 intron records
+	Processed 20000 intron records
+	Processed 30000 intron records
+DONE reading GFF in and extracting SJ sequences.
+(Found 30578 intron records in file). Output is in:
+/tmp/40cf5ea6-e6b5-4ade-a566-871cb3ca930a/LSK114S_SIRV_0_R40k.transcripts.tsv
+and
+/tmp/40cf5ea6-e6b5-4ade-a566-871cb3ca930a/LSK114S_SIRV_0_R40k.introns.gff
+[Thu Dec  4 15:48:02 2025]
+Finished jobid: 6 (Rule: getIntronMotif)
+11 of 42 steps (26%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:02 2025]
+localrule integratePolyaAndSjInfo:
+    input: output/mappings/removePolyAERCCs/LSK114S_SIRV_0_R40k.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.transcripts.tsv.gz
+    output: output/mappings/integratePolyaAndSjInfo/LSK114S_SIRV_0_R40k.polyA+SJ.strandInfo.tsv, output/mappings/removePolyAERCCs/LSK114S_SIRV_0_R40k.wrongPolyAs.list
+    jobid: 14
+    reason: Missing output files: output/mappings/integratePolyaAndSjInfo/LSK114S_SIRV_0_R40k.polyA+SJ.strandInfo.tsv; Input files updated by another job: output/mappings/removePolyAERCCs/LSK114S_SIRV_0_R40k.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.transcripts.tsv.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:02 2025]
+Finished jobid: 14 (Rule: integratePolyaAndSjInfo)
+12 of 42 steps (29%) done
+Removing temporary output output/mappings/removePolyAERCCs/LSK114S_SIRV_0_R40k.polyAsitesNoErcc.tmp.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:02 2025]
+localrule strandGffs:
+    input: output/mappings/readBedToGff/LSK114S_SIRV_0_R40k.gff.gz, output/mappings/integratePolyaAndSjInfo/LSK114S_SIRV_0_R40k.polyA+SJ.strandInfo.tsv
+    output: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.gff.gz
+    jobid: 13
+    reason: Missing output files: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.gff.gz; Input files updated by another job: output/mappings/integratePolyaAndSjInfo/LSK114S_SIRV_0_R40k.polyA+SJ.strandInfo.tsv, output/mappings/readBedToGff/LSK114S_SIRV_0_R40k.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:02 2025]
+Finished jobid: 13 (Rule: strandGffs)
+13 of 42 steps (31%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:02 2025]
+localrule strandedGffToBed:
+    input: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.gff.gz
+    output: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.bed
+    jobid: 19
+    reason: Missing output files: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.bed; Input files updated by another job: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:03 2025]
+Finished jobid: 19 (Rule: strandedGffToBed)
+14 of 42 steps (33%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:03 2025]
+localrule removeIntraPriming:
+    input: output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.bed, references/SIRV.sorted.fa
+    output: output/mappings/intraPriming/LSK114S_SIRV_0_R40k.list, output/statsFiles/tmp/LSK114S_SIRV_0_R40k.intraPriming.stats.tsv
+    jobid: 18
+    reason: Missing output files: output/mappings/intraPriming/LSK114S_SIRV_0_R40k.list; Input files updated by another job: references/SIRV.sorted.fa, output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.bed
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Thu Dec  4 15:48:03 2025]
+Finished jobid: 18 (Rule: removeIntraPriming)
+15 of 42 steps (36%) done
+Removing temporary output output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:03 2025]
+localrule highConfidenceReads:
+    input: output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.transcripts.tsv.gz, output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.gff.gz, output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam, output/mappings/intraPriming/LSK114S_SIRV_0_R40k.list
+    output: output/mappings/highConfidenceReads/LSK114S_SIRV_0_R40k.strandedHCGMs.gff.gz, output/statsFiles/tmp/LSK114S_SIRV_0_R40k.highConfSplicedReads.stats.tsv
+    jobid: 5
+    reason: Missing output files: output/mappings/highConfidenceReads/LSK114S_SIRV_0_R40k.strandedHCGMs.gff.gz; Input files updated by another job: output/mappings/longReadMapping/LSK114S_SIRV_0_R40k.bam, output/mappings/intraPriming/LSK114S_SIRV_0_R40k.list, output/mappings/strandGffs/LSK114S_SIRV_0_R40k.stranded.gff.gz, output/mappings/getIntronMotif/LSK114S_SIRV_0_R40k.transcripts.tsv.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+6828 /tmp/a05d7530-fd56-4e0a-baf1-693a4d00c9c8.reads.hcSJs.list.tmp
+29040 /tmp/a05d7530-fd56-4e0a-baf1-693a4d00c9c8.gtag.gff
+0
+[Thu Dec  4 15:48:12 2025]
+Finished jobid: 5 (Rule: highConfidenceReads)
+16 of 42 steps (38%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:12 2025]
+localrule getHCGMintrons:
+    input: output/mappings/highConfidenceReads/LSK114S_SIRV_0_R40k.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/introns/LSK114S_SIRV_0_R40k.strandedHCGMs.introns.tsv
+    jobid: 4
+    reason: Missing output files: output/mappings/highConfidenceReads/introns/LSK114S_SIRV_0_R40k.strandedHCGMs.introns.tsv; Input files updated by another job: output/mappings/highConfidenceReads/LSK114S_SIRV_0_R40k.strandedHCGMs.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:13 2025]
+Finished jobid: 4 (Rule: getHCGMintrons)
+17 of 42 steps (40%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:13 2025]
+localrule getHiSeqSupportedHCGMs:
+    input: /dev/null, output/mappings/highConfidenceReads/introns/LSK114S_SIRV_0_R40k.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/LSK114S_SIRV_0_R40k.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/HiSS/LSK114S_SIRV_0_R40k.HiSS.gff.gz
+    jobid: 3
+    reason: Missing output files: output/mappings/highConfidenceReads/HiSS/LSK114S_SIRV_0_R40k.HiSS.gff.gz; Input files updated by another job: output/mappings/highConfidenceReads/introns/LSK114S_SIRV_0_R40k.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/LSK114S_SIRV_0_R40k.strandedHCGMs.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+#########################
+Use HiSeq SJs: donot
+#########################
+[Thu Dec  4 15:48:13 2025]
+Finished jobid: 3 (Rule: getHiSeqSupportedHCGMs)
+18 of 42 steps (43%) done
+Removing temporary output output/mappings/highConfidenceReads/introns/LSK114S_SIRV_0_R40k.strandedHCGMs.introns.tsv.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:13 2025]
+localrule mergedReads:
+    input: output/mappings/highConfidenceReads/HiSS/LSK114S_SIRV_0_R40k.HiSS.gff.gz
+    output: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff
+    jobid: 2
+    reason: Missing output files: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff; Input files updated by another job: output/mappings/highConfidenceReads/HiSS/LSK114S_SIRV_0_R40k.HiSS.gff.gz
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK114S_SIRV_0_R40k.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 5 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 5 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 29078 exons and 5936 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 23 contigs.
+Comparing transcript structures...
+Done.
+[Thu Dec  4 15:48:14 2025]
+Finished jobid: 2 (Rule: mergedReads)
+19 of 42 steps (45%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:14 2025]
+localrule splitTmsBySplicedStatus:
+    input: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff
+    output: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    jobid: 1
+    reason: Missing output files: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff
+    wildcards: techname=LSK114S, capDesign=SIRV, sizeFrac=0, sampleRep=R40k, minReadSupport=1, splicedStatus=all
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:14 2025]
+Finished jobid: 1 (Rule: splitTmsBySplicedStatus)
+20 of 42 steps (48%) done
+Removing temporary output output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:14 2025]
+localrule catMergedReadsForGroupedSampleReps:
+    input: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    output: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    jobid: 40
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff; Input files updated by another job: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    wildcards: groupedSampleRepBasename=LSK114S_SIRV_0_R40k, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:48:14 2025]
+Finished jobid: 40 (Rule: catMergedReadsForGroupedSampleReps)
+21 of 42 steps (50%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:48:14 2025]
+localrule mergedReadsGroupedSampleReps:
+    input: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    output: output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 39
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz; Input files updated by another job: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff
+    wildcards: groupedSampleRepBasename=LSK114S_SIRV_0_R40k, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Min Read Support: 1
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK114S_SIRV_0_R40k.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 0 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 0 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 1188 exons and 229 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 23 contigs.
+Comparing transcript structures...
+Done.
+[Thu Dec  4 15:48:14 2025]
+Finished jobid: 39 (Rule: mergedReadsGroupedSampleReps)
+22 of 42 steps (52%) done
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt.
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.
+[M::worker_pipeline::163.312*1.98] mapped 40000 sequences
+[M::main] Version: 2.30-r1287
+[M::main] CMD: minimap2 --MD -x splice -t 2 --secondary=no -L -a references/chrIS.sorted.fa fastqs/LSK114_Sequins_0_R40k.fastq.gz
+[M::main] Real time: 163.338 sec; CPU: 323.992 sec; Peak RSS: 0.734 GB
+Mapping done
+Creating/sorting BAM
+[bam_sort_core] merging from 0 files and 2 in-memory blocks...
+Done creating/sorting BAM
+[Thu Dec  4 15:50:18 2025]
+Finished jobid: 29 (Rule: longReadMapping)
+23 of 42 steps (55%) done
+Select jobs to execute...
+Execute 2 jobs...
+
+[Thu Dec  4 15:50:18 2025]
+localrule readBamToBed:
+    input: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam
+    output: output/mappings/readBamToBed/LSK114_Sequins_0_R40k.bed.gz
+    jobid: 28
+    reason: Missing output files: output/mappings/readBamToBed/LSK114_Sequins_0_R40k.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:18 2025]
+localrule bamToSam:
+    input: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam
+    output: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.sam
+    jobid: 36
+    reason: Missing output files: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.sam; Input files updated by another job: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:19 2025]
+Finished jobid: 36 (Rule: bamToSam)
+24 of 42 steps (57%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:19 2025]
+localrule polyAmapping:
+    input: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.sam, references/chrIS.sorted.fa
+    output: output/mappings/polyAmapping/LSK114_Sequins_0_R40k.polyAsites.bed.gz
+    jobid: 35
+    reason: Missing output files: output/mappings/polyAmapping/LSK114_Sequins_0_R40k.polyAsites.bed.gz; Input files updated by another job: output/mappings/longReadMapping/LSK114_Sequins_0_R40k.sam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:19 2025]
+Finished jobid: 28 (Rule: readBamToBed)
+25 of 42 steps (60%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:19 2025]
+localrule readBedToGff:
+    input: output/mappings/readBamToBed/LSK114_Sequins_0_R40k.bed.gz
+    output: output/mappings/readBedToGff/LSK114_Sequins_0_R40k.gff.gz
+    jobid: 27
+    reason: Missing output files: output/mappings/readBedToGff/LSK114_Sequins_0_R40k.gff.gz; Input files updated by another job: output/mappings/readBamToBed/LSK114_Sequins_0_R40k.bed.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Will try to discard false polyA tails resulting from internal mis-priming.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Thu Dec  4 15:50:20 2025]
+Finished jobid: 35 (Rule: polyAmapping)
+26 of 42 steps (62%) done
+Removing temporary output output/mappings/longReadMapping/LSK114_Sequins_0_R40k.sam.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:20 2025]
+localrule removePolyAERCCs:
+    input: output/mappings/polyAmapping/LSK114_Sequins_0_R40k.polyAsites.bed.gz
+    output: output/mappings/removePolyAERCCs/LSK114_Sequins_0_R40k.polyAsitesNoErcc.tmp.bed
+    jobid: 34
+    reason: Missing output files: output/mappings/removePolyAERCCs/LSK114_Sequins_0_R40k.polyAsitesNoErcc.tmp.bed; Input files updated by another job: output/mappings/polyAmapping/LSK114_Sequins_0_R40k.polyAsites.bed.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:21 2025]
+Finished jobid: 34 (Rule: removePolyAERCCs)
+27 of 42 steps (64%) done
+[Thu Dec  4 15:50:21 2025]
+Finished jobid: 27 (Rule: readBedToGff)
+28 of 42 steps (67%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:21 2025]
+localrule makeIntrons:
+    input: output/mappings/readBedToGff/LSK114_Sequins_0_R40k.gff.gz
+    output: output/mappings/makeIntrons/LSK114_Sequins_0_R40k.introns.gff.gz
+    jobid: 26
+    reason: Missing output files: output/mappings/makeIntrons/LSK114_Sequins_0_R40k.introns.gff.gz; Input files updated by another job: output/mappings/readBedToGff/LSK114_Sequins_0_R40k.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:23 2025]
+Finished jobid: 26 (Rule: makeIntrons)
+29 of 42 steps (69%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:23 2025]
+localrule getIntronMotif:
+    input: output/mappings/makeIntrons/LSK114_Sequins_0_R40k.introns.gff.gz, references/chrIS.sorted.fa
+    output: output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.introns.gff.gz, output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.transcripts.tsv.gz
+    jobid: 25
+    reason: Missing output files: output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.transcripts.tsv.gz; Input files updated by another job: output/mappings/makeIntrons/LSK114_Sequins_0_R40k.introns.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845 (#1)
+    (W syntax) There is a possible problem with the mixing of a control
+    flow operator (e.g. return) and a low-precedence operator like
+    or.  Consider:
+    
+        sub { return $a or $b; }
+    
+    This is parsed as:
+    
+        sub { (return $a) or $b; }
+    
+    Which is effectively just:
+    
+        sub { return $a; }
+    
+    Either use parentheses or the high-precedence variant of the operator.
+    
+    Note this may be also triggered for constructs like:
+    
+        sub { 1 if die; }
+    
+Reading GFF in and extracting SJ sequences...
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at
+	/home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304 (#2)
+    (W redefine) You redefined a subroutine.  To suppress this warning, say
+    
+        {
+            no warnings 'redefine';
+            eval "sub name { ... }";
+        }
+    
+	Processed 10000 intron records
+	Processed 20000 intron records
+	Processed 30000 intron records
+	Processed 40000 intron records
+	Processed 50000 intron records
+	Processed 60000 intron records
+	Processed 70000 intron records
+	Processed 80000 intron records
+	Processed 90000 intron records
+DONE reading GFF in and extracting SJ sequences.
+(Found 95054 intron records in file). Output is in:
+/tmp/96c97fee-71be-4121-86c5-9b92bd8daea7/LSK114_Sequins_0_R40k.transcripts.tsv
+and
+/tmp/96c97fee-71be-4121-86c5-9b92bd8daea7/LSK114_Sequins_0_R40k.introns.gff
+[Thu Dec  4 15:50:25 2025]
+Finished jobid: 25 (Rule: getIntronMotif)
+30 of 42 steps (71%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:25 2025]
+localrule integratePolyaAndSjInfo:
+    input: output/mappings/removePolyAERCCs/LSK114_Sequins_0_R40k.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.transcripts.tsv.gz
+    output: output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_R40k.polyA+SJ.strandInfo.tsv, output/mappings/removePolyAERCCs/LSK114_Sequins_0_R40k.wrongPolyAs.list
+    jobid: 33
+    reason: Missing output files: output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_R40k.polyA+SJ.strandInfo.tsv; Input files updated by another job: output/mappings/removePolyAERCCs/LSK114_Sequins_0_R40k.polyAsitesNoErcc.tmp.bed, output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.transcripts.tsv.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:25 2025]
+Finished jobid: 33 (Rule: integratePolyaAndSjInfo)
+31 of 42 steps (74%) done
+Removing temporary output output/mappings/removePolyAERCCs/LSK114_Sequins_0_R40k.polyAsitesNoErcc.tmp.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:25 2025]
+localrule strandGffs:
+    input: output/mappings/readBedToGff/LSK114_Sequins_0_R40k.gff.gz, output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_R40k.polyA+SJ.strandInfo.tsv
+    output: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.gff.gz
+    jobid: 32
+    reason: Missing output files: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.gff.gz; Input files updated by another job: output/mappings/integratePolyaAndSjInfo/LSK114_Sequins_0_R40k.polyA+SJ.strandInfo.tsv, output/mappings/readBedToGff/LSK114_Sequins_0_R40k.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:27 2025]
+Finished jobid: 32 (Rule: strandGffs)
+32 of 42 steps (76%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:27 2025]
+localrule strandedGffToBed:
+    input: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.gff.gz
+    output: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.bed
+    jobid: 38
+    reason: Missing output files: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.bed; Input files updated by another job: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:27 2025]
+Finished jobid: 38 (Rule: strandedGffToBed)
+33 of 42 steps (79%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:27 2025]
+localrule removeIntraPriming:
+    input: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.bed, references/chrIS.sorted.fa
+    output: output/mappings/intraPriming/LSK114_Sequins_0_R40k.list, output/statsFiles/tmp/LSK114_Sequins_0_R40k.intraPriming.stats.tsv
+    jobid: 37
+    reason: Missing output files: output/mappings/intraPriming/LSK114_Sequins_0_R40k.list; Input files updated by another job: output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.bed
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Possible precedence issue with control flow operator at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 845.
+Subroutine Bio::DB::IndexedBase::_strip_crnl redefined at /home/sagmel/perl5/lib/perl5/Bio/DB/IndexedBase.pm line 304.
+[Thu Dec  4 15:50:28 2025]
+Finished jobid: 37 (Rule: removeIntraPriming)
+34 of 42 steps (81%) done
+Removing temporary output output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.bed.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:28 2025]
+localrule highConfidenceReads:
+    input: output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.transcripts.tsv.gz, output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.gff.gz, output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam, output/mappings/intraPriming/LSK114_Sequins_0_R40k.list
+    output: output/mappings/highConfidenceReads/LSK114_Sequins_0_R40k.strandedHCGMs.gff.gz, output/statsFiles/tmp/LSK114_Sequins_0_R40k.highConfSplicedReads.stats.tsv
+    jobid: 24
+    reason: Missing output files: output/mappings/highConfidenceReads/LSK114_Sequins_0_R40k.strandedHCGMs.gff.gz; Input files updated by another job: output/mappings/intraPriming/LSK114_Sequins_0_R40k.list, output/mappings/getIntronMotif/LSK114_Sequins_0_R40k.transcripts.tsv.gz, output/mappings/strandGffs/LSK114_Sequins_0_R40k.stranded.gff.gz, output/mappings/longReadMapping/LSK114_Sequins_0_R40k.bam
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+28033 /tmp/c912330f-a36d-4224-89e7-5b33e6c6a4eb.reads.hcSJs.list.tmp
+95129 /tmp/c912330f-a36d-4224-89e7-5b33e6c6a4eb.gtag.gff
+0
+[Thu Dec  4 15:50:38 2025]
+Finished jobid: 24 (Rule: highConfidenceReads)
+35 of 42 steps (83%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:38 2025]
+localrule getHCGMintrons:
+    input: output/mappings/highConfidenceReads/LSK114_Sequins_0_R40k.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_R40k.strandedHCGMs.introns.tsv
+    jobid: 23
+    reason: Missing output files: output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_R40k.strandedHCGMs.introns.tsv; Input files updated by another job: output/mappings/highConfidenceReads/LSK114_Sequins_0_R40k.strandedHCGMs.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:38 2025]
+Finished jobid: 23 (Rule: getHCGMintrons)
+36 of 42 steps (86%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:38 2025]
+localrule getHiSeqSupportedHCGMs:
+    input: /dev/null, output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_R40k.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/LSK114_Sequins_0_R40k.strandedHCGMs.gff.gz
+    output: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_R40k.HiSS.gff.gz
+    jobid: 22
+    reason: Missing output files: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_R40k.HiSS.gff.gz; Input files updated by another job: output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_R40k.strandedHCGMs.introns.tsv, output/mappings/highConfidenceReads/LSK114_Sequins_0_R40k.strandedHCGMs.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+#########################
+Use HiSeq SJs: donot
+#########################
+[Thu Dec  4 15:50:38 2025]
+Finished jobid: 22 (Rule: getHiSeqSupportedHCGMs)
+37 of 42 steps (88%) done
+Removing temporary output output/mappings/highConfidenceReads/introns/LSK114_Sequins_0_R40k.strandedHCGMs.introns.tsv.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:38 2025]
+localrule mergedReads:
+    input: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_R40k.HiSS.gff.gz
+    output: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff
+    jobid: 21
+    reason: Missing output files: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff; Input files updated by another job: output/mappings/highConfidenceReads/HiSS/LSK114_Sequins_0_R40k.HiSS.gff.gz
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK114_Sequins_0_R40k.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 5 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 5 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 96170 exons and 24917 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 62 contigs.
+Comparing transcript structures...
+Done.
+[Thu Dec  4 15:50:43 2025]
+Finished jobid: 21 (Rule: mergedReads)
+38 of 42 steps (90%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:43 2025]
+localrule splitTmsBySplicedStatus:
+    input: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff
+    output: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    jobid: 20
+    reason: Missing output files: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz; Input files updated by another job: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff
+    wildcards: techname=LSK114, capDesign=Sequins, sizeFrac=0, sampleRep=R40k, minReadSupport=1, splicedStatus=all
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:43 2025]
+Finished jobid: 20 (Rule: splitTmsBySplicedStatus)
+39 of 42 steps (93%) done
+Removing temporary output output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.endSupport-all.gff.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:43 2025]
+localrule catMergedReadsForGroupedSampleReps:
+    input: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    output: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    jobid: 42
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt; Input files updated by another job: output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz
+    wildcards: groupedSampleRepBasename=LSK114_Sequins_0_R40k, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:43 2025]
+Finished jobid: 42 (Rule: catMergedReadsForGroupedSampleReps)
+40 of 42 steps (95%) done
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:43 2025]
+localrule mergedReadsGroupedSampleReps:
+    input: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    output: output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 41
+    reason: Missing output files: output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz; Input files updated by another job: output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff, output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt
+    wildcards: groupedSampleRepBasename=LSK114_Sequins_0_R40k, minReadSupport=1
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+Min Read Support: 1
+######################################################################################################################
+######################################################################################################################
+##
+##    Parameters information:
+##
+##    - TM transcript_id output prefix (--tmPrefix): LSK114_Sequins_0_R40k.NAM_
+##    - Minimum read support required per merged transcript model (--minReadSupport): 1
+##    - Exon overhang tolerance when merging (--exonOverhangTolerance): 0 bases
+##    - End fuzziness tolerance when calculating support (--endFuzz): 0 bases
+##
+######################################################################################################################
+######################################################################################################################
+Parsing GTF input...
+Done. Found 2437 exons and 501 transcripts.
+Building contigs (sets of overlapping transcripts)...
+Done. Built 62 contigs.
+Comparing transcript structures...
+Done.
+[Thu Dec  4 15:50:44 2025]
+Finished jobid: 41 (Rule: mergedReadsGroupedSampleReps)
+41 of 42 steps (98%) done
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.
+Removing temporary output output/mappings/mergedReads/groupedSampleReps/tmp/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.countFiles.txt.
+Select jobs to execute...
+Execute 1 jobs...
+
+[Thu Dec  4 15:50:44 2025]
+localrule all:
+    input: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    jobid: 0
+    reason: Input files updated by another job: output/mappings/mergedReads/LSK114S_SIRV_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/LSK114_Sequins_0_R40k.HiSS.tmerge.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114S_SIRV_0_R40k.min1reads.splicing_status-all.endSupport-all.gff.gz, output/mappings/mergedReads/groupedSampleReps/LSK114_Sequins_0_R40k.min1reads.splicing_status-all.endSupport-all.readsToTm.tsv.gz
+    resources: mem_mb=500, mem_mib=477, disk_mb=1000, disk_mib=954, tmpdir=/tmp, runtime=10
+[Thu Dec  4 15:50:44 2025]
+Finished jobid: 0 (Rule: all)
+42 of 42 steps (100%) done
+Complete log(s): /opt/benchmarking/data/20251118_Benchmarking/LyRic_testRun1/.snakemake/log/2025-12-04T154731.559240.snakemake.log
+LyRic workflow finished smoothly.

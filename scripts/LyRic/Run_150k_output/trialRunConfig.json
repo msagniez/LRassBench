@@ -1,0 +1,25 @@
+{
+  "PROJECT_NAME": "LyRic_testRun1_longread",
+  "CAPTURE": false,
+  "USE_MATCHED_ILLUMINA": false,
+  "capDesignToGenome": {
+    "Sequins": "chrIS"
+  },
+  "GENOMESDIR": "references/",
+  "SAMPLE_ANNOT": "sample_annotations.tsv",
+  "sampleRepGroupBy": ["sample_name"],
+  "produceHtmlStatsTable": false,
+  "produceStatPlots": false,
+  "produceTrackHub": false,
+  "fastqsDir": "fastqs/",
+  "fastq_ext": ".fastq.gz",
+  "filter_SJ_Qscore_default": 10,
+  "minimumTmergeReadSupport": ["1"],
+  "minimumMergeIsoformSupport": ["1"],
+  "exonOverhangTolerance": 5,
+  "readStrandMinMapQual": 1,
+  "filter_PAS": false,
+  "filter_TSS": false,
+  "filter_DHS": false,
+  "filter_primaryTargets": false
+}
