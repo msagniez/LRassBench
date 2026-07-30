@@ -135,7 +135,8 @@ git clone https://github.com/MethodsDev/LongReadAlignmentAssembler
 LyRic
 #v1.0.4
 git clone https://github.com/guigolab/LyRic 
-#run with Snakemake
+#run with conda env
+
 
 GFFcompare
 #v0.12.6
@@ -165,4 +166,20 @@ cd Mandalorion
 chmod +x setup.sh
 sh setup.sh
 #run : python3 ~/apps/Mandalorion/Mando.py
+
+LyRic
+v1.0.4
+git clone https://github.com/guigolab/LyRic.git 
+source ~/mambaforge/bin/activate
+conda create -n lyric_env python=3.10
+conda activate lyric_env
+conda install -c conda-forge snakemake=7.32.4
+## using
+snakemake \
+  --snakefile /home/apps/LyRic/Snakefile \
+  --configfile config.json \
+  --use-conda \
+  --cores 8
+
+
 
