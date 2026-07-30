@@ -1,6 +1,9 @@
 # LRassBench
 Long-reads de novo assembly benchmarking
 
+[!NOTE]
+This branch preserves version 1 of the project. Current development has moved to the `main` branch, which uses a redesigned repository structure.
+  
 This page gathers the input/output data and scripts used for our de novo assembly benchmarking analysis.
 inputs consist of 5 datasets :
   - LSK114_SIRV_cDNA
