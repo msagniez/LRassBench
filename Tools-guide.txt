@@ -55,7 +55,7 @@ FLAIR
 conda create -n flair -c conda-forge -c bioconda flair
 #run: conda activate flair ; flair
 
-isoQuant
+IsoQuant
 #v.3.10.0
 conda create -c conda-forge -c bioconda -n isoquant python=3.8 isoquant
 #run: conda activate isoquant ; isoquant.py
@@ -119,6 +119,8 @@ cd RNA-Bloom_v1.4.3
 conda install -c bioconda rnabloom
 #run: rnabloom
 
+Bambu
+#v.3.4.1
 
 spliced_bam2gff
 #vJan. 2021
