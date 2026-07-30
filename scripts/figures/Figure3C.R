@@ -24,8 +24,8 @@ library(ggrepel)
 scores_novelDisc <- read_excel("Supplemental_Tables.xlsx", sheet = "SuppTable5")
 GFF <- scores_novelDisc %>% subset(Evaluator=="GFFcompare")
 GFF <- GFF %>% dplyr::select(-Evaluator, -Dataset, -Section)
-SQ3 <- scores_novelDisc %>% subset(Evaluator=="SQANTI3")
-SQ3 <- SQ3 %>% dplyr::select(-Evaluator, -Dataset, -Section)
+# SQ3 <- scores_novelDisc %>% subset(Evaluator=="SQANTI3")
+# SQ3 <- SQ3 %>% dplyr::select(-Evaluator, -Dataset, -Section)
 
 tool_cols2 <- c(
   "Bambu" = "brown",
@@ -80,91 +80,11 @@ Plot.1 <- ggplot(
   annotate( "text", x = 0, y = 0, label = "GFFcompare", hjust = -0.1, vjust = -1.2, size = 4, fontface = "bold")
 
 
-df_novelDisc <- SQ3
-df_novelDisc <- df_novelDisc %>%
-  filter(Tool!="GroundTruth") %>% 
-  mutate(
-    figLabel= paste0(Tool,"_",SectionLabel),
-    TP_total = TP + Novel,
-    
-    Precision = TP_total / (TP_total + FP),
-    
-    Sensitivity = TP_total / (TP_total + FN),
-    
-    F1 = ifelse(
-      Precision + Sensitivity == 0,
-      0,
-      2 * Precision * Sensitivity /
-        (Precision + Sensitivity)
-    )
-  )
-
-Plot.2 <- ggplot(
-  subset(df_novelDisc, Completeness == "partial"),
-  aes(x = Precision, y = Sensitivity, label = figLabel) ) + 
-  geom_point(aes(colour = SectionLabel), size = 4, shape = 15) + 
-  geom_text_repel(size = 3, show.legend = FALSE) +
-  xlim(0, 1) + ylim(0, 1) + 
-  theme_bw() + 
-  scale_color_manual(values = abundanceCols) + 
-  theme(legend.position = "none", plot.title = element_text(size = 12, hjust = 0.5, face = "bold") ) +
-  annotate( "text", x = 0, y = 0, label = "SQANTI3", hjust = -0.1, vjust = -1.2, size = 4, fontface = "bold")
-
-
-
-## averaging TP, novel, FP and FN values obtained from GFFcompare and SQANTI3
-df_novelDisc <- GFF
-df_novelDisc$TP <- (GFF$TP + SQ3$TP)/2
-df_novelDisc$Novel <- (GFF$Novel + SQ3$Novel)/2
-df_novelDisc$FP <- (GFF$FP + SQ3$FP)/2
-df_novelDisc$FN <- (GFF$FN + SQ3$FN)/2
-
-df_novelDisc <- df_novelDisc %>%
-  filter(Tool!="GroundTruth") %>% 
-  mutate(
-    figLabel= paste0(Tool,"_",SectionLabel),
-    TP_total = TP + Novel,
-    
-    Precision = TP_total / (TP_total + FP),
-    
-    Sensitivity = TP_total / (TP_total + FN),
-    
-    F1 = ifelse(
-      Precision + Sensitivity == 0,
-      0,
-      2 * Precision * Sensitivity /
-        (Precision + Sensitivity)
-    )
-  )
-
-Plot.3 <- ggplot(
-  subset(df_novelDisc, Completeness == "partial"),
-  aes(x = Precision, y = Sensitivity, label = figLabel) ) + 
-  geom_point(aes(colour = SectionLabel), size = 4, shape = 15) + 
-  geom_text_repel(size = 3, show.legend = FALSE) +
-  xlim(0, 1) + ylim(0, 1) + 
-  theme_bw() + 
-  scale_color_manual(values = abundanceCols) + 
-  theme(legend.position = "none", plot.title = element_text(size = 12, hjust = 0.5, face = "bold") ) +
-  annotate( "text", x = 0, y = 0, label = "Average", hjust = -0.1, vjust = -1.2, size = 4, fontface = "bold")
-
-
-
 Plot.1
-Plot.2
-Plot.3
 
 
 ggsave("SuppFigures/old/Figure3_PrecSensF1_GFFcomp_PartialSet.pdf",
        Plot.1, 
-       width = 7, height = 6, dpi = 300)
-
-ggsave("SuppFigures/old/Figure3_PrecSensF1_SQ3_PartialSet.pdf",
-       Plot.2, 
-       width = 7, height = 6, dpi = 300)
-
-ggsave("SuppFigures/old/Figure3_PrecSensF1_Avg_PartialSet.pdf",
-       Plot.3, 
        width = 7, height = 6, dpi = 300)
 
 
