@@ -22,36 +22,16 @@ library(cowplot)
 scores_novelDisc <- read_excel("Supplemental_Tables.xlsx", sheet = "SuppTable5")
 GFF <- scores_novelDisc %>% subset(Evaluator=="GFFcompare")
 GFF <- GFF %>% dplyr::select(-Evaluator, -Dataset, -Section, -AbundanceLevels)
-SQ3 <- scores_novelDisc %>% subset(Evaluator=="SQANTI3")
-SQ3 <- SQ3 %>% dplyr::select(-Evaluator, -Dataset, -Section, -AbundanceLevels)
+# SQ3 <- scores_novelDisc %>% subset(Evaluator=="SQANTI3")
+# SQ3 <- SQ3 %>% dplyr::select(-Evaluator, -Dataset, -Section, -AbundanceLevels)
 
 
-#df_novelDisc <- GFF
-
-#df_novelDisc <- SQ3
-
-## averaging TP, novel, FP and FN values obtained from GFFcompare and SQANTI3
 df_novelDisc <- GFF
-df_novelDisc$TP <- (GFF$TP + SQ3$TP)/2
-df_novelDisc$Novel <- (GFF$Novel + SQ3$Novel)/2
-df_novelDisc$FP <- (GFF$FP + SQ3$FP)/2
-df_novelDisc$FN <- (GFF$FN + SQ3$FN)/2
-
-
-# ## renaming Section to S, to shorten labels
-# df_novelDisc$Section <- str_replace_all(df_novelDisc$Section, "Section","S")
 
 ## cases are selected to ensure the presence of all cases
 dfsub <- subset(df_novelDisc, Case=="chrIS_full_half_null" | Case=="chrIS_half_null_full" | Case=="chrIS_null_full_half")
 ## rearranging dataframe for ggplot input
 dfsub <- melt(dfsub, id.vars=c("Case","Tool","Completeness","SectionLabel"))
-
-# ## re-labelled sections to parts according to abundance
-# dfsub <- dfsub %>% mutate(SectionLabel=case_when(
-#   Section=="S1" ~ "P3",
-#   Section=="S2" ~ "P1",
-#   Section=="S3" ~ "P2"
-# ))
 
 dffull <- subset(dfsub, Completeness=="full")
 dfpartial <- subset(dfsub, Completeness=="partial")
@@ -164,8 +144,6 @@ Pl3 <- Pl3 + theme(axis.title.y=element_blank(),axis.title.x=element_blank(),leg
 Plot.1 <- plot_grid(Pl1,Pl2,Pl3, nrow=1, rel_widths=c(2,2,2)) 
 ## saving to pdf
 pdf(file="Figures/Figure3_TPFPFN_PercentStackBar_panelsWithNum_GFFcompValues_23July2026.pdf", width = 20, height = 10)
-#pdf(file="Figures/Figure3_TPFPFN_PercentStackBar_panelsWithNum_SQ3Values_23July2026.pdf", width = 20, height = 10)
-#pdf(file="Figures/Figure3_TPFPFN_PercentStackBar_panelsWithNum_avgValues_23July2026.pdf", width = 20, height = 10)
 plot_grid(Plot.1,legend, rel_widths=c(6,0.25)) 
 dev.off()
 
@@ -211,8 +189,6 @@ Pl3 <- Pl3 + theme(axis.title.y=element_blank(),axis.title.x=element_blank(),leg
 Plot.2 <- plot_grid(Pl1,Pl2,Pl3, nrow=1, rel_widths=c(2,2,2)) 
 ## saving to pdf
 pdf(file="Figures/Figure3_TPFPFN_NumStackBar_panelsWithNum_GFFcompValues_23July2026.pdf", width = 20, height = 10)
-#pdf(file="Figures/Figure3_TPFPFN_NumStackBar_panelsWithNum_SQ3Values_23July2026.pdf", width = 20, height = 10)
-#pdf(file="Figures/Figure3_TPFPFN_NumStackBar_panelsWithNum_avgValues_23July2026.pdf", width = 20, height = 10)
 plot_grid(Plot.2,legend, rel_widths=c(6,0.25)) 
 dev.off()
 
@@ -227,9 +203,7 @@ Pl2_1 <- ggplot(dfpartial_fill, aes(x=SectionLabel,y=n,fill=variable)) +
 Pl2_1 <- Pl2_1 + theme(axis.title.y=element_blank(),axis.title.x=element_blank(),legend.position = "none") +
   theme(plot.background = element_rect(color = "black"))
 
-#pdf(file="Figures/Figure3B_main_TPFPFN_NumStackBar_partial_GFFcompValues_23July2026.pdf", width = 8, height = 12)
-#pdf(file="Figures/Figure3B_main_TPFPFN_NumStackBar_partial_SQ3Values_23July2026.pdf", width = 8, height = 12)
-pdf(file="Figures/Figure3B_main_TPFPFN_NumStackBar_partial_avgValues_23July2026.pdf", width = 8, height = 12)
+pdf(file="Figures/Figure3B_main_TPFPFN_NumStackBar_partial_GFFcompValues_23July2026.pdf", width = 8, height = 12)
 print(Pl2_1) 
 dev.off()
 
@@ -246,8 +220,6 @@ Pl2_2 <- Pl2_2 + theme(axis.title.y=element_blank(),axis.title.x=element_blank()
   theme(plot.background = element_rect(color = "black"))
 
 pdf(file="Figures/Figure3_TPFPFN_NumStackBar_partialWithNum_GFFcompValues_23July2026.pdf", width = 8, height = 12)
-#pdf(file="Figures/Figure3_TPFPFN_NumStackBar_partialWithNum_SQ3Values_23July2026.pdf", width = 8, height = 12)
-#pdf(file="Figures/Figure3_TPFPFN_NumStackBar_partialWithNum_avgValues_23July2026.pdf", width = 8, height = 12)
 print(Pl2_2) 
 dev.off()
 
@@ -315,8 +287,6 @@ Pl3 <- Pl3 + theme(axis.title.y=element_blank(),axis.title.x=element_blank(),leg
 Plot.3 <- plot_grid(Pl1,Pl2,Pl3, nrow=1, rel_widths=c(2,2,2)) 
 
 pdf(file="Figures/Figure3_TPFN_PercentStackBar_panelsWithNum_GFFcompValues_23July2026.pdf", width = 30, height = 10)
-#pdf(file="Figures/Figure3_TPFN_PercentStackBar_panelsWithNum_SQ3Values_23July2026.pdf", width = 30, height = 10)
-#pdf(file="Figures/Figure3_TPFN_PercentStackBar_panelsWithNum_avgValues_23July2026.pdf", width = 30, height = 10)
 plot_grid(Plot.3,legend, rel_widths=c(6,0.25))
 dev.off()
 
@@ -331,9 +301,7 @@ Pl2_3 <- ggplot(dfpartial_fill, aes(x=SectionLabel,y=pct,fill=variable)) +
 Pl2_3 <- Pl2_3 + theme(axis.title.y=element_blank(),axis.title.x=element_blank(),legend.position = "none") +
   theme(plot.background = element_rect(color = "black"))
 
-#pdf(file="Figures/Figure3C_main_TPFN_PercentStackBar_partial_GFFcompValues_23July2026.pdf", width = 8, height = 10)
-#pdf(file="Figures/Figure3C_main_TPFN_PercentStackBar_partial_SQ3Values_23July2026.pdf", width = 8, height = 10)
-pdf(file="Figures/Figure3C_main_TPFN_PercentStackBar_partial_avgValues_23July2026.pdf", width = 8, height = 10)
+pdf(file="Figures/Figure3C_main_TPFN_PercentStackBar_partial_GFFcompValues_23July2026.pdf", width = 8, height = 10)
 print(Pl2_3) 
 dev.off()
 
@@ -350,9 +318,7 @@ Pl2_4 <- ggplot(dfpartial_fill, aes(x=SectionLabel,y=pct,fill=variable)) +
 Pl2_4 <- Pl2_4 + theme(axis.title.y=element_blank(),axis.title.x=element_blank(),legend.position = "none") +
   theme(plot.background = element_rect(color = "black"))
 
- pdf(file="Figures/Figure3_TPFN_PercentStackBar_partialWithNum_GFFcompValues_23July2026.pdf", width = 10, height = 12)
-# pdf(file="Figures/Figure3_TPFN_PercentStackBar_partialWithNum_SQ3Values_23July2026.pdf", width = 10, height = 12)
-#pdf(file="Figures/Figure3_TPFN_PercentStackBar_partialWithNum_avgValues_23July2026.pdf", width = 10, height = 12)
+pdf(file="Figures/Figure3_TPFN_PercentStackBar_partialWithNum_GFFcompValues_23July2026.pdf", width = 10, height = 12)
 print(Pl2_4) 
 dev.off()
 
